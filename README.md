@@ -32,6 +32,27 @@ Change information → AI extraction → Release note draft → AI review → Im
 5. Update work in only this repository
 6. Raise issues when blocked
 
+# Protect Against Knowledge Loss
+The guideline explicitly says:
+
+>**Note** 
+No critical work should live only on a personal machine, private drive, or chat thread.
+
+Therefore:
+❌ Don't allow:
+"I have the prompt on my laptop."
+"I shared it in WhatsApp."
+"I emailed it to someone."
+
+✅ Instead use:
+- prompts-and-commands/
+- skills/
+- validation/
+- demo/
+
+Everything gets committed to the repo.
+
+
 ## What Success Looks Like
 
 Success means:
