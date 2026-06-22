@@ -6,43 +6,49 @@ AI-Powered Release Note Workflow Automation
 
 ## Project Owner
 
-| Name | Role |
-|--------|--------|
-| Riffat Wyne| Project Owner |
+
+| Name        | Role          |
+| ----------- | ------------- |
+| Riffat Wyne | Project Owner |
+
 
 ---
 
 ## Proposed Team Roles
 
-| Role | Responsibility | Assigned To |
-|--------|--------|--------|
-| Project Owner | Project coordination and delivery | Riffat |
-| Workflow Lead | Current workflow mapping | TBD |
-| Command Lead | Commands and prompt design | TBD |
-| Skills Lead | Skills design and documentation | TBD |
-| Agennt Lead | Agent workflow design | TBD |
-| MCP / Integration Lead | MCP, plugins, marketplace research | TBD |
-| Prototype builders | Build POC using avialable tools, scripts, prompts, API's or low-code comonents | TBD |
-| Sample Data Lead (Content and Data Curators) | Colect representative input samples and Create realistic use cases and examples | TBD |
-| Validation / QA Lead | Testing and quality review - testing the POC against sample scenarios, record gaps and validate usefulness| TBD |
-| Demo and Documentation Lead | Demo preparation with storyline, screenshots, instructions and final summary as a presentation | TBD |
+
+| Role                                         | Responsibility                                                                                             | Assigned To |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------- |
+| Project Owner                                | Project coordination and delivery                                                                          | Riffat      |
+| Workflow Lead                                | Current workflow mapping                                                                                   | TBD         |
+| Command Lead                                 | Commands and prompt design                                                                                 | TBD         |
+| Skills Lead                                  | Skills design and documentation                                                                            | TBD         |
+| Agent Lead                                   | Agent workflow design                                                                                      | TBD         |
+| MCP / Integration Lead                       | MCP, plugins, marketplace research                                                                         | TBD         |
+| Prototype builders                           | Build POC using avialable tools, scripts, prompts, API's or low-code comonents                             | TBD         |
+| Sample Data Lead (Content and Data Curators) | Colect representative input samples and Create realistic use cases and examples                            | TBD         |
+| Validation / QA Lead                         | Testing and quality review - testing the POC against sample scenarios, record gaps and validate usefulness | TBD         |
+| Demo and Documentation Lead                  | Demo preparation with storyline, screenshots, instructions and final summary as a presentation             | TBD         |
+
 
 ---
 
 ## Team Members
 
-| Name | Preferred Role | Status |
-|--------|--------|--------|
-| Riffat | Project Owner | Confirmed |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
-| TBD | TBD | Pending |
+
+| Name   | Preferred Role | Status    |
+| ------ | -------------- | --------- |
+| Riffat | Project Owner  | Confirmed |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+| TBD    | TBD            | Pending   |
+
 
 ---
 
@@ -61,7 +67,7 @@ AI-Powered Release Note Workflow Automation
 
 Repository Created: Yes
 
-Project Charter Published: Yes
+Project Charter Published: Under review
 
 Team Roles Assigned: ☐
 
