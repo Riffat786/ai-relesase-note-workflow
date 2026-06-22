@@ -42,8 +42,8 @@ AI-Powered Release Note Workflow Automation
 | Devika    | Demo and Skills            | Pending   |
 | Anubhav    | Validation/QA Lead        | Pending   |
 | Bhargavi| Command & Prompt/Skills & Validation| Pending   |
-| TBD    | TBD            | Pending   |
-| TBD    | TBD            | Pending   |
+| Dimple    | Sample Data Lead (Content and Data Curators), Agent Workflow          | Pending   |
+| Shubh    | Agent Lead            | Pending   |
 | TBD    | TBD            | Pending   |
 | TBD    | TBD            | Pending   |
 | TBD    | TBD            | Pending   |
