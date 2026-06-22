@@ -40,7 +40,7 @@ AI-Powered Release Note Workflow Automation
 | ------ | -------------- | --------- |
 | Riffat | Project Owner  | Confirmed |
 | Devika    | Demo and Skills            | Pending   |
-| TBD    | TBD            | Pending   |
+| Anubhav    | Validation/QA Lead        | Pending   |
 | TBD    | TBD            | Pending   |
 | TBD    | TBD            | Pending   |
 | TBD    | TBD            | Pending   |
