@@ -45,7 +45,7 @@ AI-Powered Release Note Workflow Automation
 | Dimple    | Sample Data Lead (Content and Data Curators), Agent Workflow          | Pending   |
 | Shubh Karman   | Agent Lead            | Pending   |
 | Srividya Kannan  | Skills Lead                                  | Skills design and documentation            | Pending   |
-| TBD    | TBD            | Pending   |
+| Divin    | Sample Data Lead /Skills Lead            | Pending   |
 | TBD    | TBD            | Pending   |
 | TBD    | TBD            | Pending   |
 
