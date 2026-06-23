@@ -63,7 +63,7 @@ ai-release-note-workflow/
 ├── roster/
 ├── workflow/
 ├── sample-data/
-├── prompts-and-commands/
+├── commands/
 ├── skills/
 ├── agents/
 ├── mcp-plugin-concept/
@@ -93,20 +93,6 @@ ai-release-note-workflow/
 | decisions        | Project decisions and rationale       |
 | assumptions      | Assumptions and constraints           |
 
-## Project Delievrables
-
-The repository should contain:
-•	Project Charter
-•	Team Roster
-•	Workflow Analysis
-•	Sample Data
-•	Commands
-•	Skills
-•	Agent Workflow
-•	MCP Integration Concepts
-•	Validation Results
-•	Demo Package
-•	Final Recommendation
 
 ## Team Ownership
 
@@ -121,48 +107,6 @@ Refer to `roster/team-roster.md` for team members and role assignments.
 5. Track work using GitHub Issues.
 6. Document decisions in the repository.
 7. Avoid keeping important information only in chats or personal files.
-
-See:
-CONTRIBUTING.md for detailed collaboration instructions.
-
-## Assumptions
-Current assumptions are maintained in:
-assumptions/
-
-Examples:
-•	Workshop timelines will remain unchanged.
-•	Sample data will be non-confidential.
-•	MCP integrations may be demonstrated conceptually rather than fully implemented.
-
-
-## Meeting Notes
-All meeting notes should be stored in:
-meetings/
-
-Meeting outcomes should include:
-•	Decisions
-•	Action items
-•	Risks
-•	Next steps
-
-## Decision Log
-Important project decisions should be stored in:
-decisions/
-and not only in chat conversations.
-
-## Validation
-Validation results, risks, gaps, and lessons learned should be documented in:
-validation/
-
-## Final Recommendation
-
-At project completion, the team will provide a recommendation:
-•	Continue
-•	Pivot
-•	Merge
-•	Stop
-based on the outcomes of the proof of concept.
-
 
 ## Known Limitations
 
