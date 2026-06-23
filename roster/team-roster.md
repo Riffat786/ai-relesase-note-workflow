@@ -16,7 +16,7 @@ AI-Powered Release Note Workflow Automation
 
 ## Recommended roles within each team
 
-oles Within Each Team
+Roles Within Each Team
 
 
 | Role                                               | Name                                    | Responsibility                                                                                    |
