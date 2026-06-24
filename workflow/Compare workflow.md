@@ -1,7 +1,7 @@
-#CURRENT STATE
-```text
+## Current State
+
 YouTrack → Manual Analysis → Manual Drafting → Manual Review → Approval
 
-#FUTURE STATE
+## Future State
 
-```textYouTrack → AI Extraction → AI Drafting → AI Review → Human Approval
+YouTrack → AI Extraction → AI Drafting → AI Review → Human Approval
