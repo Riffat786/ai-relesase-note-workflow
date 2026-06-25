@@ -1,0 +1,62 @@
+{
+    "release": "2025.8",
+    "releaseDate": "2025-08-15",
+    "items": [
+      {
+        "id": "US-1001",
+        "type": "Feature",
+        "title": "Multi-Factor Authentication",
+        "description": "Users can now enable multi-factor authentication using email verification.",
+        "status": "Done"
+      },
+      {
+        "id": "US-1002",
+        "type": "Feature",
+        "title": "Export Dashboard Reports",
+        "description": "Users can export dashboard reports to PDF format.",
+        "status": "Done"
+      },
+      {
+        "id": "US-1003",
+        "type": "Enhancement",
+        "title": "Improved Search Performance",
+        "description": "Reduced search response times across the portal.",
+        "status": "Done"
+      },
+      {
+        "id": "BUG-2001",
+        "type": "Bug",
+        "title": "Password Reset Email Failure",
+        "description": "Resolved an issue where password reset emails were not sent to some users.",
+        "status": "Done"
+      },
+      {
+        "id": "BUG-2002",
+        "type": "Bug",
+        "title": "Duplicate Notifications",
+        "description": "Fixed an issue causing duplicate notifications to be displayed.",
+        "status": "Done"
+      },
+      {
+        "id": "TASK-3001",
+        "type": "Technical Task",
+        "title": "Database Index Optimization",
+        "description": "Optimized database indexes for improved query performance.",
+        "status": "Done"
+      },
+      {
+        "id": "TASK-3002",
+        "type": "Technical Task",
+        "title": "Upgrade Logging Framework",
+        "description": "Upgraded logging libraries to the latest version.",
+        "status": "Done"
+      },
+      {
+        "id": "CHG-4001",
+        "type": "Change",
+        "title": "Production Deployment",
+        "description": "Deployment of Release 2025.8 to production.",
+        "status": "Implemented"
+      }
+    ]
+  }

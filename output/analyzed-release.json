@@ -1,0 +1,36 @@
+{
+    "release": "2025.8",
+    "releaseDate": "2025-08-15",
+    "features": [
+      {
+        "id": "US-1001",
+        "title": "Multi-Factor Authentication",
+        "description": "Users can now enable multi-factor authentication using email verification."
+      },
+      {
+        "id": "US-1002",
+        "title": "Export Dashboard Reports",
+        "description": "Users can export dashboard reports to PDF format."
+      }
+    ],
+    "enhancements": [
+      {
+        "id": "US-1003",
+        "title": "Improved Search Performance",
+        "description": "Reduced search response times across the portal."
+      }
+    ],
+    "bugFixes": [
+      {
+        "id": "BUG-2001",
+        "title": "Password Reset Email Failure",
+        "description": "Resolved an issue where password reset emails were not sent to some users."
+      },
+      {
+        "id": "BUG-2002",
+        "title": "Duplicate Notifications",
+        "description": "Fixed an issue causing duplicate notifications to be displayed."
+      }
+    ]
+  }
+  
