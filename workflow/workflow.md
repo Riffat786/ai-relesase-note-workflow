@@ -1,4 +1,4 @@
-# Summary of workflow.md
+# Summary of Workflow.md
 
 This document outlines the existing **step-by-step manual release notes creation workflow**:
 
@@ -26,7 +26,7 @@ This document outlines the existing **step-by-step manual release notes creation
 
 **Step 11:** Release note is made public in the website through AEM.
 
-**Key Phases:**
+## Key Phases:
 
 1. **Submission** (Steps 1-2): A Subject Matter Expert (SME) creates a TPT ticket, and MarCom reviews and accepts ownership.
 
