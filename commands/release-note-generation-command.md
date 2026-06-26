@@ -8,7 +8,7 @@ benchmarks: expected-output-1.md (Features), expected-output-2.md (Bug Fixes)
 
 ---
 
-Read the source material at [Feature Sample](../sample-data/sample-1-input.md) and [Bug Sample](../sample-data/sample-output-2.md). Generate a release note draft by following all rules in `release-note-writer-skill.md`.
+Read the source material at [Feature Sample](../sample-data/sample-1-input.md) and [Bug Sample](../sample-data/sample-2-input.md). Generate a release note draft by following all rules in `release-note-writer-skill.md`.
 
 ## Rules
 
