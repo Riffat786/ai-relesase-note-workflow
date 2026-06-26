@@ -1,0 +1,40 @@
+{
+  "tool": "list_release_issues",
+  "request": {
+    "fixVersion": "5.4"
+  },
+  "release": {
+    "version": "5.4",
+    "type": "Feature Release",
+    "fixVersion": "5.4"
+  },
+  "issues": [
+    {
+      "id": "YT-245",
+      "type": "Feature",
+      "summary": "Multi-Factor Authentication",
+      "description": "Users can configure multi-factor authentication using authenticator applications.",
+      "customerBenefit": "Improved account security.",
+      "fixVersion": "5.4",
+      "status": "Done"
+    },
+    {
+      "id": "YT-250",
+      "type": "Enhancement",
+      "summary": "Dashboard Export to Excel",
+      "description": "Users can export dashboard data directly to Microsoft Excel format.",
+      "customerBenefit": "Improved reporting and data sharing.",
+      "fixVersion": "5.4",
+      "status": "Done"
+    },
+    {
+      "id": "YT-261",
+      "type": "Bug",
+      "summary": "Report Export Failure",
+      "description": "Large report exports occasionally failed to complete successfully.",
+      "customerImpact": "Users could not download large reports.",
+      "fixVersion": "5.4",
+      "status": "Done"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "tool": "list_release_issues",
+  "request": {
+    "fixVersion": "5.5"
+  },
+  "release": {
+    "version": "5.5",
+    "type": "Mixed Release",
+    "fixVersion": "5.5"
+  },
+  "issues": [
+    {
+      "id": "YT-301",
+      "type": "Feature",
+      "summary": "Configuration Profiles",
+      "description": "Added support for configuration profiles.",
+      "fixVersion": "5.5",
+      "status": "Done"
+    },
+    {
+      "id": "YT-318",
+      "type": "Security",
+      "summary": "Password Policy Enhancements",
+      "description": "Administrators can now configure minimum password complexity requirements.",
+      "customerBenefit": "Improved security controls.",
+      "fixVersion": "5.5",
+      "status": "Done"
+    },
+    {
+      "id": "YT-327",
+      "type": "Bug",
+      "summary": "Scheduled Report Failure",
+      "description": "Scheduled reports occasionally failed when generated overnight.",
+      "fixVersion": "5.5",
+      "status": "Done"
+    },
+    {
+      "id": "YT-330",
+      "type": "Technical Debt",
+      "summary": "Database Refactoring",
+      "description": "Refactored database query framework.",
+      "fixVersion": "5.5",
+      "status": "Done"
+    }
+  ]
+}
