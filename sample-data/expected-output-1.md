@@ -159,5 +159,7 @@ Use this scorecard during peer review and editorial sign-off.
 | Global | Active voice throughout | |
 | Global | No internal references or jargon | |
 | Global | Addresses reader as "you" | |
+
 **Sign-off threshold:** All criteria must pass before a release note is approved for publication.
+
 *This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process. Last reviewed: June 2026.*
