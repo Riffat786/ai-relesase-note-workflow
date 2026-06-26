@@ -1,26 +1,13 @@
 ---
+
 name: release-note-orchestrator
-description: >
-  Use this agent when asked to generate release notes, run the release note
-  workflow, or produce consolidated HTML and Markdown output from sample data.
-  Orchestrates the full pipeline: reads both sample inputs, delegates drafting
-  to the writer sub-agent, delegates review to the reviewer sub-agent, and
-  produces exactly two output files — one consolidated Markdown file and one
-  consolidated HTML file.
+description: Use this agent when asked to generate release notes, run the release note workflow, or produce consolidated HTML and Markdown output from sample data. Orchestrates the full pipeline: reads both sample inputs, delegates drafting to the writer sub-agent, delegates review to the reviewer sub-agent, and   produces exactly two output files — one consolidated Markdown file and one consolidated HTML file.
 version: 1.1.0
 author: GlobalMail Pro Technical Writing
-inputs:
-  - sample-data/sample-1-input.md
-  - sample-data/sample-2-input.md
-  - sample-data/expected-output-1.md
-  - sample-data/expected-output-2.md
-outputs:
-  - output/release-note-1-1-release.md       (consolidated — all sections)
-  - output/release-note-1-1-release.html     (consolidated — all sections)
-  - output/release-note-review-report.md     (review report)
-sub-agents:
-  - agents/release-note-writer-agent.md
-  - agents/release-note-reviewer-agent.md
+inputs: sample-data/sample-1-input.md, sample-data/sample-2-input.md, sample-data/expected-output-1.md, sample-data/expected-output-2.md
+outputs: output/release-note-1-1-release.md       (consolidated — all sections), output/release-note-1-1-release.html     (consolidated — all sections), output/release-note-review-report.md     (review report)
+sub-agents: agents/release-note-writer-agent.md, agents/release-note-reviewer-agent.md
+
 ---
 
 # Release Note Orchestrator Agent
