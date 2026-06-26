@@ -1,24 +1,13 @@
 ---
+ 
 name: release-note-writer-agent
-description: >
-  Use this agent when the orchestrator delegates drafting of the consolidated
-  release note. Reads both source inputs together, applies the writer skill and
-  branding skill, and produces exactly one consolidated Markdown file and one
-  consolidated HTML file — both containing all sections (What's New first,
-  Bug Fix second). Do not invoke directly — called by release-note-orchestrator.md.
+description: Use this agent when the orchestrator delegates drafting of the consolidated release note. Reads both source inputs together, applies the writer skill and branding skill, and produces exactly one consolidated Markdown file and one consolidated HTML file — both containing all sections (What's New first, Bug Fix second). Do not invoke directly — called by release-note-orchestrator.md.
 version: 1.1.0
 author: GlobalMail Pro Technical Writing
-skills:
-  - skills/release-note-writer-skill.md
-  - skills/branding-style-guide.md
-inputs:
-  - sample-data/sample-1-input.md    (feature source)
-  - sample-data/sample-2-input.md    (bug fix source)
-  - sample-data/expected-output-1.md (benchmark — feature section)
-  - sample-data/expected-output-2.md (benchmark — bug fix section with table)
-outputs:
-  - output/release-note-1-1-release.md
-  - output/release-note-1-1-release.html
+skills: skills/release-note-writer-skill.md, skills/branding-style-guide.md
+inputs: sample-data/sample-1-input.md    (feature source), sample-data/sample-2-input.md    (bug fix source), sample-data/expected-output-1.md (benchmark — feature section), sample-data/expected-output-2.md (benchmark — bug fix section with table)
+outputs: output/release-note-1-1-release.md, output/release-note-1-1-release.html
+
 ---
 
 # Release Note Writer Agent
