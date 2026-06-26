@@ -1,7 +1,7 @@
 ---
 
 name: release-note-orchestrator
-description: Use this agent when asked to generate release notes, run the release note workflow, or produce consolidated HTML and Markdown output from sample data. Orchestrates the full pipelin- reads inputs, delegates to sub-agents, collects outputs, assembles the final consolidated package.
+description: Use this agent when asked to generate release notes, run the release note workflow, or produce consolidated HTML and Markdown output from sample data. Orchestrates the full pipeline - reads inputs, delegates to sub-agents, collects outputs, assembles the final consolidated package.
 version: 1.1.0
 author: GlobalMail Pro Technical Writing
 inputs: sample-data/sample-1-input.md, sample-data/sample-2-input.md, sample-data/expected-output-1.md, sample-data/expected-output-2.md
