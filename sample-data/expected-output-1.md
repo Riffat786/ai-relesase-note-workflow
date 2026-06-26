@@ -4,7 +4,7 @@
 **Applies to:** All Feature Release Notes — Enterprise SaaS Platform
 **Version:** 1.0
 ## Purpose
-This document defines the structure, style, and quality criteria for a high-quality feature Release Note. It serves as the authoritative benchmark for documentation teams producing or reviewing release notes across all product areas. Every release note published externally should be measured against this standard before approval.
+This document defines the structure, style, and quality criteria for a high-quality feature Release Note. It serves as the authoritative benchmark for documentation teams producing release notes across all product areas. Every release note published externally should be measured against this standard before approval.
 ## Benchmark Structure
 A compliant release note must include the following sections, in the order shown. Optional sections are clearly marked.
 ## 1. Feature Title
@@ -102,20 +102,15 @@ The workflow must:
 - [ ] Final step states a clear, concrete outcome
 - [ ] UI paths are included and accurate
 - [ ] No steps are skipped or assumed
-## 5. Visual Suggestion *(Optional)*
+## 5. Visuals *(Optional)*
 ### Purpose
-Visuals reduce cognitive load for complex features and support readers who process information more effectively through diagrams than prose. A visual suggestion documents the intent so design or documentation teams can produce the asset.
+Visuals reduce cognitive load for complex features and support readers who process information more effectively through diagrams than prose.
 ### When to Include
-Recommend a visual when:
+Include a visual when:
 - The feature involves a multi-step workflow with a decision point or branch
 - The feature introduces a new data structure, hierarchy, or relationship
 - A before/after comparison would make the change immediately obvious
 - The audience includes non-technical stakeholders who benefit from a summary view
-### What to Specify in a Visual Suggestion
-Every visual suggestion must describe:
-- **Type** — the format best suited to the content (see options below)
-- **What it should show** — the specific content, flow, or comparison to depict
-- **Why it helps** — the specific reader need or comprehension gap the visual addresses
 ### Visual Type Reference
 | Type | Best Used For |
 |---|---|
@@ -125,10 +120,8 @@ Every visual suggestion must describe:
 | Architecture or relationship diagram | New data structures, hierarchies, or integrations |
 | Annotated screenshot | New UI elements or changes to existing screens |
 ### Quality Checklist
-- [ ] Visual type is specified and appropriate for the content
-- [ ] Description explains what the visual should depict in enough detail to produce it
-- [ ] Rationale explains the specific comprehension benefit for the reader
-- [ ] Suggestion is written as a brief, concrete description (3–5 lines)
+- [ ] Appropriate Visual type is used for appropriate content
+- [ ] Description explains what the visual depicts
 ## Writing Standards — Global Criteria
 These criteria apply to every section of every release note, without exception.
 ### Voice and Tone
