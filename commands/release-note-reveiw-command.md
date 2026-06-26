@@ -3,7 +3,7 @@
 description: Generate a benchmark-compliant enterprise SaaS release note draft from structured input.
 skill: skills/release-note-writer-skill.md
 branding: skills/branding-style-guide.md
-benchmarks: sample-data/expected-output-1.md, ../sample-data/expected-output-2.md
+benchmarks: sample-data/expected-output-1.md, sample-data/expected-output-2.md
 inputs: sample-data/sample-1-input.md, sample-data/sample-2-input.md
 outputs: output/release-note-[version]-[slug].md, output/release-note-[version]-[slug].html
 
