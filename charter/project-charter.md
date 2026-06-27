@@ -20,13 +20,23 @@ This project is part of the TWT AI Mastery certification workshop and will use r
 
 ## Problem Statement
 
-Documentation and product teams spend significant effort gathering change information, creating release note drafts, reviewing content quality, and ensuring consistency.
+## Problem Statement
 
-Many of these activities are repetitive and could potentially be automated or assisted by AI.
+Creating release notes is a time-consuming and largely manual process for technical writers.
+
+For every product release, developers or Subject Matter Experts (SMEs) provide the list of completed work items from the issue tracking system (Jira for this prototype). Depending on how the release data is exported, the information may be organized by release version, module, or as a single consolidated list containing new features, enhancements, bug fixes, and hotfixes.
+
+Before documentation can begin, the technical writer must manually filter, categorize, and reorganize the release data into a consumable format. Depending on the release, this may involve grouping tickets by release version, module, or change type before the documentation process can even start. This preparation is repetitive, time-consuming, and varies for every release.
+
+Once the data has been organized, the technical writer manually creates release-note entries using a predefined template that includes the headline, what changed, why the change was introduced, where the change applies, implementation or configuration details, and any known limitations. The completed release notes must then be reviewed for clarity, consistency, grammar, and compliance with the Microsoft Writing Style Guide before publication.
+
+This project proposes an AI-assisted release note workflow that uses Atlassian MCP to retrieve release information from Jira, automatically structures the content into a standardized release-note template, validates the language against the Microsoft Writing Style Guide, and keeps the technical writer involved through mandatory human review and approval checkpoints before generating the final online-help output.
+
 
 ## Project Goal
 
-Demonstrate an AI-assisted workflow that automates and improves the release note creation process while maintaining appropriate human review and approval.
+To design and demonstrate an AI-assisted release note workflow that uses Atlassian MCP to retrieve release information from Jira, automatically structures the content into a standardized release-note template, validates the content against the Microsoft Writing Style Guide, and keeps the technical writer involved through mandatory human review and approval checkpoints before generating HTML/XML output.
+
 
 ## Target Users
 
@@ -40,15 +50,12 @@ Demonstrate an AI-assisted workflow that automates and improves the release note
 
 ### In Scope
 
-- Release note workflow analysis
-- AI-assisted information extraction
-- Release note draft generation
-- AI review and quality checks
-- Commands and reusable prompts
-- Skills design
-- Agent workflow design
-- MCP and integration concepts
-- Validation using realistic examples
+- Atlassian MCP integration
+- Jira ticket retrieval
+- Release note structuring
+- Microsoft Writing Style Guide validation
+- HTML/XML generation
+- Human approval workflow
 - Demo-ready proof of concept
 
 ### Out of Scope
@@ -72,28 +79,28 @@ Change Information
 
 The project will be considered successful if:
 
-- A working end-to-end workflow is demonstrated
-- At least two realistic sample scenarios are used
-- Commands and/or reusable prompts are demonstrated
-- Skills are documented and demonstrated
-- Agent workflow is demonstrated
-- MCP/plugin integration opportunities are identified
-- Human review checkpoints are clearly defined
-- Results and limitations are documented
+- Successfully retrieve sample Jira tickets using Atlassian MCP.
+- Generate structured release notes from sample ticket data.
+- Demonstrate Microsoft Writing Style Guide validation.
+- Demonstrate human approval checkpoints.
+- Generate HTML/XML output.
+- Demonstrate an end-to-end workflow using realistic sample data.
 
 ## Deliverables
 
-- Project Charter
-- Team Roster
-- Workflow Diagram
-- Sample Inputs
-- Commands and Prompts
-- Skills Documentation
-- Agent Workflow Design
-- MCP / Plugin Integration Concept
-- Validation Report
-- Demo Package
-- Final Recommendation
+- Updated Project Charter
+- Current (As-Is) Workflow
+- Future (To-Be) Workflow
+- Architecture Diagram
+- Sample Jira Tickets
+- Release Note Structuring Skill
+- Microsoft Writing Style Guide Review Skill
+- HTML/XML Generation Skill
+- Release Note Generation Command
+- Release Note Review Command
+- Agent Workflow
+- Working Prototype
+- Demo Presentation
 
 ## Timeline
 
