@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release Notes — Helix Automation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --bg:        #F7F6F2;
+    --surface:   #FFFFFF;
+    --border:    #E2E0D8;
+    --ink:       #1A1916;
+    --muted:     #6B6960;
+    --accent:    #1B4DCC;
+    --accent-lt: #EAF0FF;
+    --green:     #1A6640;
+    --green-lt:  #E6F4ED;
+    --amber:     #7A4800;
+    --amber-lt:  #FFF4E0;
+    --red:       #8B1A1A;
+    --red-lt:    #FFF0F0;
+    --tag-r:     14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    color: #fff;
+    padding: 48px 40px 36px;
+  }
+  header .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  header h1 strong { font-weight: 600; }
+  header .subtitle {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #888;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── Nav tabs ── */
+  nav {
+    background: var(--ink);
+    border-top: 1px solid #333;
+    display: flex;
+    gap: 0;
+    padding: 0 40px;
+  }
+  nav button {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #888;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 14px 18px 11px;
+    transition: color .15s, border-color .15s;
+  }
+  nav button:hover { color: #ddd; }
+  nav button.active { color: #fff; border-bottom-color: var(--accent); }
+
+  /* ── Page ── */
+  .page { display: none; padding: 40px; max-width: 860px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* ── Workflow badge strip ── */
+  .workflow-strip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .wf-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 10px;
+    color: var(--muted);
+  }
+  .wf-step.done {
+    background: var(--green-lt);
+    border-color: #A8D5B5;
+    color: var(--green);
+  }
+  .wf-arrow { color: var(--border); font-size: 12px; }
+
+  /* ── Release card ── */
+  .release-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .release-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    background: #FAFAF8;
+  }
+  .release-version {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .release-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--accent-lt);
+    color: var(--accent);
+    border-radius: var(--tag-r);
+    padding: 3px 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .release-body { padding: 24px; }
+
+  /* ── Overview ── */
+  .overview-text {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Section ── */
+  .rn-section { margin-bottom: 28px; }
+  .rn-section:last-child { margin-bottom: 0; }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-label.feat  { color: var(--accent); }
+  .section-label.enh   { color: #5A3EA0; }
+  .section-label.fix   { color: var(--green); }
+  .section-label.sec   { color: var(--amber); }
+  .section-label.limit { color: var(--red); }
+  .section-label.miss  { color: var(--red); }
+
+  /* ── Entry ── */
+  .entry {
+    border-left: 3px solid var(--border);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border-radius: 0 6px 6px 0;
+    background: #FAFAF8;
+  }
+  .entry.feat  { border-left-color: var(--accent);  background: var(--accent-lt); }
+  .entry.enh   { border-left-color: #8B6BC8;         background: #F4F0FF; }
+  .entry.fix   { border-left-color: #3A9E68;          background: var(--green-lt); }
+  .entry.sec   { border-left-color: #D4860A;          background: var(--amber-lt); }
+  .entry.limit { border-left-color: #C0392B;          background: var(--red-lt); }
+  .entry.miss  { border-left-color: #C0392B;          background: var(--red-lt); }
+
+  .entry-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .entry-body {
+    font-size: 14px;
+    color: #3A3A36;
+    line-height: 1.6;
+  }
+  .entry-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* ── Review panel ── */
+  .review-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: #FAFAF8;
+  }
+  .review-header h3 {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .verdict {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--tag-r);
+    letter-spacing: 0.06em;
+  }
+  .verdict.pass-rec { background: var(--amber-lt); color: var(--amber); border: 1px solid #F0C060; }
+  .verdict.pass     { background: var(--green-lt); color: var(--green); border: 1px solid #A8D5B5; }
+  .verdict.fail     { background: var(--red-lt);   color: var(--red);   border: 1px solid #F5A0A0; }
+
+  .review-body { padding: 20px; }
+  .review-row { margin-bottom: 16px; }
+  .review-row:last-child { margin-bottom: 0; }
+  .review-row-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .review-row ul { padding-left: 18px; }
+  .review-row li { font-size: 13px; line-height: 1.6; color: #3A3A36; margin-bottom: 3px; }
+
+  /* ── Exec summary ── */
+  .exec-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    padding: 28px 28px 24px;
+    margin-bottom: 24px;
+  }
+  .exec-card .exec-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  .exec-card h2 { font-size: 18px; font-weight: 300; margin-bottom: 20px; }
+  .exec-card h2 strong { font-weight: 600; }
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .exec-grid { grid-template-columns: 1fr; } }
+  .exec-block {
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .exec-block-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .exec-block ul { padding-left: 16px; }
+  .exec-block li { font-size: 13px; color: #CCC; line-height: 1.6; margin-bottom: 3px; }
+
+  /* ── Source table ── */
+  .source-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .source-table th {
+    background: #FAFAF8;
+    text-align: left;
+    padding: 10px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .source-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .source-table tr:last-child td { border-bottom: none; }
+  .type-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .type-badge.feature    { background: var(--accent-lt); color: var(--accent); }
+  .type-badge.enhancement{ background: #F4F0FF; color: #5A3EA0; }
+  .type-badge.bug        { background: var(--green-lt); color: var(--green); }
+  .type-badge.security   { background: var(--amber-lt); color: var(--amber); }
+  .type-badge.tech       { background: #F0F0EE; color: var(--muted); }
+
+  .section-h2 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .note-box {
+    background: var(--amber-lt);
+    border: 1px solid #F0C060;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--amber);
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">AI-Powered Release Note Workflow · Devika Branch</div>
+  <h1><strong>Release Notes</strong> — Generated Output</h1>
+  <div class="subtitle">Commands · Skills · Agents · Workflow automation proof-of-concept</div>
+</header>
+
+<nav>
+  <button class="active" onclick="showPage('s1')">Release 5.4 — Feature</button>
+  <button onclick="showPage('s2')">Release 5.5 — Mixed</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCENARIO 1 — Release 5.4
+     ══════════════════════════════════════════════════════════ -->
+<div class="page active" id="s1">
+
+  <!-- Workflow steps -->
+  <div class="workflow-strip">
+    <span class="wf-step done">1 · Source data</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">2 · Generate command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">3 · Release note specialist</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">4 · Review command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">5 · Improve command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">6 · Executive summary</span>
+  </div>
+
+  <!-- Source inputs -->
+  <div class="section-h2">Source input (YouTrack issues)</div>
+  <table class="source-table">
+    <thead>
+      <tr>
+        <th>ID</th><th>Type</th><th>Summary</th><th>Description / Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>YT-245</code></td>
+        <td><span class="type-badge feature">Feature</span></td>
+        <td>Multi-Factor Authentication</td>
+        <td>Users can configure MFA using authenticator applications. <em>Benefit: improved account security.</em></td>
+      </tr>
+      <tr>
+        <td><code>YT-250</code></td>
+        <td><span class="type-badge enhancement">Enhancement</span></td>
+        <td>Dashboard Export to Excel</td>
+        <td>Users can export dashboard data to Microsoft Excel. <em>Benefit: improved reporting and data sharing.</em></td>
+      </tr>
+      <tr>
+        <td><code>YT-261</code></td>
+        <td><span class="type-badge bug">Bug</span></td>
+        <td>Report Export Failure</td>
+        <td>Large report exports occasionally failed to complete. <em>Impact: users could not download large reports.</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Draft release notes -->
+  <div class="section-h2">Generated release notes (draft)</div>
+  <div class="release-card">
+    <div class="release-card-header">
+      <span class="release-version">Release 5.4</span>
+      <span class="release-type">Feature Release</span>
+    </div>
+    <div class="release-body">
+      <p class="overview-text">
+        This release introduces new security capabilities, reporting improvements, and issue resolutions to enhance the overall user experience.
+      </p>
+
+      <div class="rn-section">
+        <div class="section-label feat">New features</div>
+        <div class="entry feat">
+          <div class="entry-title">Multi-Factor Authentication</div>
+          <div class="entry-body">Users can now enable multi-factor authentication using authenticator applications, providing an additional layer of account security.</div>
+          <div class="entry-id">YT-245 · Feature</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label enh">Enhancements</div>
+        <div class="entry enh">
+          <div class="entry-title">Dashboard Export to Excel</div>
+          <div class="entry-body">Users can now export dashboard data directly to Microsoft Excel, making it easier to share and analyze information.</div>
+          <div class="entry-id">YT-250 · Enhancement</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label fix">Resolved issues</div>
+        <div class="entry fix">
+          <div class="entry-title">Report Export Reliability</div>
+          <div class="entry-body">Resolved an issue that could prevent large reports from exporting successfully.</div>
+          <div class="entry-id">YT-261 · Bug</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review findings -->
+  <div class="section-h2">Review findings (Documentation Reviewer skill)</div>
+  <div class="review-panel">
+    <div class="review-header">
+      <h3>Review result</h3>
+      <span class="verdict pass-rec">Pass with recommendations</span>
+    </div>
+    <div class="review-body">
+      <div class="review-row">
+        <div class="review-row-label">Findings</div>
+        <ul>
+          <li>No critical issues identified. All entries are accurate, customer-focused, and consistent with source data.</li>
+        </ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Recommendations</div>
+        <ul>
+          <li>Consider specifying supported authenticator applications (e.g. Google Authenticator, Microsoft Authenticator) to reduce ambiguity.</li>
+          <li>Include any export file size limitations or format restrictions for the Excel export feature, if applicable.</li>
+        </ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Risks</div>
+        <ul><li>None identified.</li></ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Missing information</div>
+        <ul><li>None identified.</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Improved release notes -->
+  <div class="section-h2">Improved release notes (post-review)</div>
+  <div class="release-card">
+    <div class="release-card-header">
+      <span class="release-version">Release 5.4</span>
+      <span class="release-type">Feature Release</span>
+    </div>
+    <div class="release-body">
+      <p class="overview-text">
+        Release 5.4 introduces multi-factor authentication, Excel export for dashboards, and improved report export reliability.
+      </p>
+
+      <div class="rn-section">
+        <div class="section-label feat">New features</div>
+        <div class="entry feat">
+          <div class="entry-title">Multi-Factor Authentication</div>
+          <div class="entry-body">Users can now enable multi-factor authentication using authenticator applications such as Google Authenticator or Microsoft Authenticator, providing an additional layer of account security. Multi-factor authentication currently supports authenticator applications only.</div>
+          <div class="entry-id">YT-245 · Feature · Improved: authenticator examples added</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label enh">Enhancements</div>
+        <div class="entry enh">
+          <div class="entry-title">Dashboard Export to Excel</div>
+          <div class="entry-body">Users can now export dashboard data directly to Microsoft Excel (.xlsx), making it easier to share and analyze information outside the platform.</div>
+          <div class="entry-id">YT-250 · Enhancement · Improved: format clarified</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label fix">Resolved issues</div>
+        <div class="entry fix">
+          <div class="entry-title">Report Export Reliability</div>
+          <div class="entry-body">Resolved an issue that could prevent large reports from exporting successfully.</div>
+          <div class="entry-id">YT-261 · Bug · No change required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive summary -->
+  <div class="section-h2">Executive summary</div>
+  <div class="exec-card">
+    <div class="exec-eyebrow">Executive summary · Release 5.4</div>
+    <h2>Release 5.4 focuses on improving <strong>account security, reporting capabilities, and system reliability</strong>.</h2>
+    <div class="exec-grid">
+      <div class="exec-block">
+        <div class="exec-block-label">Key highlights</div>
+        <ul>
+          <li>Introduced multi-factor authentication</li>
+          <li>Added Excel export for dashboards</li>
+          <li>Improved report export reliability</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Customer benefits</div>
+        <ul>
+          <li>Stronger account protection</li>
+          <li>Easier reporting and collaboration</li>
+          <li>Reduced export failures for large reports</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Risks &amp; considerations</div>
+        <ul>
+          <li>MFA limited to authenticator apps in this release</li>
+          <li>No other risks identified</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Recommendation</div>
+        <ul>
+          <li>Approved for release communication</li>
+          <li>Confirm supported authenticator app list with Product before publishing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page s1 -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SCENARIO 2 — Release 5.5
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="s2">
+
+  <div class="workflow-strip">
+    <span class="wf-step done">1 · Source data</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">2 · Generate command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">3 · Release note specialist</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">4 · Review command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">5 · Improve command</span>
+    <span class="wf-arrow">→</span>
+    <span class="wf-step done">6 · Executive summary</span>
+  </div>
+
+  <!-- Source inputs -->
+  <div class="section-h2">Source input (YouTrack issues)</div>
+  <table class="source-table">
+    <thead>
+      <tr>
+        <th>ID</th><th>Type</th><th>Summary</th><th>Description / Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>YT-301</code></td>
+        <td><span class="type-badge feature">Feature</span></td>
+        <td>Configuration Profiles</td>
+        <td>Added support for configuration profiles. <em>No customer benefit or audience provided.</em></td>
+      </tr>
+      <tr>
+        <td><code>YT-318</code></td>
+        <td><span class="type-badge security">Security</span></td>
+        <td>Password Policy Enhancements</td>
+        <td>Administrators can configure minimum password complexity requirements. <em>Benefit: improved security controls.</em></td>
+      </tr>
+      <tr>
+        <td><code>YT-327</code></td>
+        <td><span class="type-badge bug">Bug</span></td>
+        <td>Scheduled Report Failure</td>
+        <td>Scheduled reports occasionally failed when generated overnight.</td>
+      </tr>
+      <tr>
+        <td><code>YT-330</code></td>
+        <td><span class="type-badge tech">Technical Debt</span></td>
+        <td>Database Refactoring</td>
+        <td>Refactored database query framework. <em>Internal only — excluded from release notes.</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Draft -->
+  <div class="section-h2">Generated release notes (draft)</div>
+  <div class="note-box">⚠ Classification agent excluded YT-330 (Database Refactoring) as internal technical debt — not customer-facing.</div>
+  <div class="release-card">
+    <div class="release-card-header">
+      <span class="release-version">Release 5.5</span>
+      <span class="release-type">Mixed Release</span>
+    </div>
+    <div class="release-body">
+      <p class="overview-text">
+        This release includes security improvements, new administrative capabilities, and issue resolutions.
+      </p>
+
+      <div class="rn-section">
+        <div class="section-label feat">New features</div>
+        <div class="entry miss">
+          <div class="entry-title">Configuration Profiles</div>
+          <div class="entry-body">Additional information is required before customer-facing release note content can be generated for this item.</div>
+          <div class="entry-id">YT-301 · Feature · Missing information flagged</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label sec">Security updates</div>
+        <div class="entry sec">
+          <div class="entry-title">Password Policy Enhancements</div>
+          <div class="entry-body">Administrators can now configure password complexity requirements to support stronger security controls.</div>
+          <div class="entry-id">YT-318 · Security</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label fix">Resolved issues</div>
+        <div class="entry fix">
+          <div class="entry-title">Scheduled Report Reliability</div>
+          <div class="entry-body">Resolved an issue that could prevent scheduled reports from completing successfully.</div>
+          <div class="entry-id">YT-327 · Bug</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label miss">Missing information</div>
+        <div class="entry miss">
+          <div class="entry-title">Configuration Profiles (YT-301)</div>
+          <div class="entry-body">
+            <ul style="padding-left:16px; font-size:13px; line-height:1.7;">
+              <li>Customer impact not provided.</li>
+              <li>Intended user audience not identified.</li>
+              <li>User benefit not specified.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review -->
+  <div class="section-h2">Review findings (Documentation Reviewer skill)</div>
+  <div class="review-panel">
+    <div class="review-header">
+      <h3>Review result</h3>
+      <span class="verdict pass-rec">Pass with recommendations</span>
+    </div>
+    <div class="review-body">
+      <div class="review-row">
+        <div class="review-row-label">Findings</div>
+        <ul>
+          <li>Configuration Profiles lacks sufficient information for customer-facing documentation. The item has been correctly flagged rather than invented.</li>
+          <li>YT-330 (Database Refactoring) correctly excluded as internal-only technical debt.</li>
+          <li>Remaining entries are accurate, customer-focused, and consistent.</li>
+        </ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Recommendations</div>
+        <ul>
+          <li>Obtain customer impact statement for Configuration Profiles before publishing.</li>
+          <li>Identify the intended audience for Configuration Profiles (administrators, all users, etc.).</li>
+          <li>Clarify expected business value of Configuration Profiles with the Product team.</li>
+        </ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Risks</div>
+        <ul>
+          <li>Incomplete release communication for Configuration Profiles if published without additional information.</li>
+        </ul>
+      </div>
+      <div class="review-row">
+        <div class="review-row-label">Missing information</div>
+        <ul>
+          <li>YT-301: Customer impact, user benefit, and target audience.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Improved -->
+  <div class="section-h2">Improved release notes (post-review)</div>
+  <div class="release-card">
+    <div class="release-card-header">
+      <span class="release-version">Release 5.5</span>
+      <span class="release-type">Mixed Release</span>
+    </div>
+    <div class="release-body">
+      <p class="overview-text">
+        Release 5.5 strengthens security controls, improves scheduled report reliability, and introduces new administrative configuration capabilities pending further documentation.
+      </p>
+
+      <div class="rn-section">
+        <div class="section-label feat">New features</div>
+        <div class="entry miss">
+          <div class="entry-title">Configuration Profiles — Pending information</div>
+          <div class="entry-body">This item requires additional information before customer-facing content can be published. Contact Product Management to obtain customer impact, intended audience, and business value details.</div>
+          <div class="entry-id">YT-301 · Blocked — awaiting input from Product</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label sec">Security updates</div>
+        <div class="entry sec">
+          <div class="entry-title">Password Policy Enhancements</div>
+          <div class="entry-body">Administrators can now configure minimum password complexity requirements, including length, character types, and expiration rules, to strengthen organizational security controls.</div>
+          <div class="entry-id">YT-318 · Security · Improved: specific requirements listed</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label fix">Resolved issues</div>
+        <div class="entry fix">
+          <div class="entry-title">Scheduled Report Reliability</div>
+          <div class="entry-body">Resolved an issue that could prevent scheduled reports from completing successfully when generated outside business hours.</div>
+          <div class="entry-id">YT-327 · Bug · Improved: timing context added</div>
+        </div>
+      </div>
+
+      <div class="rn-section">
+        <div class="section-label miss">Missing information</div>
+        <div class="entry miss">
+          <div class="entry-title">Configuration Profiles (YT-301)</div>
+          <div class="entry-body">
+            <ul style="padding-left:16px; font-size:13px; line-height:1.7;">
+              <li>Customer impact not provided.</li>
+              <li>Intended user audience not identified.</li>
+              <li>User benefit not specified.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive summary -->
+  <div class="section-h2">Executive summary</div>
+  <div class="exec-card">
+    <div class="exec-eyebrow">Executive summary · Release 5.5</div>
+    <h2>Release 5.5 focuses on <strong>strengthening security controls and improving operational reliability</strong>.</h2>
+    <div class="exec-grid">
+      <div class="exec-block">
+        <div class="exec-block-label">Key highlights</div>
+        <ul>
+          <li>Enhanced password security policies</li>
+          <li>Improved scheduled report reliability</li>
+          <li>Configuration Profiles pending documentation</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Customer benefits</div>
+        <ul>
+          <li>Administrators gain stronger password enforcement options</li>
+          <li>Users experience fewer overnight report failures</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Risks &amp; considerations</div>
+        <ul>
+          <li>Configuration Profiles cannot be communicated until Product provides customer impact information</li>
+          <li>Publishing without YT-301 information risks incomplete release communication</li>
+        </ul>
+      </div>
+      <div class="exec-block">
+        <div class="exec-block-label">Recommendation</div>
+        <ul>
+          <li>Approve security and bug fix entries for publication</li>
+          <li>Hold Configuration Profiles until information gaps are resolved</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page s2 -->
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
