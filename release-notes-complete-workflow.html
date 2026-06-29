@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Release Note Workflow - Complete Output</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+        }
+
+        header {
+            border-bottom: 3px solid #0066cc;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #0066cc;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .workflow-info {
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .workflow-info h3 {
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+
+        .workflow-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .workflow-info code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .scenario {
+            margin: 60px 0;
+            page-break-inside: avoid;
+        }
+
+        .scenario-header {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .scenario-header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .scenario-header p {
+            font-size: 1.05em;
+            opacity: 0.95;
+        }
+
+        .workflow-stage {
+            margin: 40px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .stage-header {
+            background: #f9f9f9;
+            padding: 15px 20px;
+            border-bottom: 2px solid #0066cc;
+            font-weight: 600;
+            color: #0066cc;
+            font-size: 1.1em;
+        }
+
+        .stage-content {
+            padding: 25px;
+        }
+
+        .release-notes {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .release-notes h3 {
+            color: #0066cc;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+            border-bottom: 1px solid #0066cc;
+            padding-bottom: 8px;
+        }
+
+        .release-notes h4 {
+            color: #333;
+            margin: 15px 0 8px 0;
+            font-size: 1.05em;
+        }
+
+        .release-notes p, .release-notes li {
+            margin: 8px 0;
+            color: #444;
+        }
+
+        .release-notes ul, .release-notes ol {
+            margin-left: 20px;
+        }
+
+        .release-notes strong {
+            color: #0066cc;
+        }
+
+        .review-result {
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .review-pass {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+
+        .review-pass-recommendations {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .review-fail {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .badge-pass {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-pass-recommendations {
+            background: #ff9800;
+            color: white;
+        }
+
+        .badge-fail {
+            background: #f44336;
+            color: white;
+        }
+
+        .findings {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .findings h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .findings ul {
+            margin-left: 20px;
+        }
+
+        .findings li {
+            margin: 8px 0;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 40px 0;
+        }
+
+        .toc {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+
+        .toc h3 {
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .toc li:last-child {
+            border-bottom: none;
+        }
+
+        .toc a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            border-top: 2px solid #ddd;
+            margin-top: 60px;
+            padding-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .missing-info {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .missing-info h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .missing-info ul {
+            margin-left: 20px;
+        }
+
+        .missing-info li {
+            color: #856404;
+            margin: 6px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #0066cc;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .stage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Release Note Workflow</h1>
+            <p class="subtitle">Complete Workflow Execution for Multiple Release Scenarios</p>
+        </header>
+
+        <div class="workflow-info">
+            <h3>📋 Workflow Overview</h3>
+            <p><strong>Date:</strong> June 29, 2026</p>
+            <p><strong>Workflow Stages:</strong> <code>Generate → Review → Improve → Executive Summary</code></p>
+            <p><strong>Scenarios:</strong> 2 (Feature Release v5.4 & Mixed Release v5.5)</p>
+            <p><strong>Purpose:</strong> Demonstrate AI-assisted release note workflow automation using Claude agents and documentation best practices</p>
+        </div>
+
+        <div class="toc">
+            <h3>📑 Document Contents</h3>
+            <ul>
+                <li><a href="#scenario1">Scenario 1: Feature Release (v5.4)</a></li>
+                <li><a href="#scenario2">Scenario 2: Mixed Release (v5.5)</a></li>
+                <li><a href="#methodology">Workflow Methodology</a></li>
+            </ul>
+        </div>
+
+        <!-- SCENARIO 1 -->
+        <div class="scenario" id="scenario1">
+            <div class="scenario-header">
+                <h2>Scenario 1: Feature Release</h2>
+                <p>Version 5.4 - Security and Reporting Improvements</p>
+            </div>
+
+            <!-- Stage 1: Generation -->
+            <div class="workflow-stage">
+                <div class="stage-header">📝 Stage 1: Generation</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Generate customer-facing release notes from source information using the Release Note Specialist skill.</p>
+                    <p><strong>Input Sources:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>YT-245: Multi-Factor Authentication (Feature)</li>
+                        <li>YT-250: Dashboard Export to Excel (Enhancement)</li>
+                        <li>YT-261: Report Export Failure (Bug Fix)</li>
+                    </ul>
+
+                    <div class="release-notes">
+                        <h3>Generated Release Notes - v5.4</h3>
+
+                        <h4>Release Overview</h4>
+                        <p>Version 5.4 introduces enhanced security capabilities, improved reporting functionality, and resolves critical issues to deliver a more secure and productive user experience.</p>
+
+                        <h4>New Features</h4>
+                        <h5>Multi-Factor Authentication</h5>
+                        <p>Users can now enable multi-factor authentication using authenticator applications. This provides an additional layer of security to protect user accounts from unauthorized access.</p>
+
+                        <h4>Enhancements</h4>
+                        <h5>Dashboard Export to Excel</h5>
+                        <p>Users can now export dashboard data directly to Microsoft Excel format. This makes it easier to share data with team members and perform additional analysis outside the application.</p>
+
+                        <h4>Resolved Issues</h4>
+                        <h5>Report Export Reliability</h5>
+                        <p>Resolved an issue that prevented large reports from exporting successfully. Users can now reliably download reports of any size.</p>
+
+                        <h4>Missing Information</h4>
+                        <ul>
+                            <li>Which authenticator applications are supported?</li>
+                            <li>How do users set up MFA?</li>
+                            <li>Are there backup/recovery options?</li>
+                            <li>Is MFA optional or mandatory?</li>
+                            <li>What data formats are supported for Excel export?</li>
+                            <li>Are there size limitations for exported reports?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 2: Review -->
+            <div class="workflow-stage">
+                <div class="stage-header">✅ Stage 2: Review</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Review release notes for quality, completeness, consistency, and MSTP compliance.</p>
+
+                    <div class="review-result review-pass-recommendations">
+                        <span class="status-badge badge-pass-recommendations">PASS WITH RECOMMENDATIONS</span>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Key Findings</h4>
+                        <ul>
+                            <li><strong>Accuracy:</strong> ✓ All claims are supported by source information</li>
+                            <li><strong>Clarity:</strong> ✓ Language is clear and customer-focused</li>
+                            <li><strong>Consistency:</strong> ✓ Terminology is used consistently throughout</li>
+                            <li><strong>MSTP Compliance:</strong> ✓ Uses active voice and present tense</li>
+                            <li><strong>Customer Focus:</strong> ✓ Explains benefits and user outcomes</li>
+                        </ul>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Recommendations</h4>
+                        <ul>
+                            <li>Add more specific customer benefits where possible (e.g., how MFA improves user security)</li>
+                            <li>Clarify the scope of changes (e.g., availability across all user types)</li>
+                            <li>Consider emphasizing the reliability improvement for large reports</li>
+                            <li>Provide context on Excel export limitations or requirements</li>
+                        </ul>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Missing Information Identified</h4>
+                        <ul>
+                            <li>Authentication application support details</li>
+                            <li>MFA setup and recovery procedures</li>
+                            <li>Excel export specifications and compatibility</li>
+                            <li>Report size thresholds and limitations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 3: Improve -->
+            <div class="workflow-stage">
+                <div class="stage-header">🔄 Stage 3: Improve</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Apply review recommendations to enhance clarity and completeness while maintaining accuracy.</p>
+
+                    <div class="release-notes">
+                        <h3>Improved Release Notes - v5.4</h3>
+
+                        <h4>Release Overview</h4>
+                        <p>Version 5.4 delivers critical security enhancements and reporting improvements designed to help users protect their accounts and streamline data analysis workflows.</p>
+
+                        <h4>New Features</h4>
+                        <h5>Multi-Factor Authentication</h5>
+                        <p>Users can now enable multi-factor authentication (MFA) using authenticator applications for enhanced account security. By requiring a second verification method beyond passwords, MFA significantly reduces the risk of unauthorized account access, protecting sensitive user data and organizational information.</p>
+
+                        <h4>Enhancements</h4>
+                        <h5>Dashboard Export to Excel</h5>
+                        <p>Users can now export dashboard data directly to Microsoft Excel format, making it easier to share findings with team members, perform deeper analysis, and create custom reports outside the application.</p>
+
+                        <h4>Resolved Issues</h4>
+                        <h5>Report Export Reliability</h5>
+                        <p>Resolved a critical issue where large report exports occasionally failed to complete successfully. Users can now reliably download and export reports of any size without interruption.</p>
+
+                        <h4>Summary of Changes</h4>
+                        <ul>
+                            <li>Enhanced MFA description with specific security benefits</li>
+                            <li>Clarified Excel export workflow and use cases</li>
+                            <li>Emphasized the reliability improvement and its impact</li>
+                            <li>Improved flow and customer-focused language throughout</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 4: Executive Summary -->
+            <div class="workflow-stage">
+                <div class="stage-header">📊 Stage 4: Executive Summary</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Create high-level summary suitable for management and stakeholders.</p>
+
+                    <div class="release-notes">
+                        <h3>Executive Summary - Version 5.4</h3>
+
+                        <h4>Key Highlights</h4>
+                        <ul>
+                            <li><strong>Security Enhancement:</strong> Multi-factor authentication for improved account protection</li>
+                            <li><strong>Productivity Improvement:</strong> Direct Excel export for enhanced data sharing and analysis</li>
+                            <li><strong>Reliability Fix:</strong> Resolved critical export issues affecting large reports</li>
+                        </ul>
+
+                        <h4>Customer Benefits</h4>
+                        <ul>
+                            <li><strong>Security:</strong> Users gain an additional layer of protection for their accounts, reducing breach risk and protecting sensitive organizational data</li>
+                            <li><strong>Productivity:</strong> Teams can now seamlessly export and analyze data in Excel, streamlining reporting workflows and enabling faster decision-making</li>
+                            <li><strong>Reliability:</strong> Large report exports now complete consistently, eliminating workarounds and improving user confidence in the export functionality</li>
+                        </ul>
+
+                        <h4>Risks and Considerations</h4>
+                        <ul>
+                            <li><strong>Adoption Considerations:</strong> Users will need to be informed about setting up MFA and the benefits of adopting this feature</li>
+                            <li><strong>Support Requirements:</strong> Support team may see initial questions about MFA setup and recovery procedures</li>
+                            <li><strong>System Dependencies:</strong> Excel export functionality depends on Microsoft Office compatibility for full feature utilization</li>
+                        </ul>
+
+                        <h4>Recommendation</h4>
+                        <p><strong>RECOMMEND RELEASE:</strong> Version 5.4 delivers meaningful security improvements and addresses critical reliability issues. The enhancements directly support customer needs for better account protection and reporting efficiency. Implementation of accompanying user communication and support documentation is recommended to maximize feature adoption.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- SCENARIO 2 -->
+        <div class="scenario" id="scenario2">
+            <div class="scenario-header">
+                <h2>Scenario 2: Mixed Release</h2>
+                <p>Version 5.5 - Security Updates and Feature Additions</p>
+            </div>
+
+            <!-- Stage 1: Generation -->
+            <div class="workflow-stage">
+                <div class="stage-header">📝 Stage 1: Generation</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Generate customer-facing release notes from source information using the Release Note Specialist skill.</p>
+                    <p><strong>Input Sources:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>YT-301: Configuration Profiles (Feature)</li>
+                        <li>YT-318: Password Policy Enhancements (Security Update)</li>
+                        <li>YT-327: Scheduled Report Failure (Bug Fix)</li>
+                        <li>YT-330: Database Refactoring (Technical Debt - excluded)</li>
+                    </ul>
+
+                    <div class="release-notes">
+                        <h3>Generated Release Notes - v5.5</h3>
+
+                        <h4>Release Overview</h4>
+                        <p>Version 5.5 includes security improvements, new administrative capabilities, and issue resolutions to strengthen platform security and reliability.</p>
+
+                        <h4>New Features</h4>
+                        <h5>Configuration Profiles</h5>
+                        <p>We've added support for configuration profiles, enabling users to create, save, and manage multiple configurations for different use cases and environments.</p>
+
+                        <h4>Security Updates</h4>
+                        <h5>Enhanced Password Policy Controls</h5>
+                        <p>Administrators can now configure minimum password complexity requirements, providing improved security controls and greater flexibility in enforcing organizational security standards.</p>
+
+                        <h4>Resolved Issues</h4>
+                        <h5>Scheduled Report Reliability</h5>
+                        <p>Fixed an issue where scheduled reports occasionally failed when generated overnight, ensuring consistent and reliable report generation.</p>
+
+                        <h4>Missing Information</h4>
+                        <ul>
+                            <li>What configuration parameters can be set in profiles?</li>
+                            <li>Can profiles be imported/exported?</li>
+                            <li>Are there default profiles included?</li>
+                            <li>What is the customer benefit of configuration profiles?</li>
+                            <li>What specific complexity parameters are configurable?</li>
+                            <li>Are there preset complexity levels?</li>
+                            <li>Root cause of overnight scheduled report failures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 2: Review -->
+            <div class="workflow-stage">
+                <div class="stage-header">✅ Stage 2: Review</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Review release notes for quality, completeness, consistency, and MSTP compliance.</p>
+
+                    <div class="review-result review-pass-recommendations">
+                        <span class="status-badge badge-pass-recommendations">PASS WITH RECOMMENDATIONS</span>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Key Findings</h4>
+                        <ul>
+                            <li><strong>Accuracy:</strong> ✓ All statements are supported by source information</li>
+                            <li><strong>Security Focus:</strong> ✓ Appropriately emphasizes security enhancements</li>
+                            <li><strong>Administrative Context:</strong> ✓ Features positioned for IT/administrator audience</li>
+                            <li><strong>Clarity:</strong> ✓ Language is clear and professional</li>
+                            <li><strong>Completeness:</strong> ⚠ Missing contextual details about feature usage</li>
+                        </ul>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Recommendations</h4>
+                        <ul>
+                            <li>Clarify the target audience for Configuration Profiles (general users vs. administrators)</li>
+                            <li>Emphasize IT/administrator focus more clearly throughout</li>
+                            <li>Add context about the business benefit of password policy flexibility</li>
+                            <li>Explain how configuration profiles benefit different organizational needs</li>
+                            <li>Specify the scope of the scheduled report fix (all report types, all schedules?)</li>
+                        </ul>
+                    </div>
+
+                    <div class="findings">
+                        <h4>Missing Information Identified</h4>
+                        <ul>
+                            <li>Configuration parameters and profile customization options</li>
+                            <li>Password complexity preset options and defaults</li>
+                            <li>Backward compatibility with existing configurations</li>
+                            <li>Migration guidance for existing users</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 3: Improve -->
+            <div class="workflow-stage">
+                <div class="stage-header">🔄 Stage 3: Improve</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Apply review recommendations to enhance clarity and completeness while maintaining accuracy.</p>
+
+                    <div class="release-notes">
+                        <h3>Improved Release Notes - v5.5</h3>
+
+                        <h4>Release Overview</h4>
+                        <p>Version 5.5 strengthens platform security and operational reliability with enhanced administrative controls and improved scheduled reporting functionality.</p>
+
+                        <h4>New Features</h4>
+                        <h5>Configuration Profiles</h5>
+                        <p>Administrators can now create and manage configuration profiles, enabling organizations to maintain different configurations for separate environments, departments, or use cases. This flexibility supports diverse operational requirements and simplifies multi-environment management.</p>
+
+                        <h4>Security Updates</h4>
+                        <h5>Enhanced Password Policy Controls</h5>
+                        <p>Administrators now have greater control over account security with the ability to configure minimum password complexity requirements. Organizations can enforce security standards that meet their specific compliance needs while maintaining flexibility in policy implementation.</p>
+
+                        <h4>Resolved Issues</h4>
+                        <h5>Scheduled Report Reliability</h5>
+                        <p>Fixed a critical issue where scheduled reports occasionally failed when generated overnight. Users can now rely on scheduled reports completing consistently, regardless of generation time.</p>
+
+                        <h4>Summary of Changes</h4>
+                        <ul>
+                            <li>Clarified administrator focus throughout the release notes</li>
+                            <li>Added context about configuration profiles' organizational benefit</li>
+                            <li>Explained password policy flexibility in terms of compliance needs</li>
+                            <li>Enhanced reliability message for scheduled reports</li>
+                            <li>Improved technical accuracy while maintaining customer-focused language</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 4: Executive Summary -->
+            <div class="workflow-stage">
+                <div class="stage-header">📊 Stage 4: Executive Summary</div>
+                <div class="stage-content">
+                    <p><strong>Objective:</strong> Create high-level summary suitable for management and stakeholders.</p>
+
+                    <div class="release-notes">
+                        <h3>Executive Summary - Version 5.5</h3>
+
+                        <h4>Key Highlights</h4>
+                        <ul>
+                            <li><strong>Administrative Flexibility:</strong> Configuration profiles enable organizations to manage multiple environment configurations efficiently</li>
+                            <li><strong>Enhanced Security Governance:</strong> Password policy controls provide administrators with greater control over organizational security standards</li>
+                            <li><strong>Operational Reliability:</strong> Resolved critical issue affecting scheduled report generation</li>
+                        </ul>
+
+                        <h4>Customer Benefits</h4>
+                        <ul>
+                            <li><strong>Operational Efficiency:</strong> Organizations can now manage different configurations seamlessly, reducing administrative overhead and supporting complex multi-environment deployments</li>
+                            <li><strong>Security Governance:</strong> Enhanced password policy controls enable organizations to implement security standards aligned with their compliance requirements and risk management strategies</li>
+                            <li><strong>Reporting Reliability:</strong> Fixed scheduled report generation issues ensure consistent operational reporting, improving data reliability for business decision-making</li>
+                        </ul>
+
+                        <h4>Risks and Considerations</h4>
+                        <ul>
+                            <li><strong>Configuration Management:</strong> Organizations should establish clear policies for managing multiple configuration profiles to avoid operational complexity</li>
+                            <li><strong>Password Policy Impact:</strong> New password complexity requirements may affect existing users; communication and transition planning recommended</li>
+                            <li><strong>Support Requirements:</strong> Support team should be prepared to assist with configuration profile setup and password policy implementation</li>
+                        </ul>
+
+                        <h4>Recommendation</h4>
+                        <p><strong>RECOMMEND RELEASE:</strong> Version 5.5 delivers valuable improvements in administrative flexibility and security governance. The enhanced password policy controls and configuration profile support address key operational needs. Organizations should plan communication and support strategies to ensure smooth adoption, particularly regarding the new password complexity requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- METHODOLOGY -->
+        <div id="methodology" class="workflow-stage">
+            <div class="stage-header">📚 Workflow Methodology</div>
+            <div class="stage-content">
+                <h3>AI-Powered Release Note Workflow Process</h3>
+
+                <h4>Workflow Stages</h4>
+                <table>
+                    <tr>
+                        <th>Stage</th>
+                        <th>Purpose</th>
+                        <th>AI Skills/Agents Used</th>
+                        <th>Output</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Generate</strong></td>
+                        <td>Extract information from source material and create initial release note content</td>
+                        <td>Release Note Specialist, Documentation Style Guide</td>
+                        <td>Draft release notes with customer-focused language</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Review</strong></td>
+                        <td>Evaluate quality, completeness, consistency, and compliance with standards</td>
+                        <td>Documentation Reviewer, Documentation Style Guide</td>
+                        <td>Review findings, recommendations, and risk assessment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Improve</strong></td>
+                        <td>Apply review recommendations to enhance clarity while maintaining accuracy</td>
+                        <td>Release Note Specialist, Documentation Style Guide</td>
+                        <td>Refined release notes ready for approval</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Executive Summary</strong></td>
+                        <td>Create high-level summary for management and stakeholder review</td>
+                        <td>Documentation Style Guide</td>
+                        <td>Executive summary with key highlights and recommendations</td>
+                    </tr>
+                </table>
+
+                <h4>Key Principles Applied</h4>
+                <ul>
+                    <li><strong>Accuracy First:</strong> Use only information provided in source materials; never invent details</li>
+                    <li><strong>Customer-Focused Writing:</strong> Emphasize user outcomes and benefits rather than implementation details</li>
+                    <li><strong>MSTP Compliance:</strong> Use active voice, present tense, and clear, concise language</li>
+                    <li><strong>Consistency:</strong> Maintain consistent terminology and formatting throughout</li>
+                    <li><strong>Clarity:</strong> Avoid jargon and ambiguous statements</li>
+                    <li><strong>Information Gaps:</strong> Explicitly identify missing information that would strengthen the release notes</li>
+                </ul>
+
+                <h4>Quality Checkpoints</h4>
+                <ul>
+                    <li>All claims validated against source information</li>
+                    <li>Customer focus confirmed in messaging</li>
+                    <li>Terminology consistency verified</li>
+                    <li>Grammar and spelling checked</li>
+                    <li>MSTP principles applied throughout</li>
+                    <li>Missing information documented</li>
+                </ul>
+
+                <h4>Workflow Benefits</h4>
+                <ul>
+                    <li><strong>Time Efficiency:</strong> AI-assisted generation reduces manual drafting time</li>
+                    <li><strong>Consistency:</strong> Skills and style guide ensure uniform quality across releases</li>
+                    <li><strong>Quality Improvement:</strong> Structured review process identifies gaps and improvement opportunities</li>
+                    <li><strong>Risk Reduction:</strong> Multiple review stages catch inaccuracies and missing information</li>
+                    <li><strong>Scalability:</strong> Process handles multiple scenarios and release types consistently</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Generated by AI-Powered Release Note Workflow | Claude AI-Assisted Documentation Process</p>
+            <p>© 2026 Release Management and Documentation Team | All Rights Reserved</p>
+            <p style="margin-top: 15px; font-size: 0.85em;">This document demonstrates a complete release note workflow using AI agents and documentation best practices.</p>
+        </div>
+    </div>
+</body>
+</html>
