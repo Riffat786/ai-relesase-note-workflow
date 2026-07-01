@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "type": "sse",
+      "url": "https://mcp.atlassian.com/sse",
+      "description": "Atlassian Remote MCP — provides read/write access to Jira (KAN project) and Confluence. Authentication is handled via Atlassian OAuth. Run 'claude mcp add' or connect through Claude Code settings before first use."
+    }
+  }
+}
