@@ -1,232 +1,253 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working
+with code in this repository.
 
 ---
 
 ## Project Overview
 
-This is a workshop proof-of-concept demonstrating how AI can automate and improve a release note workflow. The project uses Claude Commands, Skills, and Agents to show practical AI-assisted documentation automation.
+This is a proof-of-concept demonstrating AI-automated release note and
+help topic generation. The pipeline connects to Atlassian Jira via MCP,
+fetches all issues from the KAN project, and produces publication-ready
+release notes (HTML, Markdown, JSON) and help topics (HTML, Markdown)
+with full quality review and auto-fix — triggered by a single command.
 
-**Key principle**: We are not building a production release note tool. We are demonstrating how AI capabilities (Commands, Skills, Agents, MCP) can transform a realistic documentation workflow.
+**Key principle**: Data comes from Jira, not from local sample files.
+The pipeline runs automatically from start to finish without user input.
+
+---
+
+## Quick Start
+
+### Prerequisite: Connect the Atlassian MCP
+
+Before first use, connect the Atlassian MCP server:
+
+```bash
+claude mcp add atlassian --transport sse https://mcp.atlassian.com/sse
+```
+
+Sign in with the Atlassian account that has access to the
+**GlobalMailProClaudeDemo** project at `https://twtaidimple.atlassian.net`.
+Do not store credentials in any project file.
+
+### Run the pipeline
+
+```
+/project:generate-release-notes
+```
+
+Or read `commands/release-note-generation-command.md` for the full
+trigger prompt and setup instructions.
 
 ---
 
 ## Architecture
 
-### Directory Structure and Purpose
+### Data Flow
 
-| Directory | Purpose |
-|-----------|---------|
-| `charter/` | Project scope, goals, and success criteria |
-| `roster/` | Team members and role assignments |
-| `workflow/` | Workflow analysis and design documentation |
-| `sample-data/` | Sample inputs, expected outputs, and benchmarks for validation |
-| `commands/` | Reusable Claude Code commands with prompts and instructions |
-| `skills/` | Skills documentation defining roles, formats, and output standards |
-| `agents/` | Agent workflow designs for multi-step automation |
-| `mcp-plugin-concept/` | Integration concepts using MCP, plugins, and marketplace tools |
-| `validation/` | Testing results, findings, risks, and lessons learned |
-| `demo/` | Final demonstration materials and scripts |
-| `meetings/` | Meeting notes, decisions, and action items |
-| `assumptions/` | Project assumptions and constraints |
+```
+Atlassian Jira — GlobalMailProClaudeDemo (KAN)
+https://twtaidimple.atlassian.net/jira/software/projects/KAN/list?jql=project+%3D+KAN+ORDER+BY+cf%5B10019%5D+ASC&atlOrigin=eyJpIjoiMmFmZjcxOTdlMTE4NDFlMDllYmYzN2Q3MWIyYjJmZTMiLCJwIjoiaiJ9
+         │
+         │  Atlassian MCP
+         │  JQL: project = KAN ORDER BY cf[10019] ASC
+         ▼
+release-note-orchestrator.md
+         │
+         ├──▶ release-note-writer-agent.md
+         │         │ Produces:
+         │         ├── output/release-notes-[version].html
+         │         ├── output/release-notes-[version].md
+         │         └── output/release-notes-[version].json
+         │
+         ├──▶ help-topic-writer-agent.md  (once per New Feature)
+         │         │ Produces per feature:
+         │         ├── output/help-topic-[slug].html
+         │         └── output/help-topic-[slug].md
+         │
+         └──▶ release-note-reviewer-agent.md
+                   │ Produces:
+                   └── output/release-note-review-report.md
+                             │
+                             └──▶ Orchestrator applies auto-fixes
+```
 
-### Key Files
+### Issue Type Mapping
 
-- **README.md**: Project overview and getting started
-- **README-project.md**: Detailed project scope, deliverables, and success criteria
-- **CONTRIBUTING.md**: Collaboration standards and guidelines
-- **Github-collaboration-instructions.md**: GitHub workflow for branches, PRs, and issues
+| Jira issue type                           | Release note section |
+|-------------------------------------------|----------------------|
+| Story, Feature, New Feature               | New Features         |
+| Task, Enhancement, Improvement, Sub-task  | Enhancements         |
+| Bug                                       | Bug Fixes            |
+| Any type with label "known-issue"         | Known Issues         |
+| Epic                                      | Skipped              |
 
-### Skills (AI Personas)
+---
 
-The project defines three core skills in `skills/`:
+## Directory Structure
 
-1. **release-note-writer-skill.md**: Senior technical writer role
-   - Transforms structured input (features, bugs, enhancements) into customer-facing release notes
-   - Enforces Microsoft Writing Style (MSTP) standards
-   - Outputs both Markdown and HTML formats
-   - Apply for generating draft release notes from source information
+| Directory / File         | Purpose                                               |
+|--------------------------|-------------------------------------------------------|
+| `.mcp.json`              | Atlassian MCP server configuration                    |
+| `commands/`              | Single trigger command                                |
+| `agents/`                | Orchestrator + three sub-agents                       |
+| `skills/`                | Writing rules, reviewer checklist, branding guide     |
+| `sample-data/`           | Structure benchmarks (expected-output-1, -2)          |
+| `output/`                | All generated files (HTML, MD, JSON, review report)   |
+| `charter/`               | Project scope and success criteria                    |
+| `roster/`                | Team members and role assignments                     |
+| `assumptions/`           | Project assumptions and constraints                   |
 
-2. **release-note-reviewer-skill.md**: Quality assurance reviewer role
-   - Reviews draft release notes for completeness, clarity, and compliance
-   - Checks against branding guidelines and customer-facing standards
-   - Provides actionable feedback for improvement
-   - Apply when reviewing or improving draft release notes
+---
 
-3. **branding-style-guide.md**: GlobalMail Pro brand standards
-   - Defines colour palette (#1B2A4A navy, #2ECC71 green)
-   - Typography and visual standards
-   - Pre-embedded in agent system prompts
-   - Used by all HTML outputs
+## Key Files
 
-### Commands
+### Entry Point
+- **`commands/release-note-generation-command.md`** — Run this to start
+  the pipeline. Contains the trigger prompt and setup instructions.
 
-Two reusable commands defined in `commands/`:
+### Agents
+- **`agents/release-note-orchestrator.md`** — Coordinates the full
+  pipeline. Fetches Jira data, delegates to sub-agents, manages quality.
+- **`agents/release-note-writer-agent.md`** — Generates release notes
+  in HTML, Markdown, and JSON from classified Jira issues.
+- **`agents/help-topic-writer-agent.md`** — Generates a branded HTML +
+  Markdown help topic for each New Feature issue.
+- **`agents/release-note-reviewer-agent.md`** — Runs 22-point QA
+  checklist, 7-criterion style audit, hyperlink checks, JSON validation,
+  and branding compliance across all output files.
 
-1. **release-note-generation-command.md**
-   - Takes structured input from `sample-data/` 
-   - Applies the writer skill
-   - Produces Markdown and HTML outputs
-   - Validates against benchmarks in `sample-data/expected-output-*.md`
+### Skills (AI personas and standards)
+- **`skills/release-note-writer-skill.md`** — Senior technical writer role.
+  MSTP writing rules, output formats, content rules.
+- **`skills/release-note-reviewer-skill.md`** — QA reviewer role.
+  22-point checklist, severity definitions, style audit.
+- **`skills/branding-style-guide.md`** — GlobalMail Pro brand standards.
+  Colour palette, typography, HTML/CSS template.
 
-2. **release-note-review-command.md**
-   - Takes generated release notes as input
-   - Applies the reviewer skill
-   - Produces improvement recommendations
-   - Iterative refinement workflow
+### Benchmarks
+- **`sample-data/expected-output-1.md`** — Release notes structure
+  template and quality benchmark. Defines all required sections.
+- **`sample-data/expected-output-2.md`** — Help topic structure template
+  and quality benchmark. Defines Overview, Workflow, API Details.
 
-### Sample Data and Benchmarks
+---
 
-Test the workflow with:
+## MCP Configuration
 
-- `sample-data/sample-1-input.md`: Feature/enhancement scenario
-- `sample-data/sample-2-input.md`: Bug fix scenario
-- `sample-data/expected-output-1.md`: Benchmark for sample 1
-- `sample-data/expected-output-2.md`: Benchmark for sample 2
+The `.mcp.json` file at the project root configures the Atlassian MCP:
 
-These benchmarks define the expected quality level for generated content.
+```json
+{
+  "mcpServers": {
+    "atlassian": {
+      "type": "sse",
+      "url": "https://mcp.atlassian.com/sse"
+    }
+  }
+}
+```
+
+**Authentication:** Atlassian OAuth (handled by Claude Code on first connect).
+Do not store API keys or tokens in any project file.
+
+**Access required:**
+- Jira: read access to **GlobalMailProClaudeDemo** (key: KAN) at
+  https://twtaidimple.atlassian.net/jira/software/projects/KAN/list?jql=project+%3D+KAN+ORDER+BY+cf%5B10019%5D+ASC&atlOrigin=eyJpIjoiMmFmZjcxOTdlMTE4NDFlMDllYmYzN2Q3MWIyYjJmZTMiLCJwIjoiaiJ9
+- Confluence: read access (optional — used if features link to Confluence pages)
+
+---
+
+## Output Files
+
+Every pipeline run produces these files in `output/`:
+
+| File                                   | Description                              |
+|----------------------------------------|------------------------------------------|
+| `release-notes-[version].html`         | Branded HTML — links to help topics      |
+| `release-notes-[version].md`           | Markdown — version control source        |
+| `release-notes-[version].json`         | Structured JSON — for downstream use     |
+| `help-topic-[slug].html`               | Branded help topic per New Feature       |
+| `help-topic-[slug].md`                 | Markdown help topic per New Feature      |
+| `release-note-review-report.md`        | QA findings + auto-fix log               |
+
+---
+
+## Quality Pipeline
+
+Every run applies these quality checks automatically:
+
+1. **Structure compliance** — All sections match expected-output-1 and
+   expected-output-2 benchmarks
+2. **MSTP writing standards** — 22-point checklist (voice, tense, punctuation,
+   headings, marketing language, internal IDs)
+3. **7-criterion style audit** — Active voice, present tense, second person,
+   sentence length, heading case, code formatting, jargon
+4. **Hyperlink integrity** — Every New Feature links to its help topic;
+   every help topic links back to release notes
+5. **JSON validity** — Valid JSON, correct schema, no internal IDs in prose
+6. **Branding compliance** — GMP colour palette, Inter typography, required
+   header and footer in all HTML files
+7. **Auto-fix** — Orchestrator applies corrected text for all High and
+   Medium severity findings
+
+---
+
+## Constraints
+
+### Security
+- Do not store Atlassian credentials, API tokens, or secrets in any
+  project file. Use Atlassian OAuth via the MCP connection.
+- Do not log or print access tokens in any output file.
+
+### Content
+- Do not invent content. Every claim must trace to a Jira issue field.
+- Do not expose internal Jira IDs in prose (Bug ID in Bug Fixes table only).
+- Do not include engineering or infrastructure details in customer-facing output.
+
+### Scope
+- All source data comes from Jira (GlobalMailProClaudeDemo project) via
+  the Atlassian MCP. No local sample input files are used.
 
 ---
 
 ## Working in This Repository
 
-### Structure Your Work
+### Direct commits acceptable for
+- `output/` — Generated files from pipeline runs
+- `meetings/` — Meeting notes
+- `validation/` — Testing findings
+- `assumptions/` — Assumption updates
 
-Follow **CONTRIBUTING.md** guidelines:
+### Use branches for
+- Changes to agents, skills, commands, or benchmarks
+- New features or structural changes
 
-- **Use branches** for commands, skills, agent workflows, and major changes
-  - Example: `feature/release-note-command`, `feature/reviewer-skill`, `feature/agent-workflow`
-  - Submit a Pull Request when ready for review
-
-- **Direct commits acceptable** for documentation-only updates:
-  - Meeting notes → `meetings/`
-  - Sample data → `sample-data/`
-  - Research findings → `validation/` or `assumptions/`
-  - Decisions → documented in the appropriate folder
-
-### Core Principle
-
-All important project work must live in this repository, not in chats, emails, or personal files.
-
-Do:
-- Commit prompts, skills, commands, and workflows
-- Document decisions in appropriate folders
-- Store meeting notes and action items
-- Track work through GitHub Issues
-
-Don't:
-- Keep critical information only in Slack, WhatsApp, or email
-- Store important work on personal machines
-- Rely solely on chat for decisions or tracking
-
-### Content Standards
-
-When adding or updating files:
-- Use clear headings and consistent formatting
-- Include dates where relevant (absolute dates, not relative like "Thursday")
-- Document assumptions and decisions with context ("**Why:**" and **How to apply:**" sections)
-- Keep content concise and accessible
-- Flag missing information with `[INSERT: field name]` instead of inventing content
+### Commit message format
+```
+feat(agents): update orchestrator for Jira MCP integration
+fix(writer): correct bug fix table column order
+docs(commands): add troubleshooting section to trigger command
+```
 
 ---
 
-## Testing and Validation
+## Troubleshooting
 
-### Run the Workflow
-
-Use the commands in `commands/` with Claude Code:
-
-1. **Generate draft release notes**
-   - Apply `release-note-generation-command.md`
-   - Use sample input from `sample-data/sample-[1-2]-input.md`
-   - Compare output to `sample-data/expected-output-[1-2].md`
-
-2. **Review and improve drafts**
-   - Apply `release-note-review-command.md`
-   - Iterate on feedback
-   - Validate quality against benchmarks
-
-### Expected Quality
-
-Generated release notes should:
-- Match the structure in `skills/release-note-writer-skill.md`
-- Apply every rule from the skill (no marketing language, active voice, MSTP standards)
-- Use plain language without technical jargon or internal IDs
-- Follow the GlobalMail Pro branding guidelines
-- Include all required sections (What's New, Bug Fix, Benefits, etc.)
-
----
-
-## Constraints and Out of Scope
-
-### What This Project Is
-
-- A demonstration of AI-assisted documentation workflow
-- A proof-of-concept with realistic scenarios
-- A teaching tool for Claude capabilities
-
-### What This Project Is Not
-
-- A production-ready tool
-- Full enterprise integrations
-- Complete automation (human review remains required)
-- Support for all documentation types
-
----
-
-## Collaboration Model
-
-### GitHub Issues
-
-Track work through GitHub Issues:
-- One issue per major task
-- Include objective, owner, expected deliverable, and status
-- Use for workflow mapping, sample data, command design, skills, agent design, validation, and demo prep
-
-### Branches and Pull Requests
-
-Branch naming convention:
-- `feature/release-note-command` (for a new command)
-- `feature/reviewer-skill` (for a new skill)
-- `feature/agent-workflow` (for multi-step automation)
-
-### Commit Messages
-
-Keep commits focused and descriptive:
-- Avoid combining unrelated changes
-- Reference GitHub Issues in commit messages when relevant
-
----
-
-## Key Files to Read First
-
-1. **README-project.md** - Full project scope and deliverables
-2. **charter/** - Project goals and success criteria
-3. **roster/team-roster.md** - Team members and assignments
-4. **skills/release-note-writer-skill.md** - The core writing standards
-5. **commands/release-note-generation-command.md** - How to invoke the workflow
-
----
-
-## Future Work
-
-Concepts that may be developed:
-
-- Full MCP integrations with external systems
-- Automated publish workflows
-- Extended support for other documentation types
-- Advanced validation and testing harnesses
-
-See `mcp-plugin-concept/` and `workflow/` directories for design notes.
+| Issue                          | Resolution                                           |
+|--------------------------------|------------------------------------------------------|
+| Atlassian MCP not connecting   | Run `claude mcp add atlassian --transport sse https://mcp.atlassian.com/sse` |
+| No issues fetched from Jira    | Verify GlobalMailProClaudeDemo project has issues + Atlassian OAuth is active |
+| Output files not created       | Run `mkdir -p output` in project root               |
+| Help topic links broken        | Check `help_topic_map` in orchestrator Step 4        |
+| JSON invalid in output         | Check review report for RN-J1 finding                |
 
 ---
 
 ## Questions or Blockers
 
 - Check GitHub Issues first
-- Raise new issues if blocked or uncertain
-- Document your findings in the appropriate directory (`validation/`, `assumptions/`, etc.)
-- Store decisions in the repository, not in chat only
-
-Remember: **The repository is the single source of truth.**
+- The repository is the single source of truth — all decisions documented here
+- Raise a GitHub Issue if blocked or uncertain
