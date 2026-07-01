@@ -1,46 +1,60 @@
-# Expected Output — Sample 2 (Bug Fix)
-# Release: GlobalMail Pro 1.1
-#
-# CONTENT BENCHMARK ONLY.
-# This file defines what the prose should say and how it should be structured.
-# Company name, page header, copyright footer, and HTML styling are applied
-# by the Branding Skill at HTML render time.
-# See: skills/branding-style-guide.md
-#
-# WHAT THE AGENT ADDS AT HTML RENDER TIME:
-#   Page title:  Bug Fix — GlobalMail Pro Help Centre
-#   HTML header: GlobalMail Pro | Help Centre  (navy bar)
-#   HTML footer: © 2026 GlobalMail Pro. All rights reserved.
-#   File name:   release-note-1-1-dashboard-metrics-fix.html
-#
-# NOTE ON SCOPE: The source document (Release 1.1) lists four bug fixes
-# (GM-DASH-101, GM-ADDR-201, GM-COMP-305, GM-SEC-410). This expected output
-# covers GM-DASH-101 (dashboard metrics) as the primary sample scenario.
-# Each bug fix should be its own release note file. See note at the bottom.
+# CONTENT BENCHMARK — Help Topic
+
+**Source:** Jira — GlobalMailProClaudeDemo project (key: KAN), New Feature issues  
+**Board:** [KAN Project Board](https://twtaidimple.atlassian.net/jira/software/projects/KAN/list?jql=project+%3D+KAN+ORDER+BY+cf%5B10019%5D+ASC&atlOrigin=eyJpIjoiMmFmZjcxOTdlMTE4NDFlMDllYmYzN2Q3MWIyYjJmZTMiLCJwIjoiaiJ9)  
+**JQL:** `project = KAN ORDER BY cf[10019] ASC`
 
 ---
 
-## Bug Fix
-
-### Dashboard metrics not updating in real time
-
-Three KPI metrics on the dashboard were not updating consistently.
-Addresses Validated showed counts lagging by up to 24 hours. Compliance
-Passes displayed incorrect percentages because EU shipment data was
-excluded from the calculation. Delivery Success Rate was miscalculated
-because corrected addresses were not included in the figures. Operations
-teams saw stale values that did not reflect their actual shipment activity,
-reducing confidence in the dashboard as a tool for decision-making.
-
-This issue is now resolved. Addresses Validated, Compliance Passes, and
-Delivery Success Rate refresh every 15 minutes and reflect current data
-on every page load. Compliance calculations now include EU shipment data,
-and the Delivery Success Rate formula correctly accounts for corrected
-addresses. All three metrics are consistent with the values shown on
-the Transactions and Compliance screens.
+## AI-powered address validation with real-time correction
 
 ---
 
-1.1
+### Overview
+**What it does:** Validates each address in real time as you enter it, enriches it with postal authority data, and surfaces ranked correction suggestions with a confidence score before you submit.  
+**Why it matters:** Address errors previously surfaced only after a shipment failed, requiring manual re-submission and causing delivery delays. Real-time validation catches errors at the point of entry.  
+**Key benefits:** Reduces failed delivery rates by catching address errors before dispatch, provides a full audit trail of every validation decision in Validation History, and supports addresses across 157 countries using USPS, Royal Mail, and UPU postal authority data.
 
 ---
+
+### Workflow
+1. User logs in to GlobalMail Pro and opens the Address Validator.  
+2. User enters or pastes an address into the address entry form.  
+3. The system validates the address in real time against postal authority data.  
+4. Ranked correction suggestions appear inline, each with a confidence score.  
+5. User reviews the suggestions and selects the correct address.  
+6. The accepted address is applied to the form automatically.  
+7. On submission, the result is recorded in Validation History with status, confidence percentage, and timestamp.
+
+---
+
+### API Details
+**Endpoint:** `/api/v1/address/validate`  
+**Method:** `POST`
+
+**Parameters**
+
+| Parameter       | Type   | Required | Description                                                   |
+|-----------------|--------|----------|---------------------------------------------------------------|
+| address_line_1  | string | Yes      | First line of the address to validate.                        |
+| address_line_2  | string | No       | Second address line, if applicable.                           |
+| city            | string | Yes      | City or locality.                                             |
+| postal_code     | string | Yes      | Postal or ZIP code.                                           |
+| country_code    | string | Yes      | ISO 3166-1 alpha-2 country code, for example US, GB, or DE.   |
+
+**Example Response**
+```json
+{
+  "success": true,
+  "result": {
+    "original_address": "123 Mian St, Nwe York, NY 10001, US",
+    "corrected_address": "123 Main St, New York, NY 10001, US",
+    "confidence_score": 0.97,
+    "status": "Corrected",
+    "suggestions": [
+      { "address": "123 Main St, New York, NY 10001, US", "confidence": 0.97 }
+    ],
+    "validation_id": "val-558821",
+    "timestamp": "2026-07-01T10:30:00Z"
+  }
+}
