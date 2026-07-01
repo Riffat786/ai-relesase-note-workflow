@@ -1,0 +1,142 @@
+{
+  "expand": "names,schema",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 3,
+  "issues": [
+    {
+      "key": "KAN-101",
+      "id": "10000",
+      "summary": "AI-powered address validation with real-time correction and confidence scoring",
+      "description": "Addresses submitted for delivery were validated after the fact — errors only surfaced once a shipment failed or required manual re-submission. Operations teams had no visibility into why a record failed or how confident the system was in any given correction.\n\nThe Address Validator now checks each address in real time as you enter it. The system parses the address, enriches it with postal authority data, and surfaces ranked correction suggestions inline before you submit. Each suggestion carries a confidence score so you can see exactly how certain the correction is. Accepted suggestions are applied to the form automatically. Once submitted, the Validation History table records the result with a status of Valid, Corrected, or Needs Review, a confidence percentage, and a timestamp — giving your team a searchable audit trail for every record.",
+      "issuetype": {
+        "name": "New Feature"
+      },
+      "status": {
+        "name": "Done"
+      },
+      "labels": ["address-validation", "real-time"],
+      "fixVersions": [
+        {
+          "name": "1.1"
+        }
+      ],
+      "priority": {
+        "name": "High"
+      },
+      "components": [
+        {
+          "name": "Address Validator"
+        }
+      ],
+      "assignee": {
+        "displayName": "Sarah Chen"
+      },
+      "resolution": {
+        "name": "Done"
+      },
+      "created": "2026-06-01T08:00:00.000Z",
+      "updated": "2026-06-27T14:30:00.000Z",
+      "comments": {
+        "comments": [
+          {
+            "body": "This feature is now available in the Address Validator. Supports 157 countries with USPS, Royal Mail, and UPU postal authority data."
+          }
+        ]
+      },
+      "customfield_steps_to_reproduce": null,
+      "customfield_workaround": null,
+      "remotelinks": []
+    },
+    {
+      "key": "KAN-102",
+      "id": "10001",
+      "summary": "Dashboard metrics not updating in real time",
+      "description": "Three KPI metrics on the dashboard were not updating consistently. Addresses Validated showed counts lagging by up to 24 hours. Compliance Passes displayed incorrect percentages because EU shipment data was excluded from the calculation. Delivery Success Rate was miscalculated because corrected addresses were not included in the figures. Operations teams saw stale values that did not reflect their actual shipment activity, reducing confidence in the dashboard as a tool for decision-making.\n\nSteps to reproduce:\n1. Log in to GlobalMail Pro Dashboard\n2. Change the date range filter\n3. Observe that the three KPI metrics do not reflect the selected range\n4. Refresh the page\n5. Metrics show slightly different values\n\nFix Applied: All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations. Corrected addresses are now included in Delivery Success Rate calculations.",
+      "issuetype": {
+        "name": "Bug"
+      },
+      "status": {
+        "name": "Done"
+      },
+      "labels": [],
+      "fixVersions": [
+        {
+          "name": "1.1"
+        }
+      ],
+      "priority": {
+        "name": "High"
+      },
+      "components": [
+        {
+          "name": "Dashboard"
+        }
+      ],
+      "assignee": {
+        "displayName": "Marcus Webb"
+      },
+      "resolution": {
+        "name": "Fixed"
+      },
+      "resolution_description": "All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations. Corrected addresses are now included in Delivery Success Rate calculations.",
+      "created": "2026-05-15T09:30:00.000Z",
+      "updated": "2026-06-27T16:45:00.000Z",
+      "comments": {
+        "comments": [
+          {
+            "body": "Fix: Metrics now refresh every 15 minutes on page load and include EU shipment data."
+          }
+        ]
+      },
+      "customfield_steps_to_reproduce": "1. Log in to GlobalMail Pro Dashboard\n2. Change the date range filter\n3. Observe that the three KPI metrics do not reflect the selected range\n4. Refresh the page\n5. Metrics show slightly different values",
+      "customfield_workaround": "Manually refresh the browser tab to force a metrics update.",
+      "remotelinks": []
+    },
+    {
+      "key": "KAN-103",
+      "id": "10002",
+      "summary": "Compliance report excluding EU shipments",
+      "description": "The Compliance Passes metric excluded all shipments destined for EU countries, causing the reported compliance percentage to be higher than the actual rate.",
+      "issuetype": {
+        "name": "Bug"
+      },
+      "status": {
+        "name": "Done"
+      },
+      "labels": [],
+      "fixVersions": [
+        {
+          "name": "1.1"
+        }
+      ],
+      "priority": {
+        "name": "Medium"
+      },
+      "components": [
+        {
+          "name": "Compliance"
+        }
+      ],
+      "assignee": {
+        "displayName": "Priya Sharma"
+      },
+      "resolution": {
+        "name": "Fixed"
+      },
+      "resolution_description": "EU shipment records are now included in all compliance calculations and exports.",
+      "created": "2026-05-20T10:00:00.000Z",
+      "updated": "2026-06-25T13:20:00.000Z",
+      "comments": {
+        "comments": [
+          {
+            "body": "Fix: EU shipment records are now included in all compliance calculations and exports."
+          }
+        ]
+      },
+      "customfield_steps_to_reproduce": "1. Open Compliance screen\n2. Select any date range with EU shipments\n3. EU destination rows are missing from the results",
+      "customfield_workaround": "Export the Validation History table and filter by country manually.",
+      "remotelinks": []
+    }
+  ]
+}

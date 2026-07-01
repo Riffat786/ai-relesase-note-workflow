@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release 1.1 — GlobalMail Pro Help Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Inter", -apple-system, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #1A1A2E;
+      background: #FFFFFF;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      margin: 2rem 0 1rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      border-bottom: 3px solid #2ECC71;
+      padding-bottom: 0.4rem;
+      margin: 2rem 0 1rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2C3E6B;
+      margin: 1.5rem 0 0.75rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: #1A1A2E;
+    }
+    strong {
+      font-weight: 700;
+      color: #1B2A4A;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1rem;
+    }
+    ul li {
+      padding: 0.25rem 0 0.25rem 1.25rem;
+      position: relative;
+      color: #1A1A2E;
+    }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2ECC71;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #D5DCE8;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .version {
+      font-size: 0.85rem;
+      color: #95A5B8;
+      font-weight: 600;
+    }
+    .rn-header {
+      background: #1B2A4A;
+      color: #FFFFFF;
+      padding: 1rem 1.5rem;
+      margin: -2rem -1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .rn-header .product-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .rn-header .header-rule {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .rn-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #D5DCE8;
+      font-size: 0.8rem;
+      color: #95A5B8;
+      text-align: center;
+    }
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6C7A8D;
+      margin-bottom: 1.5rem;
+    }
+    .overview-box {
+      background: #EDF0F7;
+      border-left: 4px solid #2ECC71;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .help-link {
+      color: #2ECC71;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .help-link:hover {
+      color: #27AE60;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    th {
+      background: #1B2A4A;
+      color: white;
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 700;
+    }
+    td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid #D5DCE8;
+    }
+    tr:nth-child(even) td {
+      background: #EDF0F7;
+    }
+    .known-issues li::before {
+      background: #F39C12;
+    }
+    em {
+      color: #6C7A8D;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="rn-header">
+    <span class="product-name">GlobalMail Pro</span>
+    <span class="header-rule">|</span>
+    <span class="header-rule">Help Centre</span>
+  </div>
+
+  <h1>GlobalMail Pro – Release 1.1</h1>
+  <p class="meta-line">Released: July 01, 2026</p>
+
+  <div class="overview-box">
+    <p><strong>Overview</strong></p>
+    <p>Release 1.1 delivers one new feature for real-time address validation with confidence scoring, resolves two bug fixes in the dashboard and compliance modules with improved KPI accuracy.</p>
+  </div>
+
+  <h2>New Features</h2>
+  <ul>
+    <li><strong>AI-powered address validation with real-time correction and confidence scoring:</strong> Addresses submitted for delivery were validated after the fact, with errors surfacing only when shipments failed. The Address Validator now checks each address in real time as you enter it, surfaces ranked correction suggestions with confidence scores, and records every result in Validation History with status, confidence percentage, and timestamp. <a href="help-topic-kan-101-address-validation-real-time.html" class="help-link">Learn more →</a></li>
+  </ul>
+
+  <h2>Enhancements</h2>
+  <p>No enhancements in this release.</p>
+
+  <h2>Bug Fixes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Bug ID</th>
+        <th>Summary</th>
+        <th>Severity</th>
+        <th>Affected Area</th>
+        <th>Description</th>
+        <th>Steps to Reproduce</th>
+        <th>Fix Applied</th>
+        <th>User Impact</th>
+        <th>Workaround</th>
+        <th>Confluence Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>KAN-102</td>
+        <td>Dashboard metrics not updating in real time</td>
+        <td>High</td>
+        <td>Dashboard</td>
+        <td>Three KPI metrics on the dashboard were not updating consistently. Addresses Validated showed counts lagging by up to 24 hours. Compliance Passes displayed incorrect percentages because EU shipment data was excluded from the calculation. Delivery Success Rate was miscalculated because corrected addresses were not included in the figures. Operations teams saw stale values that did not reflect their actual shipment activity.</td>
+        <td>1. Log in to GlobalMail Pro Dashboard. 2. Change the date range filter. 3. Observe that the three KPI metrics do not reflect the selected range. 4. Refresh the page. 5. Metrics show slightly different values.</td>
+        <td>All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations. Corrected addresses are now included in Delivery Success Rate calculations.</td>
+        <td>Users see accurate KPI values on every Dashboard load, enabling real-time decision-making.</td>
+        <td>Manually refresh the browser tab to force a metrics update.</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>KAN-103</td>
+        <td>Compliance report excluding EU shipments</td>
+        <td>Medium</td>
+        <td>Compliance</td>
+        <td>The Compliance Passes metric excluded all shipments destined for EU countries, causing the reported compliance percentage to be higher than the actual rate.</td>
+        <td>1. Open Compliance screen. 2. Select any date range with EU shipments. 3. EU destination rows are missing from the results.</td>
+        <td>EU shipment records are now included in all compliance calculations and exports.</td>
+        <td>Compliance reports accurately reflect all shipment destinations.</td>
+        <td>Export the Validation History table and filter by country manually.</td>
+        <td>N/A</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Known Issues</h2>
+  <p>No known issues in this release.</p>
+
+  <h2>Technical Notes</h2>
+  <p>No API or schema changes in this release.</p>
+
+  <hr>
+  <p class="version">1.1</p>
+
+  <p><em>For help with any feature, contact support or visit the Help Center.</em></p>
+
+  <footer class="rn-footer">
+    &copy; 2026 GlobalMail Pro. All rights reserved.
+  </footer>
+</body>
+</html>

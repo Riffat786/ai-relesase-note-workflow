@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "product": "GlobalMail Pro",
+    "version": "1.1",
+    "release_date": "2026-07-01",
+    "release_month_year": "July 2026",
+    "generated_at": "2026-07-01T23:35:00Z",
+    "jira_project": "KAN",
+    "jira_board": "https://twtaidimple.atlassian.net/jira/software/projects/KAN/list?jql=project+%3D+KAN+ORDER+BY+cf%5B10019%5D+ASC"
+  },
+  "overview": "Release 1.1 delivers one new feature for real-time address validation with confidence scoring, resolves two bug fixes in the dashboard and compliance modules with improved KPI accuracy.",
+  "new_features": [
+    {
+      "key": "KAN-101",
+      "summary": "AI-powered address validation with real-time correction and confidence scoring",
+      "description": "Addresses submitted for delivery were validated after the fact, with errors surfacing only when shipments failed. The Address Validator now checks each address in real time as you enter it, surfaces ranked correction suggestions with confidence scores, and records every result in Validation History with status, confidence percentage, and timestamp.",
+      "help_topic_slug": "kan-101-address-validation-real-time",
+      "help_topic_url": "help-topic-kan-101-address-validation-real-time.html"
+    }
+  ],
+  "bug_fixes": [
+    {
+      "key": "KAN-102",
+      "summary": "Dashboard metrics not updating in real time",
+      "severity": "High",
+      "affected_area": "Dashboard",
+      "description": "Three KPI metrics on the dashboard were not updating consistently. Addresses Validated showed counts lagging by up to 24 hours. Compliance Passes displayed incorrect percentages because EU shipment data was excluded from the calculation. Delivery Success Rate was miscalculated because corrected addresses were not included in the figures. Operations teams saw stale values that did not reflect their actual shipment activity.",
+      "steps_to_reproduce": "1. Log in to GlobalMail Pro Dashboard. 2. Change the date range filter. 3. Observe that the three KPI metrics do not reflect the selected range. 4. Refresh the page. 5. Metrics show slightly different values.",
+      "fix_applied": "All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations. Corrected addresses are now included in Delivery Success Rate calculations.",
+      "user_impact": "Users see accurate KPI values on every Dashboard load, enabling real-time decision-making.",
+      "workaround": "Manually refresh the browser tab to force a metrics update.",
+      "confluence_reference": "N/A"
+    },
+    {
+      "key": "KAN-103",
+      "summary": "Compliance report excluding EU shipments",
+      "severity": "Medium",
+      "affected_area": "Compliance",
+      "description": "The Compliance Passes metric excluded all shipments destined for EU countries, causing the reported compliance percentage to be higher than the actual rate.",
+      "steps_to_reproduce": "1. Open Compliance screen. 2. Select any date range with EU shipments. 3. EU destination rows are missing from the results.",
+      "fix_applied": "EU shipment records are now included in all compliance calculations and exports.",
+      "user_impact": "Compliance reports accurately reflect all shipment destinations.",
+      "workaround": "Export the Validation History table and filter by country manually.",
+      "confluence_reference": "N/A"
+    }
+  ],
+  "technical_notes": "No API or schema changes in this release.",
+  "output_files": {
+    "markdown": "release-notes-1-1.md",
+    "html": "release-notes-1-1.html",
+    "json": "release-notes-1-1.json",
+    "help_topics": [
+      "help-topic-kan-101-address-validation-real-time.html",
+      "help-topic-kan-101-address-validation-real-time.md"
+    ]
+  }
+}
