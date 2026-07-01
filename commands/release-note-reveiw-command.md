@@ -1,29 +1,38 @@
 ---
 
-description: Generate a benchmark-compliant enterprise SaaS release note draft from structured input.
-skill: skills/release-note-writer-skill.md
-branding: skills/branding-style-guide.md
-benchmarks: sample-data/expected-output-1.md, sample-data/expected-output-2.md
-inputs: sample-data/sample-1-input.md, sample-data/sample-2-input.md
-outputs: output/release-note-[version]-[slug].md, output/release-note-[version]-[slug].html
+description: Standalone review command for release notes and help topics already in the output/ directory. Use this to re-run QA on existing output files without regenerating them. For a full regenerate + review, use release-note-generation-command.md instead.
+inputs: output/release-notes-[version].html, output/release-notes-[version].md, output/release-notes-[version].json, output/help-topic-[slug].html       (all present in output/), output/help-topic-[slug].md         (all present in output/)
+outputs: output/release-note-review-report.md
 
 ---
 
-Read `skills/release-note-writer-skill.md` and
-`skills/branding-style-guide.md`. Read the benchmarks at
-`sample-data/expected-output-1.md` and
-`sample-data/expected-output-2.md`. Read the source inputs at
-`sample-data/sample-1-input.md` and
-`sample-data/sample-2-input.md`.
+# Release Note Review — Standalone Command
 
-Generate release note output that matches the benchmark files in
-structure, tone, and quality. Apply every rule in the writer skill.
-Apply every branding rule for the HTML output.
+## How to Use
 
-Write the result to:
-- `output/release-note-[version]-[slug].md` (Markdown)
-- `output/release-note-[version]-[slug].html` (HTML)
+Run this when you want to re-review files already in `output/` without
+re-fetching Jira data or re-generating content.
 
-Output format and structure are fully defined in the skills.
-Do not add structure, commentary, or preamble outside what the
-skills specify.
+Paste this prompt into Claude Code:
+
+```
+Run the release note quality review on existing output files.
+
+STEP 1 — Read agents/release-note-reviewer-agent.md in full.
+STEP 2 — List all files currently in the output/ directory.
+STEP 3 — Run the full reviewer agent on all release note and help topic
+          files found in output/. Do not regenerate any files.
+STEP 4 — Write output/release-note-review-report.md with findings.
+STEP 5 — Report which High and Medium findings require manual correction
+          (note: this command does not auto-apply fixes — for auto-fix,
+          use the full generation command).
+```
+
+---
+
+## Skills Applied
+
+- `skills/release-note-reviewer-skill.md` — 22-point checklist + style audit
+- `skills/branding-style-guide.md` — Branding compliance checks
+- `sample-data/expected-output-1.md` — Release notes structure benchmark
+- `sample-data/expected-output-2.md` — Help topic structure benchmark
