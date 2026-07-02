@@ -23,7 +23,7 @@ jobs:
           echo "Current Branch:"
           git branch --show-current
 
-      - name: Validate Repository 
+      - name: Validate Repository
         run: |
           python ci/validate_repository.py
 
