@@ -23,13 +23,9 @@ jobs:
           echo "Current Branch:"
           git branch --show-current
 
-      - name: Display Repository Structure
+      - name: Validate Repository 
         run: |
-          echo "==========================================="
-          echo "Repository Structure"
-          echo "==========================================="
-          pwd
-          ls -R
+          python ci/validate_repository.py
 
       - name: Display Data Folder
         run: |
