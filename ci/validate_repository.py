@@ -16,6 +16,7 @@ Exit Codes:
 
 from pathlib import Path
 import sys
+from datetime import datetime
 
 # ----------------------------------------------------------
 # Configuration
@@ -189,7 +190,7 @@ def write_validation_report():
     report_file = report_dir / "repository-validation-report.md"
 
     status = "✅ READY" if errors == 0 else "❌ FAILED"
-
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(report_file, "w", encoding="utf-8") as f:
 
         f.write("# Repository Validation Report\n\n")
@@ -202,6 +203,7 @@ def write_validation_report():
         f.write("|----------|-------|\n")
         f.write("| Repository | AI Release Note Workflow |\n")
         f.write("| Branch | Riffat |\n")
+        f.write(f"| Validation Date | {timestamp} |\n")
         f.write("| Validator Version | 2.0 |\n")
         f.write(f"| Validation Status | {status} |\n")
         f.write(f"| Validation Errors | {errors} |\n\n")
