@@ -1,5 +1,7 @@
 # PIC32MX470F512L Release Notes
 
+(This is a sample release note, that is stored as a word document in a local folder)
+
 Product: PIC32MX470F512L Microcontroller
 Version: 2.5.1
 Date: March 15 2024
