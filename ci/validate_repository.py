@@ -180,6 +180,44 @@ validate_files("Mock Data Validation", required_data)
 # ----------------------------------------------------------
 # Final Status
 # ----------------------------------------------------------
+def write_validation_report():
+    """Generate a Markdown validation report."""
+
+    report_dir = ROOT / "output" / "validation"
+    report_dir.mkdir(parents=True, exist_ok=True)
+
+    report_file = report_dir / "repository-validation-report.md"
+
+    status = "✅ READY" if errors == 0 else "❌ FAILED"
+
+    with open(report_file, "w", encoding="utf-8") as f:
+
+        f.write("# Repository Validation Report\n\n")
+        f.write("## Summary\n\n")
+        f.write(f"**Status:** {status}\n\n")
+        f.write(f"**Validation Errors:** {errors}\n\n")
+
+        f.write("---\n\n")
+
+        f.write("## Validation Scope\n\n")
+
+        f.write("- Folder Validation\n")
+        f.write("- Command Validation\n")
+        f.write("- Prompt Validation\n")
+        f.write("- Skill Validation\n")
+        f.write("- Agent Validation\n")
+        f.write("- Mock Data Validation\n\n")
+
+        f.write("---\n\n")
+
+        if errors == 0:
+            f.write("Repository is ready for the AI Release Note Pipeline.\n")
+        else:
+            f.write("Repository validation failed. Review the GitHub Actions log for details.\n")
+
+    print()
+    print(f"📄 Validation report created:")
+    print(report_file)
 
 print()
 print("=" * 60)
@@ -192,5 +230,7 @@ else:
     print(f"Missing items detected: {errors}")
 
 print("=" * 60)
+
+write_validation_report()
 
 sys.exit(errors)
