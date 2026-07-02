@@ -1,0 +1,18 @@
+SKILL 1: EXTRACT TEXT FROM WORD DOCUMENT
+==========================================
+TASK: Extract all text content from the provided Word document. Remove all formatting, images, headers, footers. Keep only the actual content.
+
+INPUT: Unformatted Word document content (copy-pasted from Word)
+
+PROCESS:
+1. Read through all content
+2. Remove any page breaks, page numbers, headers/footers
+3. Remove any special formatting codes
+4. Extract all body text exactly as it appears
+5. Preserve section breaks (use ===== separator between sections)
+6. Keep line breaks where they make sense
+7. Remove excessive blank lines
+8. Do NOT edit or rewrite - just extract and clean
+
+OUTPUT:
+Plain text version saved to: output/extracted_text/extracted_content.txt
