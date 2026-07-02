@@ -17,7 +17,7 @@ Generate release notes using the following requirements:
 
 I**Instructions**
 
-- Do not include internal IDs.
+- Add internal IDs.
 - Do not mention Azure DevOps, ServiceNow, or technical implementation details.
 - Focus only on customer-facing improvements.
 - Rewrite titles into natural language where appropriate.

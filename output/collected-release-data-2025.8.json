@@ -1,0 +1,111 @@
+{
+  "version": "2025.8",
+  "releaseDate": "2025-08-15",
+  "summary": "Release 2025.8 includes enhanced security features with multi-factor authentication, improved reporting capabilities with PDF export, search performance optimization, and critical bug fixes for email delivery and notification systems.",
+  "features": [
+    {
+      "id": "US-1001",
+      "title": "Multi-Factor Authentication",
+      "description": "Users can now enable multi-factor authentication using email verification.",
+      "status": "Done",
+      "impact": "Security Enhancement"
+    },
+    {
+      "id": "US-1002",
+      "title": "Export Dashboard Reports",
+      "description": "Users can export dashboard reports to PDF format.",
+      "status": "Done",
+      "impact": "Usability Enhancement"
+    }
+  ],
+  "enhancements": [
+    {
+      "id": "US-1003",
+      "title": "Improved Search Performance",
+      "description": "Reduced search response times across the portal.",
+      "status": "Done",
+      "impact": "Performance Optimization"
+    }
+  ],
+  "bugFixes": [
+    {
+      "id": "BUG-2001",
+      "title": "Password Reset Email Failure",
+      "description": "Resolved an issue where password reset emails were not sent to some users.",
+      "status": "Done",
+      "severity": "High"
+    },
+    {
+      "id": "BUG-2002",
+      "title": "Duplicate Notifications",
+      "description": "Fixed an issue causing duplicate notifications to be displayed.",
+      "status": "Done",
+      "severity": "Medium"
+    }
+  ],
+  "breakingChanges": [],
+  "technicalTasks": [
+    {
+      "id": "TASK-3001",
+      "title": "Database Index Optimization",
+      "description": "Optimized database indexes for improved query performance.",
+      "status": "Done"
+    },
+    {
+      "id": "TASK-3002",
+      "title": "Upgrade Logging Framework",
+      "description": "Upgraded logging libraries to the latest version.",
+      "status": "Done"
+    }
+  ],
+  "deployment": {
+    "id": "CHG-4001",
+    "title": "Production Deployment",
+    "description": "Deployment of Release 2025.8 to production.",
+    "status": "Implemented"
+  },
+  "contributors": [
+    "DS5375419",
+    "RiffatWyne",
+    "SriKans15",
+    "abundantdimple",
+    "ShubhKN",
+    "sulekhagulati",
+    "bhargavichary-a11y",
+    "DivinKotnise",
+    "Anubhav Chaudhary"
+  ],
+  "commitCount": 89,
+  "topContributors": [
+    {
+      "name": "DS5375419",
+      "commits": 62
+    },
+    {
+      "name": "RiffatWyne",
+      "commits": 12
+    },
+    {
+      "name": "SriKans15",
+      "commits": 5
+    },
+    {
+      "name": "abundantdimple",
+      "commits": 4
+    },
+    {
+      "name": "ShubhKN",
+      "commits": 4
+    }
+  ],
+  "statistics": {
+    "totalItems": 8,
+    "features": 2,
+    "enhancements": 1,
+    "bugFixes": 2,
+    "technicalTasks": 2,
+    "deployments": 1,
+    "contributors": 9,
+    "commitDate": "2026-06-25"
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "release": "2025.8",
+    "changeRequests": [
+      {
+        "id": "CHG-501",
+        "title": "Production Deployment Approval",
+        "status": "Approved",
+        "plannedDate": "2025-08-15"
+      }
+    ],
+    "knownIssues": [
+      {
+        "id": "KI-1001",
+        "title": "Large PDF exports may take longer than expected",
+        "severity": "Low",
+        "workaround": "Wait until export completes."
+      }
+    ],
+    "maintenanceWindow": {
+      "start": "2025-08-15T20:00:00Z",
+      "end": "2025-08-15T21:00:00Z"
+    },
+    "supportNotes": [
+      {
+        "title": "No customer action required after deployment."
+      }
+    ]
+  }

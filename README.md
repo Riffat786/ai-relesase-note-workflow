@@ -1,69 +1,237 @@
-# AI-Powered Release Note Workflow Automation
+# File: `README.md`
 
-This project is a workshop proof-of-concept showing how AI can automate and improve the release note workflow.
+# Release Notes AI
 
-The project uses release notes as the business use case to demonstrate Claude capabilities such as commands, skills, agents, marketplace concepts, plugins, and MCP.
+## Overview
+AI prepares a structured darft in Document360 using the organization's release note template. Technica Writers and SME's review, refine and approve the content before it is published. 
 
-## Goal
+Release Notes AI is a Proof of Concept (POC) that demonstrates how AI can automate the creation of customer-facing release notes using a modular, agent-based architecture.
 
-Demonstrate an end-to-end AI-assisted workflow:
+The solution uses mock release data to simulate enterprise systems and demonstrates AI engineering concepts including:
 
-Change information → AI extraction → Release note draft → AI review → Improved draft → Human approval
+* AI Agents
+* Prompt Engineering
+* Reusable Skills
+* Workflow Automation
+* Modular Architecture
+* MCP-ready Design
+* GitHub-based Project Structure
 
-## Project Folders
+The POC intentionally avoids direct integration with enterprise systems such as Azure DevOps, ServiceNow, and Document360. Instead, it uses mock data to validate the workflow before introducing production integrations.
 
-- charter: Project scope, goals, success criteria
-- roster: Team members and roles
-- samples: Sample input and output files
-- prompts-and-commands: Reusable prompts and commands
-- skills: Reusable skill definitions or instructions
-- agent-workflow: Multi-step AI workflow design
-- mcp-plugin-concept: Integration ideas using MCP, plugins, or marketplace tools
-- validation: Test results, risks, limitations
-- demo: Final demo material
-- meetings: Meeting notes and action items
+# Not included in POC
+- Audience based classification: Technical (for internals) and Non-technical (for customers)
+- Future MCP integrations and Enterprise Automation (Phase 2 and 3 as stated below)
 
-## Getting Started
+---
 
-1. Clone repository
-2. Read charter
-3. Review roster
-4. Select assigned tasks (in team-roster.md)
-5. Update work in only this repository
-6. Raise issues when blocked
+## Objectives
 
-# Protect Against Knowledge Loss
-The guideline explicitly says:
+* Demonstrate end-to-end release note generation.
+* Showcase reusable AI engineering patterns.
+* Produce publication-ready release notes.
+* Build an architecture that can later connect to enterprise systems through MCP.
 
->**Note** 
-No critical work should live only on a personal machine, private drive, or chat thread.
+---
 
-Therefore:
-❌ Don't allow:
-"I have the prompt on my laptop."
-"I shared it in WhatsApp."
-"I emailed it to someone."
+# Business Value
+## Benefits
 
-✅ Instead use:
-- prompts-and-commands/
-- skills/
-- validation/
-- demo/
+### Technical Writers
+- Less repetitive work
+- More focus on quality
+- Faster reviews
+  
+### Product Teams
+- Consistent release notes
+- Faster turnaround
+- Better communication
 
-Everything gets committed to the repo.
+### Organization
+- Standardized process
+- AI-assisted documentation
+- Human governance
+- Ready for enterprise integrations
+- Technical and non-technical release notes
 
+## End-to-End Workflow
 
-## What Success Looks Like
+AI Workflow
+/create-release-draft
+        │
+        ▼
+Collector
+        ▼
+Analyzer
+        ▼
+Writer
+        ▼
+Reviewer
+        ▼
+Draft Generator
+        │
+        ▼
+Document360 Draft
+        │
+        ▼
+══════════════════════
+ Human Review Gateway
+══════════════════════
+        │
+        ├── Technical Writer Review
+        ├── SME Review
+        ├── Compliance/QA Review (optional)
+        └── Approval
+══════════════════════
+        │
+        ▼
+Publish
 
-Success means:
-Demonstrated a realistic documentation workflow
+---
 
-- Showed Commands, Skills, and Agents
-- Explained MCP and integrations
-- Used realistic business scenarios
-- Demonstrated measurable workflow improvement
-- Identified human review checkpoints
+## Collector agent
+```text
 
-## Guiding Principle:
+                 Azure DevOps JSON
+                        │
+                        │
+ServiceNow JSON         │
+        │               │
+        └──────┬────────┘
+               │
+               ▼
+        Collector Agent
+               │
+               ▼
+ collected-release-data.json
+```
+---
+## Repository Structure
 
-We are not building a release note tool. We are demonstrating how AI capabilities can automate a documentation workflow using release notes as the business use case.
+This repository separates orchestration, prompting, reusable knowledge, and generated artifacts. That makes the solution easier to maintain and extend.
+
+Commands
+↓
+call
+↓
+Prompts
+↓
+use
+↓
+Skills
+↓
+produce
+↓
+Artifacts
+
+```text
+.claude/
+
+commands/
+
+prompts/
+
+skills/
+
+agents/
+
+mcp/
+
+automation/
+
+output/
+
+docs/
+```
+
+---
+
+## Current Status
+
+* ✅ Mock data
+* ✅ Analyzer Prompt
+* ✅ Writer Prompt
+* ✅ Reviewer Prompt
+* ✅ Skills
+* ✅ Agent Definitions
+* ✅ Commands
+* ⏳ Mock MCP
+* ⏳ GitHub Workflow
+* ⏳ Enterprise Integrations
+
+---
+
+## Future MCP Architecture
+Nothing changes inside the agents. Only the data source changes.
+
+Azure DevOps MCP
+
+↓
+
+ServiceNow MCP
+
+↓
+
+Document360 MCP
+
+Because the workflow is modular, replacing mock data with live systems doesn't require redesigning the solution.
+
+## Future Roadmap
+
+* Azure DevOps MCP
+* ServiceNow MCP
+* Document360 Publisher
+* GitHub Actions
+* Cursor Commands
+* Automated Publishing
+
+# Phase 1 (Completed)
+
+✅ Local POC
+
+✅ AI Agents
+
+✅ Skills
+
+✅ Prompts
+
+✅ Commands
+
+✅ Release Note Generation Pipeline
+
+# Phase 2
+
+- Azure DevOps MCP
+- ServiceNow MCP
+- Document360 MCP
+- GitHub Actions
+
+# Phase 3
+Enterprise Automation
+
+- Scheduled releases
+- Automated draft creation
+- Notification workflows
+
+# Key Takeaways
+- AI supports the documentation process without replacing human expertise.
+- The workflow is modular, making it easy to test, maintain, and extend.
+- The architecture is designed to integrate with enterprise systems through MCP.
+- This proof of concept provides a foundation for future automation while preserving governance and quality.
+
+This proof of concept demonstrates that AI can assist Technical Writers by automating repetitive documentation tasks while keeping human review and approval at the center of the publishing process. The next step isn't to redesign the workflow—it's simply to replace the mock data with live integrations to Azure DevOps, ServiceNow, and Document360.
+
+## Repository 
+| Component                  | Status     |
+| -------------------------- | ---------- |
+| Repository                 | ✅          |
+| Commands                   | ✅ 5        |
+| Agents                     | ✅ 5        |
+| Prompts                    | ✅ 5        |
+| Skills                     | ✅ Reusable |
+| Architecture documentation | ✅          |
+| Workflow documentation     | ✅          |
+| MCP placeholders           | ✅          |
+| Output artifacts           | ✅          |
+| Mock data                  | ✅          |
+| End-to-end pipeline        | ✅          |

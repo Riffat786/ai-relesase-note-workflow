@@ -1,0 +1,11 @@
+{
+  "mcp_servers": {
+    "git": {
+      "command": "node",
+      "args": ["C:\\Users\\ibrah\\AppData\\Local\\Temp\\mcp-servers-repo\\src\\git\\dist\\index.js"],
+      "env": {
+        "GIT_REPO_PATH": "C:\\Users\\ibrah\\Documents\\twtaiworkshop\\Project_rel_note_gen_riffat"
+      }
+    }
+  }
+}

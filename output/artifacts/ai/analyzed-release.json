@@ -1,0 +1,73 @@
+{
+  "release": "2025.8",
+  "releaseDate": "2025-08-15",
+  "analysis": {
+    "summary": "Release 2025.8 focuses on security enhancements, reporting capabilities, and system reliability. This release includes a major security feature (MFA), new user functionality (export reports), critical bug fixes, and performance improvements.",
+    "customerFacingCount": 5,
+    "excludedCount": 3,
+    "excludedReason": "Technical tasks and deployment operations excluded as they do not directly affect customer experience."
+  },
+  "features": [
+    {
+      "id": "US-1001",
+      "title": "Multi-Factor Authentication",
+      "description": "Users can now enable multi-factor authentication using email verification.",
+      "customerImpact": "Enhanced security with multi-factor authentication for user accounts",
+      "status": "Done"
+    },
+    {
+      "id": "US-1002",
+      "title": "Export Dashboard Reports",
+      "description": "Users can export dashboard reports to PDF format.",
+      "customerImpact": "New capability to export and share dashboard reports for offline access and documentation",
+      "status": "Done"
+    }
+  ],
+  "enhancements": [
+    {
+      "id": "US-1003",
+      "title": "Improved Search Performance",
+      "description": "Reduced search response times across the portal.",
+      "customerImpact": "Faster search results improving user productivity and experience",
+      "status": "Done"
+    }
+  ],
+  "bugFixes": [
+    {
+      "id": "BUG-2001",
+      "title": "Password Reset Email Failure",
+      "description": "Resolved an issue where password reset emails were not sent to some users.",
+      "customerImpact": "Critical fix restoring account recovery functionality for affected users",
+      "severity": "High",
+      "status": "Done"
+    },
+    {
+      "id": "BUG-2002",
+      "title": "Duplicate Notifications",
+      "description": "Fixed an issue causing duplicate notifications to be displayed.",
+      "customerImpact": "Resolved notification delivery issue improving user experience",
+      "severity": "Medium",
+      "status": "Done"
+    }
+  ],
+  "excludedItems": [
+    {
+      "id": "TASK-3001",
+      "type": "Technical Task",
+      "title": "Database Index Optimization",
+      "reason": "Internal optimization with no direct customer impact"
+    },
+    {
+      "id": "TASK-3002",
+      "type": "Technical Task",
+      "title": "Upgrade Logging Framework",
+      "reason": "Internal infrastructure change with no direct customer impact"
+    },
+    {
+      "id": "CHG-4001",
+      "type": "Change",
+      "title": "Production Deployment",
+      "reason": "Operational activity, not a customer-facing change"
+    }
+  ]
+}

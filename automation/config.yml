@@ -1,0 +1,14 @@
+paths:
+  data: data
+  prompts: .claude/prompts
+  skills: .claude/skills
+
+output:
+  ai: output/artifacts/ai
+  publishing: output/artifacts/publishing
+
+templates:
+  document360: templates/document360-template.md
+
+release:
+  default: "2025.8"
