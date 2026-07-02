@@ -1,25 +1,37 @@
+from automation.services.logger_service import (
+    stage_header,
+    section,
+    bullet,
+    success,
+    blank,
+)
+
+
 def run():
-    print("====================================")
-    print("Stage 1 - Collector")
-    print("====================================")
 
-    print("Input:")
-    print("  • release-2025.8.json")
-    print("  • service-now-2025.8.json")
+    stage_header("Stage 1 - Collector")
 
-    print()
+    section("Input:")
 
-    print("Action:")
-    print("  • Collecting release data")
-    print("  • Merging Azure DevOps and ServiceNow information")
-    print("  • Validating release structure")
+    bullet("release-2025.8.json")
+    bullet("service-now-2025.8.json")
 
-    print()
+    blank()
 
-    print("Output:")
-    print("  • collected-release-data-2025.8.json")
+    section("Action:")
 
-    print()
+    bullet("Collecting release data")
+    bullet("Merging Azure DevOps and ServiceNow information")
+    bullet("Validating release structure")
 
-    print("✓ Collector Stage Complete")
-    print()
+    blank()
+
+    section("Output:")
+
+    bullet("collected-release-data-2025.8.json")
+
+    blank()
+
+    success("Collector Stage Complete")
+
+    blank()
