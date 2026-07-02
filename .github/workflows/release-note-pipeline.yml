@@ -1,0 +1,46 @@
+name: Release Note Pipeline (POC)
+
+on:
+  push:
+    branches:
+      - Riffat
+
+  workflow_dispatch:
+
+jobs:
+  verify-workflow:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Branch
+        run: |
+          echo "Current Branch:"
+          git branch --show-current
+
+      - name: Display Repository Structure
+        run: |
+          echo "Repository Structure"
+          pwd
+          ls -R
+
+      - name: Display Data Folder
+        run: |
+          echo "Contents of data/"
+          ls -R data
+
+      - name: Display Output Folder
+        run: |
+          echo "Contents of output/"
+          ls -R output || true
+
+      - name: Success
+        run: |
+          echo "======================================"
+          echo " Release Note Pipeline Started"
+          echo " GitHub Actions is working!"
+          echo "======================================"
