@@ -275,3 +275,34 @@ This step will teach:
 - Future MCP orchestration
 
 This aligns perfectly with Docs-as-Code learning roadmap.
+
+The simplest solution: reset your local commits
+
+If you don't mind recreating those 4 commits (this is usually the easiest option):
+
+In GitHub Desktop, go to:
+Repository → Open in Terminal (or Open in Command Prompt).
+
+Run:
+```text
+
+git reset --mixed origin/Riffat
+```
+
+If your remote branch has a different name (for example main or master), use that instead:
+
+```text
+
+git reset --mixed origin/main
+```
+
+This will:
+✅ Remove the 4 local commits.
+✅ Keep all your current files on disk.
+✅ Remove the old commit history containing the large video and PowerPoint files.
+
+Go back to GitHub Desktop.
+It will now show your changes as uncommitted.
+Stage only the files you want (your new demo folder, code, etc.).
+Create a new commit.
+Push.
