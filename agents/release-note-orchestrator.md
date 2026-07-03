@@ -136,17 +136,36 @@ map provides.
 
 ### Step 4 — Classify issues by category
 
-Map each Jira issue to a release note category using this logic:
+This Jira project (KAN) does not have native `Enhancement` or `Known Issue`
+issue types — its only types are `Epic, Feature, Task, Story, Bug, Subtask`.
+Enhancements and Known Issues are distinguished from Features and Bugs
+**by label only** (`enhancement`, `known-issue` respectively), layered on
+top of the underlying type. Because of this, **labels must be checked
+before issue type** — checking type first would let a `Feature`-typed
+enhancement get misclassified as a New Feature, and a `Bug`-typed known
+issue get misclassified as a Bug Fix, since both would match a type rule
+before ever reaching a label rule.
 
-| Jira issue type (issuetype.name)          | Release note category |
-|-------------------------------------------|-----------------------|
-| Story, Feature, New Feature               | New Features          |
-| Task, Enhancement, Improvement, Sub-task  | Enhancements          |
-| Bug                                       | Bug Fixes             |
-| Type = any, Label contains "known-issue"  | Known Issues          |
-| Epic                                      | Skip (not in output)  |
+Classify each issue using this priority order — evaluate top to bottom,
+stop at the first match:
 
-If issuetype.name does not match any row above, classify as Enhancement.
+| Priority | Condition                                          | Release note category |
+|----------|-----------------------------------------------------|------------------------|
+| 1        | `labels` contains `known-issue`                      | Known Issues           |
+| 2        | `labels` contains `enhancement`                      | Enhancements            |
+| 3        | `issuetype.name` == `Epic`                           | Skip (not in output)   |
+| 4        | `issuetype.name` in (`Story`, `Feature`, `New Feature`) | New Features         |
+| 5        | `issuetype.name` in (`Task`, `Subtask`, `Enhancement`, `Improvement`) | Enhancements |
+| 6        | `issuetype.name` == `Bug`                            | Bug Fixes               |
+| 7        | No match above                                       | Enhancements (fallback) |
+
+Label checks are case-insensitive and match on exact label text
+(`known-issue`, `enhancement`) — do not match on substrings of other
+labels (e.g. a label like `enhancement-request` should NOT match rule 2
+unless it is an exact match).
+
+A single issue must land in exactly one category — once a rule matches,
+stop evaluating further rules for that issue.
 
 Build four lists:
 - `new_features[]`   — Issue objects classified as New Features
