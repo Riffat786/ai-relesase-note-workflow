@@ -2,19 +2,19 @@
 
 name: release-note-orchestrator
 
-description: Entry point for the full release note automation pipeline. Invoke this agent to generate release notes and help topics from Jira. Fetches all issues from the KAN project via Atlassian MCP, delegates to sub-agents, assembles branded HTML + MD output files, and runs quality review with auto-fix. No user input is required after invocation.
+description: Entry point for the full release note automation pipeline. Invoke this agent to generate release notes and help topics from GitHub. Fetches all issues from WealthWise repository milestone v1.0 via GitHub MCP, delegates to sub-agents, assembles branded HTML + MD output files, and runs quality review with auto-fix. No user input is required after invocation.
 
-version: 1.0
+version: 2.0
 
 author: WealthWise Technical Writing
 
-mcp_servers: atlassian (https://mcp.atlassian.com/sse) — Jira + Confluence access
+mcp_servers: github — GitHub API access
 
-data_source: Atlassian Jira — project KAN (https://twtaishubh.atlassian.net)
+data_source: GitHub repository ShubhKN/WealthWise — milestone v1.0
 
-jira_board_url: "https://twtaishubh.atlassian.net/jira/software/projects/KAN/list?jql=project%20%3D%20KAN%20ORDER%20BY%20cf%5B10019%5D%20ASC"
+github_issues_url: "https://github.com/ShubhKN/WealthWise/issues?milestone=1"
 
-jql: "project = KAN ORDER BY cf[10019] ASC"
+github_query: Repository: ShubhKN/WealthWise, Milestone: v1.0
 
 sub_agents: agents/release-note-writer-agent.md, agents/help-topic-writer-agent.md, agents/release-note-reviewer-agent.md
 
@@ -36,9 +36,9 @@ outputs: output/release-note-[version]-whats-new.html      (branded HTML — all
 
 You are the orchestrator for the WealthWise release note automation
 
-pipeline. You connect to Atlassian Jira via MCP at https://twtaishubh.atlassian.net,
+pipeline. You connect to GitHub via MCP to fetch issues from the WealthWise repository,
 
-classify all issues in the KAN project, coordinate three sub-agents, and
+classify all issues in the v1.0 milestone, coordinate three sub-agents, and
 
 assemble the final output package. You do not write release notes or help
 
@@ -94,54 +94,39 @@ Store all rules in working memory. Apply them throughout the pipeline.
 
 
 
-### Step 2 — Fetch Jira issues via Atlassian MCP
+### Step 2 — Fetch GitHub issues via GitHub MCP
 
 
 
-Connect to the Atlassian MCP server. Use the Jira search tool to
-
-execute the following query:
+Connect to the GitHub MCP server. Use the GitHub API to fetch all issues in the WealthWise repository with milestone v1.0:
 
 
 
 ```
-
-JQL: project = KAN ORDER BY cf[10019] ASC
-
-Project key: KAN
-
-Site URL: https://twtaishubh.atlassian.net
+Repository: ShubhKN/WealthWise
+Milestone: v1.0
+Query: All issues (open and closed) in milestone v1.0
 
 Fields to retrieve per issue:
+  - number (GitHub issue number, e.g., #1)
+  - title
+  - body (full issue description)
+  - labels (array: type, component, priority, severity, status, plan)
+  - state (open | closed)
+  - milestone.title (should be "v1.0")
+  - created_at
+  - updated_at
+  - closed_at (if closed)
 
-  - key (e.g. WW-42)
-
-  - summary
-
-  - description
-
-  - issuetype.name
-
-  - status.name
-
-  - labels
-
-  - fixVersions
-
-  - assignee.displayName
-
-  - resolution.name           (e.g. Fixed, Won't Fix)
-
-  - resolution.description    (fix details for bug fixes)
-
-  - created
-
-  - updated
-
-  - comment (all comments — checked for fix details, workarounds)
-
-  - remotelinks / confluence pages (linked Confluence pages, if any)
-
+Classification rule (from skills/github-issue-classifier.md):
+  1. Extract all labels
+  2. Check label "type: feature" → What's New
+  3. Check label "type: enhancement" → Enhancements
+  4. Check label "type: bug":
+     a. If also has "status: known-issue" → Known Issues
+     b. Else if state = "closed" → Bug Fixes
+     c. Else → Skip (unresolved open bugs not in release)
+  5. Apply AI tag if labels contain "component: ai-advisor"
 ```
 
 
@@ -198,27 +183,27 @@ map provides.
 
 | `product_name` | Hardcoded constant — `skills/wealthwise-branding.md` | None — always "WealthWise" | `WealthWise` |
 
-| `release_version` | `issue.fixVersions[0].name` from any issue that has a Fix Version set | Current version as `x.x` | `1.0` |
+| `release_version` | `issue.milestone.title` (should be "v1.0") | `1.0` | `1.0` |
 
-| `version_slug` | `release_version` with dots replaced by hyphens | Same fallback as release_version | `1-0` |
+| `version_slug` | `release_version` with dots replaced by hyphens | Same as release_version | `1-0` |
 
 | `release_date` | Today's date at pipeline run time | None — always today | `2026-07-03` |
 
-| `[Feature Name]` | `issue.summary` — sentence case (capitalise first word only; preserve proper nouns) | Flag: `[INSERT: feature name — Jira issue [key] has no summary]` | `AI Advisor chat interface` |
+| `[Feature Name]` | `issue.title` — sentence case (remove "[Feature]" prefix if present) | Flag: `[INSERT: feature name — GitHub issue #[n] has no title]` | `AI Financial Advisor Chat Interface` |
 
-| `[slug]` | `lowercase(issue.key) + "-" + lowercase_hyphenated(issue.summary, max 40 chars)` | None — always derivable from key + summary | `ww-101-ai-advisor-chat-interface` |
+| `[slug]` | `"#" + issue.number + "-" + lowercase_hyphenated(issue.title, max 40 chars)` | None — always derivable from number + title | `#1-ai-financial-advisor-chat` |
 
-| `[Bug ID]` | `issue.key` verbatim — the only place a Jira ID appears in output | None — always present | `KAN-142` |
+| `[Bug ID]` | `"#" + issue.number` — the only place a GitHub issue number appears in output | None — always present | `#5` |
 
-| `[Bug Summary]` | `issue.summary` in sentence case | Flag: `[INSERT: bug title — Jira issue [key] has no summary]` | `Budget totals round incorrectly above ₹1,00,000` |
+| `[Bug Summary]` | `issue.title` (clean, remove "[Bug]" prefix if present) in sentence case | Flag: `[INSERT: bug title — GitHub issue #[n] has no title]` | `Budget Totals Round Incorrectly Above ₹1,00,000` |
 
-| `[Bug Description]` | First user-visible paragraph of `issue.description`, stripped of engineering/infrastructure terms, past tense only | Flag: `[INSERT: description — Jira issue [key] description is empty]` | `Category and total budget values above ₹1,00,000 displayed incorrect rounding.` |
+| `[Bug Description]` | First user-visible paragraph of `issue.body`, stripped of engineering/infrastructure terms, past tense only | Flag: `[INSERT: description — GitHub issue #[n] description is empty]` | `Category and total budget values above ₹1,00,000 displayed incorrect rounding.` |
 
-| `[Fix Applied]` | `issue.resolution.description` if set; else the first comment whose text begins with "Fix:", "Fixed:", or "Resolved:"; else the last comment if the issue status is "Done" | Flag: `[INSERT: fix description — not found in Jira issue [key]]` | `Budget totals now match the exact sum of transactions to the rupee.` |
+| `[Fix Applied]` | Extract from issue body after "## Fix" or "## Solution" header; if not found, search body for text starting with "Fixed:" or "Resolved:" | Flag: `[INSERT: fix description — not found in GitHub issue #[n]]` | `Budget totals now match the exact sum of transactions to the rupee.` |
 
-| `[is_ai_feature]` | True if `issue.labels` contains "ai" or the summary/description references AI Advisor or AI-generated content | False | `true` |
+| `[is_ai_feature]` | True if `issue.labels` contains "component: ai-advisor" or the title/body references AI Advisor or AI-generated content | False | `true` |
 
-| `[Confluence Reference]` | `issue.remoteLinks[]` filtered for URLs containing your Confluence domain. Extract page title + full URL. | `N/A` | `N/A` |
+| `[Related Links]` | Search `issue.body` for markdown links `[text](url)` — extract all. Non-critical. | `N/A` | `N/A` |
 
 
 
@@ -250,27 +235,27 @@ map provides.
 
 
 
-Map each Jira issue to a release note category using this logic:
+Map each GitHub issue to a release note category using this logic (from `skills/github-issue-classifier.md`):
 
 
 
-| Jira issue type (issuetype.name)          | Release note category |
+| GitHub label: `type: *` | Release note category |
 
-|---------------------------------------------|--------------------------|
+|----|----------|
 
-| Story, Feature, New Feature                  | What's New               |
+| `type: feature` | What's New |
 
-| Task, Enhancement, Improvement, Sub-task     | Enhancements             |
+| `type: enhancement` | Enhancements |
 
-| Bug                                           | Bug Fixes                |
+| `type: bug` (no "status: known-issue", state = closed) | Bug Fixes |
 
-| Type = any, Label contains "known-issue"      | Known Issues             |
+| `type: bug` + `status: known-issue` | Known Issues |
 
-| Epic                                          | Skip (not in output)     |
+| Tracking issues | Skip (not in output) |
 
 
 
-If issuetype.name does not match any row above, classify as Enhancement.
+**Important:** If an issue is `type: bug` AND state = "open", skip it (unresolved bugs not in release).
 
 
 
@@ -288,17 +273,13 @@ Build four lists:
 
 Determine the release version:
 
-1. If any issue has a fixVersions value, use the first unique fixVersion
+1. All issues should have `milestone.title = "v1.0"`. Use "1.0" as `release_version`.
 
-   found across all issues.
-
-2. If no fixVersions are set, derive from the current date:
-
-   Format: `[YYYY].[MM]` (e.g., `2026.07`)
+2. If milestone is different, use the milestone title verbatim.
 
 
 
-Set `release_version` and `release_date` (today's date, YYYY-MM-DD).
+Set `release_version = "1.0"` and `release_date` (today's date, YYYY-MM-DD).
 
 
 
@@ -316,9 +297,9 @@ For each issue in `whats_new[]`, generate a URL-safe slug:
 
 ```
 
-slug = lowercase(issue.key) + "-" + lowercase_hyphenated(issue.summary[0:40])
+slug = "#" + issue.number + "-" + lowercase_hyphenated(issue.title[0:40])
 
-Example: WW-101 "AI Advisor Chat Interface" → "ww-101-ai-advisor-chat-interface"
+Example: #1 "AI Financial Advisor Chat Interface" → "#1-ai-financial-advisor-chat"
 
 ```
 
@@ -328,7 +309,7 @@ Build a `help_topic_map`:
 
 ```
 
-{ issue.key: { slug, filename: "help-topic-[slug].html" } }
+{ issue.number: { slug, filename: "help-topic-[slug].html" } }
 
 ```
 
@@ -508,7 +489,7 @@ PIPELINE COMPLETE
 
 =================
 
-Jira project:    KAN (https://twtaishubh.atlassian.net)
+GitHub repository: ShubhKN/WealthWise (https://github.com/ShubhKN/WealthWise)
 
 Release version: [version]
 
@@ -520,13 +501,13 @@ Issues fetched:  [total count]
 
 Issues classified:
 
-  What's New:    [n] issues → [list of KAN-IDs]
+  What's New:    [n] issues → [list of #IDs]
 
-  Enhancements:  [n] issues → [list of KAN-IDs]
+  Enhancements:  [n] issues → [list of #IDs]
 
-  Bug Fixes:     [n] issues → [list of KAN-IDs]
+  Bug Fixes:     [n] issues → [list of #IDs]
 
-  Known Issues:  [n] issues → [list of KAN-IDs]
+  Known Issues:  [n] issues → [list of #IDs]
 
 
 
@@ -572,13 +553,13 @@ Next step: Human technical review → commit to repository → publish
 
 - Never invent content. Every claim in release notes and help topics
 
-  must trace directly to a Jira issue field (summary, description,
+  must trace directly to a GitHub issue field (title, body,
 
-  comment, or label).
+  labels, or comments).
 
-- If a Jira issue has an empty description, use the summary only and
+- If a GitHub issue has an empty body, use the title only and
 
-  flag with `[INSERT: feature description needed in Jira]`.
+  flag with `[INSERT: feature description needed in GitHub issue #[n]]`.
 
 - Produce exactly the output files defined in the front matter.
 
@@ -596,11 +577,11 @@ Next step: Human technical review → commit to repository → publish
 
 - Never pass a severity or priority label into any output-facing field.
 
-- If a Confluence MCP tool is available, fetch any linked Confluence
+- Use the GitHub issue body content (after any headers like "## Fix" or
 
-  pages for additional context on What's New issues. This is non-critical
+  "## Solution") for extracting detailed information. Non-critical
 
-  — proceed without it if unavailable.
+  — proceed without supplementary links if unavailable.
 
 
 
@@ -614,7 +595,7 @@ Next step: Human technical review → commit to repository → publish
 
 ```
 
-.mcp.json                              ← Atlassian MCP server configuration
+.mcp.json                              ← GitHub MCP server configuration
 
 agents/
 
@@ -630,7 +611,7 @@ agents/
 
 commands/
 
-  release-note-generation-command.md  ← single trigger command
+  release-note-generation-command.md  ← single trigger command for GitHub
 
   release-note-reveiw-command.md      ← standalone review command
 
@@ -643,6 +624,8 @@ skills/
   release-note-reviewer-skill.md      ← QA checklist
 
   wealthwise-branding.md              ← WealthWise HTML/CSS template
+
+  github-issue-classifier.md          ← GitHub label to category mapping
 
 
 

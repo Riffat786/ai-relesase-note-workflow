@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release 1.0 — WealthWise Help Centre</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1A1A1A;
+      background: #FFFFFF;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1A1A1A;
+      letter-spacing: -0.3px;
+      margin: 0 0 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      border-bottom: 3px solid #1D9E75;
+      padding-bottom: 0.4rem;
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #5A6475;
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #1A1A1A;
+    }
+
+    strong {
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1rem;
+    }
+
+    ul li {
+      padding: 0.3rem 0 0.3rem 1.25rem;
+      position: relative;
+      color: #1A1A1A;
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #1D9E75;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    table th, table td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.09);
+    }
+
+    table th {
+      background: #F4F6F8;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    table tr:nth-child(even) {
+      background: #F4F6F8;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.09);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .version {
+      font-size: 0.85rem;
+      color: #9AA3AF;
+      font-weight: 600;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .tag-ai {
+      background: #EEEDFE;
+      color: #3C3489;
+    }
+
+    .tag-security {
+      background: #FCEBEB;
+      color: #A32D2D;
+    }
+
+    .tag-deprecated {
+      background: #FAEEDA;
+      color: #BA7517;
+    }
+
+    .rn-header {
+      background: #1A1A1A;
+      color: #FFFFFF;
+      padding: 1rem 1.5rem;
+      margin: -2rem -1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .rn-header .product-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .rn-header .header-rule {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .rn-known-issue {
+      background: #FAEEDA;
+      border: 1px solid #BA7517;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .rn-known-issue strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: #1D9E75;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #0F6E56;
+      text-decoration: underline;
+    }
+
+    .rn-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.09);
+      font-size: 0.8rem;
+      color: #9AA3AF;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="rn-header">
+    <span class="product-name">WealthWise</span>
+    <span class="header-rule">|</span>
+    <span class="header-rule">Help Centre</span>
+  </div>
+
+  <h1>WealthWise — Release 1.0 (July 2026)</h1>
+
+  <p>Release 1.0 brings two AI-powered features for personalized financial guidance: AI Financial Advisor chat and Investment Portfolio Tracking. New enhancements add AI-assisted budget rebalancing and transaction categorization. Three bug fixes address budget display, notification duplication, and onboarding navigation. One known issue documents potential latency in brokerage data sync.</p>
+
+  <hr>
+
+  <h2>🚀 What's New</h2>
+
+  <h3>AI Financial Advisor chat interface <span class="tag tag-ai">AI</span></h3>
+
+  <p>Previously, you could not ask your financial app direct questions about your spending, budgets, or investment strategy without manually analyzing your data yourself. Now, the AI Advisor answers natural-language questions about your financial life using your actual transaction, budget, goal, and investment data, returning specific, numeric, actionable guidance. You access the Advisor from the dashboard sidebar or directly from Overview, Budget, and Investments views. The chat interface shows your conversation history and suggests starter questions to get you thinking about different aspects of your finances. While the Advisor generates a response, you see a typing indicator so you know it's working.</p>
+
+  <strong>Key benefits</strong>
+  <ul>
+    <li>Ask follow-up questions and get answers tailored to your real data, not generic advice</li>
+    <li>See your entire financial picture through the Advisor's recommendations—spending patterns, rebalancing opportunities, goal-pacing insights</li>
+    <li>Available to Pro and Family subscription tiers</li>
+  </ul>
+
+  <p><a href="help-topic-ai-financial-advisor-chat.html">Learn more →</a></p>
+
+  <hr>
+
+  <h3>Investment portfolio tracking <span class="tag tag-ai">AI</span></h3>
+
+  <p>Previously, your investment holdings lived in separate apps and statements with no unified view. You could not see your total value, performance, or asset allocation in one place. Now, the Investments module consolidates all your holdings—mutual funds, stocks, gold bonds, debt funds—into one portfolio view. You see portfolio-level metrics: total value, total invested, total return %, and XIRR. A holdings table shows each investment's name, type, units, NAV, market value, and return. You can export your holdings as CSV and set target allocations. When your portfolio drifts from your targets, the AI alerts you to rebalance. This feature is available to Pro and Family subscription tiers.</p>
+
+  <strong>Key benefits</strong>
+  <ul>
+    <li>Track consolidated performance across all investment types at a glance</li>
+    <li>Identify rebalancing opportunities before drift becomes significant</li>
+    <li>Export holdings data for tax or advisory workflows</li>
+    <li>Available to Pro and Family subscription tiers</li>
+  </ul>
+
+  <p><a href="help-topic-investment-portfolio-tracking.html">Learn more →</a></p>
+
+  <hr>
+
+  <h2>✨ Enhancements</h2>
+
+  <ul>
+    <li>Get AI-generated rebalancing recommendations when any budget category exceeds its limit, with a one-click Auto-rebalance action that reallocates from underspent categories (Pro and Family only; exact overage and source categories displayed clearly) <span class="tag tag-ai">AI</span></li>
+    <li>Surface AI auto-categorization confidence in your Transactions view, with an Insight banner showing how many transactions are auto-categorized versus flagged for manual review, and a quick link to review and correct uncategorized items <span class="tag tag-ai">AI</span></li>
+  </ul>
+
+  <hr>
+
+  <h2>🐛 Bug Fixes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Bug ID</th>
+        <th>Description</th>
+        <th>Fix / Solution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#5</td>
+        <td>Category and total budget values above ₹1,00,000 displayed incorrect rounding.</td>
+        <td>Budget totals now match the exact sum of transactions to the rupee.</td>
+      </tr>
+      <tr>
+        <td>#6</td>
+        <td>Recurring bill reminders triggered multiple times for the same bill in a single notification cycle.</td>
+        <td>Reminders now send exactly once per configured frequency without duplication.</td>
+      </tr>
+      <tr>
+        <td>#7</td>
+        <td>When you navigated backward from Step 4 to Step 3 during onboarding, slider values reset to defaults.</td>
+        <td>Slider values now persist when navigating backward, maintaining user input.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Known Issues</h2>
+
+  <div class="rn-known-issue">
+    <strong>Delayed sync for linked brokerage holdings:</strong>
+    Holdings synced from certain third-party brokerage connections (e.g., Zerodha) may reflect data up to two hours out of date rather than near-real-time, due to aggregator API polling intervals. This does not affect manually entered holdings or bank transaction sync. Portfolio value and XIRR may lag market-hours pricing by up to two hours. No data loss or incorrect transaction records occur—this is a display latency only. We plan to investigate webhook-based sync with the aggregator to replace polling, targeted for v1.1.
+  </div>
+
+  <footer class="rn-footer">
+    Need help with a feature? Visit the WealthWise Help Centre or ask the AI Advisor.<br>
+    &copy; 2026 WealthWise. All rights reserved.
+  </footer>
+</body>
+</html>

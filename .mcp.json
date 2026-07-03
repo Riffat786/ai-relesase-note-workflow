@@ -1,9 +1,13 @@
 {
   "mcpServers": {
-    "atlassian": {
-      "type": "sse",
-      "url": "https://mcp.atlassian.com/sse",
-      "description": "Atlassian Remote MCP — provides read/write access to Jira (KAN project at https://twtaishubh.atlassian.net) and Confluence. Authentication is handled via Atlassian OAuth. Sign in with your Atlassian account that has access to the KAN project. Do not store API tokens or credentials in this file."
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "$GITHUB_TOKEN"
+      },
+      "description": "GitHub MCP — provides access to GitHub API for reading issues, labels, and milestones. Requires GITHUB_TOKEN environment variable. Repository: ShubhKN/WealthWise"
     }
   }
 }

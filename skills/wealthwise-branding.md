@@ -96,11 +96,11 @@ purple reserved exclusively for AI-generated content).
 
 |------|-----|-------|
 
-| WW Navy Text | #1A1A1A | H1, H2 headings, primary body text |
+| WW Navy Text | #0F6E56 | H1, H2 headings, primary body text |
 
-| WW Slate | #5A6475 | H3 headings, secondary text, captions |
+| WW Slate | #1D9E75 | H3 headings, secondary text, captions |
 
-| WW Page Tint | #F4F6F8 | Page background, table row alternates, card fills |
+| WW Page Tint | #E1F5EE | Page background, table row alternates, card fills |
 
 
 
@@ -138,7 +138,7 @@ purple reserved exclusively for AI-generated content).
 
 | Gray 4 | rgba(0,0,0,0.18) | Input borders, stronger separators |
 
-| Gray 5 | #F4F6F8 | Table row alternates, subtle backgrounds |
+| Gray 5 | #E1F5EE | Table row alternates, subtle backgrounds |
 
 
 
@@ -224,7 +224,7 @@ h1 {
 
   font-weight: 800;
 
-  color: #1A1A1A;
+  color: #0F6E56;
 
   letter-spacing: -0.3px;
 
@@ -238,7 +238,7 @@ h2 {
 
   font-weight: 700;
 
-  color: #1A1A1A;
+  color: #1D9E75;
 
   border-bottom: 3px solid #1D9E75;
 
@@ -390,7 +390,7 @@ hr {
 
 .rn-header {
 
-  background: #1A1A1A;
+  background:rgb(79, 248, 189);
 
   color: #FFFFFF;
 

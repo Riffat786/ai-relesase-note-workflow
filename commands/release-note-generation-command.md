@@ -1,14 +1,12 @@
 ---
 
+description: Single-command trigger for the full WealthWise release note automation pipeline. Paste or run this command in Claude Code to generate release notes and help topics from GitHub without any further user input.
 
+data_source: GitHub repository ShubhKN/WealthWise — milestone v1.0
 
-description: Single-command trigger for the full WealthWise release note automation pipeline. Paste or run this command in Claude Code to generate release notes and help topics from Jira without any further user input.
+github_issues_url: "https://github.com/ShubhKN/WealthWise/issues?milestone=1"
 
-data_source: Atlassian Jira — project KAN (https://twtaishubh.atlassian.net)
-
-jira_board_url: "https://twtaishubh.atlassian.net/jira/software/projects/KAN/list?jql=project%20%3D%20KAN%20ORDER%20BY%20cf%5B10019%5D%20ASC"
-
-mcp_required: atlassian (configured in .mcp.json)
+mcp_required: github (configured in .mcp.json, requires GITHUB_TOKEN environment variable)
 
 outputs: output/release-note-[version]-whats-new.html, output/release-note-[version]-whats-new.md, output/help-topic-[slug].html       (one per What's New feature), output/help-topic-[slug].md         (one per What's New feature), output/release-note-review-report.md
 
@@ -62,9 +60,9 @@ finish. Do not pause for input at any point.
 
 Prerequisites (verify before starting):
 
-1. The Atlassian MCP server is connected (.mcp.json is present and
+1. The GitHub MCP server is connected (.mcp.json is present and
 
-   the Atlassian MCP at https://mcp.atlassian.com/sse is authenticated).
+   GITHUB_TOKEN environment variable is set with a valid GitHub personal access token).
 
 2. The output/ directory exists and is writable.
 
@@ -82,7 +80,7 @@ STEP 3 — Do not skip any step. Do not ask the user for clarification.
 
 STEP 4 — If a non-critical step fails, log it and continue.
 
-         If the Jira MCP fetch fails, halt and show the error.
+         If the GitHub API fetch fails, halt and show the error.
 
 
 
@@ -102,11 +100,9 @@ When complete, display the pipeline summary block from the orchestrator
 
 
 
-1. **Connects to Atlassian Jira** via MCP and fetches all issues in the
+1. **Connects to GitHub** via MCP and fetches all issues in the
 
-   **KAN** project (https://twtaishubh.atlassian.net) using JQL:
-
-   `project = KAN ORDER BY cf[10019] ASC`
+   **ShubhKN/WealthWise** repository with milestone **v1.0**
 
 
 
