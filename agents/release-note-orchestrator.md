@@ -291,11 +291,13 @@ For each issue in `whats_new[]`, generate a URL-safe slug:
 
 ```
 
-slug = "#" + issue.number + "-" + lowercase_hyphenated(issue.title[0:40])
+slug = issue.number + "-" + lowercase_hyphenated(issue.title[0:40])
 
-Example: #1 "AI Financial Advisor Chat Interface" → "#1-ai-financial-advisor-chat"
+Example: #1 "AI Financial Advisor Chat Interface" → "1-ai-financial-advisor-chat"
 
 ```
+
+CRITICAL: Do NOT include the "#" character in the slug. Hyphens (#) are problematic in filenames and URL references.
 
 
 

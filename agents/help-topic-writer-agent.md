@@ -74,7 +74,7 @@ Verify receipt of:
 
 | feature_name | issue.summary in sentence case |
 
-| slug | lowercase(issue.key)-lowercase-hyphenated(issue.summary, max 40 chars) |
+| slug | Pre-resolved by orchestrator. Format: `[issue.number]-[lowercase-hyphenated-title, max 40 chars]`. Example: `1-ai-financial-advisor-chat`. NO "#" character. |
 
 | output_html | help-topic-[slug].html |
 
@@ -278,95 +278,116 @@ File: `output/[output_html]`
 
 
 
-Build a valid HTML5 file. Requirements:
+Build a valid HTML5 file with complete WealthWise branding compliance. Requirements:
 
 
 
+### Document structure
 - DOCTYPE declaration: `<!DOCTYPE html>`
-
 - Language: `lang="en"`
-
 - Title element: `[feature_name] — WealthWise Help Centre`
+- Encoding: UTF-8
+- Viewport meta tag for responsive scaling
 
-- No external font import, system font stack only
+### CSS — COMPLETE REQUIRED STYLE BLOCK
 
-- All CSS from skills/wealthwise-branding.md inline in a single style
+**CRITICAL:** Every help topic HTML file must include ALL of the following CSS rules inline in a single `<style>` block. Do not omit, abbreviate, or simplify any of these rules. This is what ensures visual consistency across all help topics.
 
-  block
+| Selector | Required CSS rules | Purpose |
+|----------|-------------------|---------|
+| `body` | `font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;` `font-size: 16px;` `line-height: 1.7;` `color: #1A1A1A;` `background: #FFFFFF;` `max-width: 760px;` `margin: 0 auto;` `padding: 2rem 1.5rem 4rem;` | Base typography and layout |
+| `h1` | `font-size: 1.6rem;` `font-weight: 800;` `color: #0F6E56;` `letter-spacing: -0.3px;` `margin: 0 0 0.5rem;` | Feature title (WW Navy, weight 800) |
+| `h2` | `font-size: 1.3rem;` `font-weight: 700;` `color: #1D9E75;` `border-bottom: 3px solid #1D9E75;` `padding-bottom: 0.4rem;` `margin: 2rem 0 1rem;` | Section headings (WW Green with underline) |
+| `h3` | `font-size: 1.02rem;` `font-weight: 600;` `color: #5A6475;` `margin: 1.5rem 0 0.75rem;` | Subheadings (WW Gray) |
+| `p` | `margin-bottom: 1rem;` `color: #1A1A1A;` | Paragraph spacing and color |
+| `strong` | `font-weight: 700;` `color: #1A1A1A;` | Bold text |
+| `ul` | `list-style: none;` `padding: 0;` `margin: 0.5rem 0 1rem;` | Unordered list reset |
+| `ul li` | `padding: 0.3rem 0 0.3rem 1.25rem;` `position: relative;` `color: #1A1A1A;` | List item spacing and padding |
+| `ul li::before` | `content: '';` `position: absolute;` `left: 0;` `top: 0.7rem;` `width: 7px;` `height: 7px;` `border-radius: 50%;` `background: #1D9E75;` | WW Green bullet points (custom) |
+| `ol` | `margin-left: 1.5rem;` `margin-bottom: 1rem;` | Ordered list spacing |
+| `ol li` | `margin-bottom: 0.75rem;` | Ordered list item spacing |
+| `hr` | `border: none;` `border-top: 1px solid rgba(0,0,0,0.09);` `margin: 1.5rem 0 0.75rem;` | Horizontal rule styling |
+| `.version` | `font-size: 0.85rem;` `color: #9AA3AF;` `font-weight: 600;` | Release version meta line |
+| `.tag` | `display: inline-flex;` `align-items: center;` `gap: 4px;` `padding: 2px 9px;` `border-radius: 20px;` `font-size: 0.72rem;` `font-weight: 700;` `margin-left: 0.4rem;` `vertical-align: middle;` | AI tag container |
+| `.tag-ai` | `background-color: #534AB7;` `color: white;` | AI purple badge (WW Purple) |
+| `.tag-security` | `background: #FCEBEB;` `color: #A32D2D;` | Security badge (if needed) |
+| `.tag-deprecated` | `background: #FAEEDA;` `color: #BA7517;` | Deprecated badge (if needed) |
+| `.rn-header` | `background: #1D9E75;` `color: #FFFFFF;` `padding: 1rem 1.5rem;` `margin: -2rem -1.5rem 2rem;` `display: flex;` `align-items: center;` `gap: 0.75rem;` `border-radius: 0 0 12px 12px;` | WealthWise branding header (WW Green background) |
+| `.rn-header .product-name` | `font-size: 1rem;` `font-weight: 700;` `color: #FFFFFF;` | Product name in header |
+| `.rn-header .header-rule` | `font-size: 0.85rem;` `color: rgba(255,255,255,0.55);` | Divider in header |
+| `.rn-known-issue` | `background: #FAEEDA;` `border: 1px solid #BA7517;` `border-radius: 12px;` `padding: 1rem 1.25rem;` `margin: 1rem 0;` | Known issue callout box |
+| `.rn-footer` | `margin-top: 3rem;` `padding-top: 1rem;` `border-top: 1px solid rgba(0,0,0,0.09);` `font-size: 0.8rem;` `color: #9AA3AF;` `text-align: center;` | Footer styling |
+| `a` | `color: #1D9E75;` `text-decoration: none;` `font-weight: 600;` | Links (WW Green) |
+| `a:hover` | `text-decoration: underline;` | Link hover state |
+| `pre` | `background: #1A1A1A;` `color: white;` `padding: 1rem;` `border-radius: 8px;` `overflow-x: auto;` | Code block styling (for API examples) |
+| `code` | `font-family: monospace;` | Inline code font |
+| `table` | `width: 100%;` `border-collapse: collapse;` | Parameter table styling |
+| `th` | `background: #1A1A1A;` `color: white;` `padding: 0.6rem 0.8rem;` | Table header (dark background) |
+| `td` | `padding: 0.55rem 0.8rem;` `border-bottom: 1px solid rgba(0,0,0,0.09);` | Table cell styling |
+| `tr:nth-child(even) td` | `background: #E1F5EE;` | Table row striping (WW Green tint) |
 
-- Additional CSS for help topics:
+### HTML body structure (in order)
 
+1. **Required header block:**
+   ```html
+   <div class="rn-header">
+     <span class="product-name">WealthWise</span>
+     <span class="header-rule">|</span>
+     <span class="header-rule">Help Centre</span>
+   </div>
+   ```
 
+2. **H1 title** with optional AI tag:
+   ```html
+   <h1>[feature_name] <span class="tag tag-ai">AI</span></h1>
+   ```
+   (Include `<span class="tag tag-ai">AI</span>` only if is_ai_feature is true)
 
-| Selector | Key rules |
+3. **Meta line** with class `version`:
+   ```html
+   <p class="version">Release [release_version] · [Month YYYY]</p>
+   ```
 
-|----------|-----------|
+4. **Horizontal rule:** `<hr>`
 
-| `.ht-title` | font-size 1.6rem, font-weight 800, color #1A1A1A |
+5. **Overview section** with three paragraphs (no special container div):
+   - Each paragraph starts with `<strong>What it does:</strong>`, `<strong>Why it matters:</strong>`, or `<strong>Key benefits:</strong>`
+   - If Key benefits is a bulleted list, use `<p><strong>Key benefits:</strong></p>` followed by `<ul><li>...</li>...</ul>`
 
-| `.meta-line` | font-size 0.85rem, color #9AA3AF |
+6. **Horizontal rule:** `<hr>`
 
-| `.overview-box` | background #E1F5EE, left border 4px solid #1D9E75, padding 1rem, border-radius 8px |
+7. **Workflow section** with `<h3>Workflow</h3>` followed by `<ol>` with one `<li>` per step
 
-| `ol li` | padding 0.3rem 0 |
+8. **API Details section (if api_endpoint is not null):**
+   - H3 heading: `<h3>API Details</h3>`
+   - Endpoint: `<p><strong>Endpoint:</strong> [api_endpoint]</p>`
+   - Method: `<p><strong>Method:</strong> [http_method]</p>`
+   - Parameters (if present): HTML `<table>` with th: Parameter, Type, Required, Description
+   - Example Response (if present): `<pre><code>[JSON content]</code></pre>`
 
-| `pre` | background #1A1A1A, color white, padding 1rem, border-radius 8px, overflow-x auto |
+9. **Horizontal rule:** `<hr>`
 
-| `code` | font-family monospace |
+10. **Back-link paragraph:**
+    ```html
+    <p><a href="[release_notes_html_filename]">Back to Release Notes</a> | <a href="#">Help Centre Home</a></p>
+    ```
 
-| `body, h1, h2, h3, p` | font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif |
+11. **Required footer:**
+    ```html
+    <footer class="rn-footer">
+      &copy; 2026 WealthWise. All rights reserved.
+    </footer>
+    ```
 
-| `table` | width 100%, border-collapse collapse |
+### Key rules
 
-| `th` | background #1A1A1A, color white, padding 0.6rem 0.8rem |
-
-| `td` | padding 0.55rem 0.8rem, border-bottom 1px solid rgba(0,0,0,0.09) |
-
-| `tr:nth-child(even) td` | background #E1F5EE |
-
-| `.back-link` | margin-top 2rem, font-size 0.9rem, color #9AA3AF |
-
-| `.back-link a` | color #1D9E75, no underline, font-weight 600; hover adds underline |
-
-
-
-- Required header block at top of body, exactly as specified in
-
-  skills/wealthwise-branding.md's "Required Page Header" section
-
-- H1 with class `ht-title`: the feature name, with
-
-  `<span class="tag tag-ai">AI</span>` appended if is_ai_feature is true
-
-- Meta line with class `meta-line`: `Release [release_version] · [release_date formatted as Month YYYY]`
-
-- Overview in a `div.overview-box` containing the three bullet points as
-
-  a `ul`
-
-- Workflow as an `ol` with one `li` per step
-
-- API Details section (if present) with `h2`, endpoint and method as `p`
-
-  elements, Parameters as an HTML `table`, Example Response as a
-
-  `pre > code` block with the JSON content
-
-- Back-link paragraph with class `back-link` containing two `a` elements
-
-- Horizontal rule then `<p class="version">[release_version]</p>`
-
-- Required footer exactly as specified in skills/wealthwise-branding.md's
-
-  "Required Copyright Footer" section
-
-
-
-The HTML file must be fully self-contained. No external CSS files. The
-
-back-link href points to the actual release_notes_html filename. The
-
-JSON example content in the pre block is raw JSON text, not escaped.
+- No external CSS files. All styles must be inline in the `<style>` block.
+- No external fonts. Use system font stack only.
+- The back-link href must use the actual `release_notes_html_filename` passed from orchestrator, not a placeholder.
+- JSON example content in `<pre><code>` blocks is raw text, not escaped.
+- All colour values must match exactly: WW Green #1D9E75, WW Navy #0F6E56, WW Purple #534AB7, etc.
+- Section headings use `<h3>`, not `<h2>`.
+- Workflow section is numbered `<ol>`, not bullet list.
 
 
 
@@ -374,7 +395,36 @@ JSON example content in the pre block is raw JSON text, not escaped.
 
 
 
-## Step 5 — Return to orchestrator
+## Step 5 — Validate branding compliance before returning
+
+
+
+Before reporting back to the orchestrator, verify that your HTML file meets ALL of these branding compliance checks. Do not return until all checks pass:
+
+### Branding validation checklist
+
+| Check | Must have |
+|-------|-----------|
+| Header block | `<div class="rn-header">` with WealthWise, divider, Help Centre |
+| H1 color | `color: #0F6E56;` (WW Navy) |
+| H1 weight | `font-weight: 800;` |
+| H2 color | `color: #1D9E75;` (WW Green) |
+| H2 border | `border-bottom: 3px solid #1D9E75;` |
+| H2 weight | `font-weight: 700;` |
+| Bullet color | `background: #1D9E75;` (WW Green dots, not generic) |
+| AI tag color | `background-color: #534AB7;` (WW Purple) |
+| Link color | `color: #1D9E75;` (WW Green, not #0066cc) |
+| Footer | `<footer class="rn-footer">` with copyright year 2026 |
+| System font stack | `font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;` (no Google Fonts) |
+| Max width | `max-width: 760px;` on body |
+| Back-link href | Uses actual filename from release_notes_html (not placeholder) |
+| CSS completeness | All selectors from Step 4 table are present in style block |
+
+If any check fails, do not submit. Correct the HTML and re-validate.
+
+---
+
+## Step 6 — Return to orchestrator
 
 
 
@@ -389,3 +439,5 @@ Report back with:
 - Which sections were COMPLETE, INFERRED, or had INSERT flags
 
 - List of any INSERT or INFERRED flags used
+
+- Branding validation result: **PASS** (include this confirmation)
