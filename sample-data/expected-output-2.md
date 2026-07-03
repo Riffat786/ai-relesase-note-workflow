@@ -1,235 +1,145 @@
-# Bug Fix Release Notes — Benchmark Standard
+# Expected Output — Sample 2 (Help Topic Structure Benchmark)
 
-**Document Type:** Documentation Quality Standard
-**Maintained by:** Documentation Standards Team
-**Applies to:** All Bug Fix Release Notes — WealthWise
-**Version:** 1.0
 
----
 
-## Purpose
+## CONTENT BENCHMARK — Help Topic
 
-This document defines the structure, style, and quality criteria for high-quality Bug Fix Release Notes. It serves as the authoritative benchmark for documentation teams producing or reviewing bug fix entries across all product areas.
 
-Every bug fix entry published externally should be measured against this standard before approval.
 
----
+**Source:** `sample-data/sample-1-input.md` — WW-FEAT-301, What's New issue
 
-## Placement in a Release Note Document
 
-Bug fix sections must always appear **after** the New Features and Enhancements section in any release note document. Readers come to a release note primarily to understand what is new; bug fixes are secondary and should be positioned accordingly.
 
-### Required Document Order
+This file shows the required output structure and quality standard for a
 
-1. New Features and Enhancements *(see Feature Release Notes Benchmark Standard)*
-2. **Bug Fixes** ← this section
+help topic generated per What's New feature. Agents use it as a
 
-Never place bug fixes before new features, and never merge bug fix entries into the features section. They serve different reader needs and must remain clearly separated.
+benchmark, all content is replaced with real Jira data at runtime. The
+
+bug-fix table formatting rules previously kept in this file now live in
+
+`skills/release-note-writer-skill.md` and `skills/release-note-reviewer-skill.md`;
+
+this file exists to show what a compliant help topic actually looks like.
+
+
 
 ---
 
-## Benchmark Structure
 
-A compliant Bug Fix section must use a **three-column table** as its primary format. Prose descriptions, bullet lists, and sub-sections are not appropriate for bug fix documentation and must not be used in place of the table.
 
----
+## AI Insight banner with contextual spending alerts <span class="tag tag-ai">AI</span>
 
-## 1. Section Title
 
-### Criteria
 
-The section title must be:
+*Release 1.0 · July 2026*
 
-- **Consistent** — use the exact heading "Bug Fixes" across all release notes; do not vary it ("Defect Corrections," "Resolved Issues," "Patches," etc.)
-- **Formatted as a level-two heading** (`##`) so it sits at the same hierarchy as the Features section
-- **Unadorned** — no version numbers, dates, or counts in the heading itself
+
 
 ---
 
-## 2. Bug Fix Table
 
-### Purpose
 
-The table gives readers a scannable, consistent reference for every resolved issue. Support teams, QA engineers, and customers who experienced a specific bug can quickly locate it by ID or description and confirm it has been resolved.
+### Overview
 
-### Required Table Structure
 
-The table must contain exactly three columns, in this order:
 
-| Bug ID | Description | Fix / Solution |
-|---|---|---|
+**What it does:** Analyses your current month's spending in real time and
 
-No columns may be added, removed, or reordered. Do not merge cells, add sub-rows, or nest content.
+shows a banner on the Dashboard when a category is trending toward a
 
----
+budget overrun, with a specific behavioural recommendation.
 
-## 3. Column Specifications
 
-### Column 1 — Bug ID
 
-#### Purpose
-Provides a unique, traceable reference that links the release note entry to the internal issue tracker, customer support ticket, or QA record.
+**Why it matters:** Previously, you only found out you had overspent
 
-#### Criteria
+after opening the Budget or Transactions screen, often after the fact.
 
-- Must contain the **official issue ID** from the team's tracking system (e.g., `BUG-1042`)
-- Must be formatted **consistently** across all rows — same prefix, same casing, same delimiter
-- Must **never be blank** — every row requires a Bug ID
-- Must **not include** the tracker URL, hyperlink text, or descriptive label — the ID only
+This banner surfaces the warning while you can still act on it.
 
-#### Examples
 
-| Non-compliant | Compliant |
-|---|---|
-| See JIRA for details | BUG-1042 |
-| *(blank)* | DEF-0089 |
-| bug #204 | BUG-0204 |
-| TBD | *(do not publish until ID is assigned)* |
+
+**Key benefits:** Shows the exact category, percentage increase versus
+
+last month, and projected overrun amount in rupees. Gives a specific
+
+recommendation rather than a generic warning. Links directly to the AI
+
+Advisor for a deeper plan. Is dismissible per session so it never feels
+
+intrusive.
+
+
 
 ---
 
-### Column 2 — Description
 
-#### Purpose
-Explains what the bug was — what the user experienced, where it occurred, and under what conditions — in plain language that a non-technical reader can understand.
 
-#### Criteria
+### Workflow
 
-- Must describe the bug **from the user's perspective** — what they saw or experienced, not what failed internally
-- Must include **where the bug occurred** (screen, workflow, feature area, or action that triggered it)
-- Must be written in **past tense** — the bug no longer exists
-- Must be **1–2 sentences maximum** — concise and scannable
-- Must use **plain language** — no stack trace references, error codes, or internal system names unless they are the only way to identify the issue (in which case, define them)
-- Must **not** include the fix or solution — that belongs in Column 3
-- Must **not** begin with "Bug where..." or "Issue with..." — open with the specific behavior
 
-#### Examples
 
-| Non-compliant | Compliant |
-|---|---|
-| NullPointerException in ReportService.java line 204 | The Reports dashboard displayed a blank screen when a date range filter was applied with no saved reports present. |
-| Bug where export didn't work | Exporting a data table to CSV produced an empty file when the table contained more than 500 rows. |
-| Issue with SSO | Users with Single Sign-On (SSO) enabled were redirected to an error page instead of their dashboard after a successful login. |
-| The fix for the broken filter | *(missing — no description of the bug itself)* |
+1. Open the Dashboard. WealthWise checks your spending across all
 
----
+   categories against the same period last month.
 
-### Column 3 — Fix / Solution
+2. If any category is more than 15% above last month's spending for the
 
-#### Purpose
-Confirms that the issue is resolved and tells the reader what was corrected or how the behavior now works — without requiring them to understand the technical implementation.
+   same period, the AI Insight banner appears at the top of the
 
-#### Criteria
+   Dashboard.
 
-- Must **confirm resolution** — the reader should be left with no doubt the bug is fixed
-- Must describe **what the user will now experience** — the corrected behavior, not the code change
-- Must be written in **present tense** — describing current, post-fix behavior
-- Must be **1–2 sentences maximum**
-- Must use **active voice**
-- Must **not** reference internal code changes, pull request numbers, database migrations, or config updates
-- Must **not** repeat the bug description — it should complement Column 2, not restate it
+3. Review the banner: it names the category, the percentage increase,
 
-#### Examples
+   the projected overrun in rupees, and a specific recommendation, for
 
-| Non-compliant | Compliant |
-|---|---|
-| Fixed NullPointerException in line 204 | The Reports dashboard now loads correctly when a date range filter is applied, regardless of whether saved reports are present. |
-| Merged PR #1847 — patched CSV serializer | The CSV export now includes all rows regardless of table size, up to the platform maximum of 10,000 rows. |
-| Resolved | Users with SSO enabled are now directed to their dashboard immediately after a successful login. |
-| Same as before but fixed | *(too vague — describe the corrected behavior explicitly)* |
+   example cooking at home a few more days this week.
+
+4. Select **Ask advisor** on the banner to open the AI Advisor for a more
+
+   detailed plan, or dismiss the banner to continue to your Dashboard for
+
+   this session.
+
+
 
 ---
 
-## 4. Table Formatting Standards
 
-### General Rules
 
-- Use standard markdown table syntax
-- Align column headers and separator rows consistently
-- Do not use HTML table tags in markdown release notes
-- Do not add a fourth column for any reason — additional metadata (affected versions, severity) belongs in internal tracking systems, not in published release notes
-- Sort rows by Bug ID in ascending order unless a different order is explicitly approved by the release manager
+*Back to [Release Notes](release-note-1-0-whats-new.html) | [Help Centre Home](#)*
 
-### Handling Large Fix Lists
 
-If a release includes more than 15 bug fixes, group them by product area using a labeled sub-section above each table segment:
+
+---
+
+
+
+## Notes for Agents Producing This Section
+
+
+
+This example intentionally omits an **API Details** section. WW-FEAT-301
+
+is a consumer-facing dashboard capability with no documented public API
+
+endpoint in its Jira description, so the help-topic-writer-agent should
+
+omit the section entirely and record:
+
+
 
 ```
-### Reporting
 
-| Bug ID | Description | Fix / Solution |
-|---|---|---|
-| ... | ... | ... |
+[INSERT: API endpoint — not specified in Jira issue WW-FEAT-301, feature has no public API surface]
 
-### User Management
-
-| Bug ID | Description | Fix / Solution |
-|---|---|---|
-| ... | ... | ... |
 ```
 
-Sub-section headers must use `###` and must name the product area plainly. Do not use internal team or squad names as sub-section labels.
 
-### Minimum Row Requirement
 
-A Bug Fixes section must contain at least one row. If no bugs were resolved in a given release, omit the Bug Fixes section entirely. Do not publish an empty table or a section with a placeholder row.
+Do not invent an endpoint, method, or parameter table to fill this
 
----
+section. An omitted API Details section is the expected, correct output
 
-## Writing Standards — MSTP
-
-These criteria apply to every cell of every bug fix table, without exception.
-
-### Voice, Tense, and Tone
-
-| Element | Column 2 — Description | Column 3 — Fix / Solution |
-|---|---|---|
-| Tense | Past | Present |
-| Voice | Active | Active |
-| Point of view | User-facing behavior | User-facing behavior |
-| Length | 1–2 sentences | 1–2 sentences |
-
-### Language Rules
-
-- **Do** write every entry as if the reader experienced the bug and needs to confirm it is resolved
-- **Do** use specific, observable language ("displayed a blank screen," "produced an empty file")
-- **Do not** use vague resolution language ("fixed," "resolved," "addressed" as standalone entries in Column 3)
-- **Do not** include internal references of any kind in any column other than the Bug ID
-- **Do not** use passive voice ("the issue was resolved by updating…" → incorrect)
-
-### Prohibited Content
-
-The following must never appear in a published bug fix table:
-
-- Stack traces, error codes, or log output
-- Pull request numbers, commit hashes, or branch names
-- Internal team names, squad names, or engineer names
-- Phrases like "as reported by [customer name]" or "per support ticket [number]"
-- Forward-looking language ("this fix also prepares for…")
-- Severity ratings or priority labels (P1, Critical, Blocker, etc.)
-
----
-
-## Complete Table Example
-
-The following illustrates a compliant Bug Fix section, ready for publication.
-
----
-
-## Bug Fixes
-
-| Bug ID | Description | Fix / Solution |
-|---|---|---|
-| BUG-0931 | The Notifications panel displayed duplicate alerts when a user had more than one browser tab open with the platform. | The Notifications panel now deduplicates alerts in real time across all open sessions for the same account. |
-| BUG-1042 | The Reports dashboard displayed a blank screen when a date range filter was applied with no saved reports present. | The Reports dashboard now displays an empty state message when no reports match the selected filter criteria. |
-| BUG-1078 | Exporting a data table to CSV produced an empty file when the table contained more than 500 rows. | The CSV export now includes all rows regardless of table size, up to the platform maximum of 10,000 rows. |
-| BUG-1104 | Users with Single Sign-On (SSO) enabled were redirected to an error page instead of their dashboard after a successful login. | Users with SSO enabled are now directed to their dashboard immediately after a successful login. |
-| BUG-1119 | The account Settings page failed to save changes to email notification preferences when the user's profile included a secondary email address. | Email notification preferences now save correctly for all account types, including those with a secondary email address on file. |
-
----
-
-**Sign-off threshold:** All criteria must pass before a bug fix section is approved for publication.
-
----
-
-*This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process.*
+for most WealthWise consumer features, it is not a quality failure.
