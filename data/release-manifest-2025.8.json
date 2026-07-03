@@ -1,0 +1,15 @@
+{
+    "releaseVersion": "2025.8",
+    "build": "18.1.1.22690",
+    "releaseTag": "18092",
+    "workItems": [
+      {
+        "workItemId": 30590,
+        "caseNumber": "CS0115527"
+      },
+      {
+        "workItemId": 35653,
+        "caseNumber": "CS0206287"
+      }
+    ]
+  }
