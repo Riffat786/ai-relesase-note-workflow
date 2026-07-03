@@ -3,376 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalMail Pro 1.1 Release Notes</title>
+    <title>GlobalMail Pro Release 1.1 — GlobalMail Pro Help Centre</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #1B2A4A;
-            background-color: #f9fafb;
-        }
-
-        .rn-header {
-            background-color: #1B2A4A;
-            color: white;
-            padding: 20px 40px;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .rn-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: white;
-            min-height: calc(100vh - 180px);
-        }
-
-        .rn-meta {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1B2A4A;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1B2A4A;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2ECC71;
-        }
-
-        h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2C3E6B;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: #374151;
-            line-height: 1.7;
-        }
-
-        strong {
-            color: #1B2A4A;
-            font-weight: 600;
-        }
-
-        ul, ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 8px;
-            color: #374151;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 25px;
-            background-color: #f9fafb;
-        }
-
-        th {
-            background-color: #2C3E6B;
-            color: white;
-            padding: 12px 15px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 14px;
-            color: #374151;
-        }
-
-        tr:hover {
-            background-color: #f3f4f6;
-        }
-
-        code {
-            background-color: #f3f4f6;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            color: #d946ef;
-        }
-
-        .code-block {
-            background-color: #1B2A4A;
-            color: #e5e7eb;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            line-height: 1.5;
-        }
-
-        .feature-box {
-            background-color: #f0fdf4;
-            border-left: 4px solid #2ECC71;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        .feature-box strong {
-            color: #2ECC71;
-        }
-
-        a {
-            color: #2ECC71;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .section-intro {
-            font-size: 16px;
-            color: #374151;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .rn-footer {
-            background-color: #f9fafb;
-            color: #666;
-            padding: 20px 40px;
-            text-align: center;
-            font-size: 13px;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 40px;
-        }
-
-        .rn-footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .highlight {
-            background-color: #fef3c7;
-            padding: 2px 4px;
-            border-radius: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .rn-container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            table {
-                font-size: 12px;
-            }
-
-            td, th {
-                padding: 8px 10px;
-            }
-        }
+      body {
+        font-family: "Inter", -apple-system, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+        color: #1A1A2E;
+        background: #FFFFFF;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      h1 {
+        font-size: 1.65rem;
+        font-weight: 700;
+        color: #1B2A4A;
+        margin: 2rem 0 0.5rem;
+      }
+      h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #1B2A4A;
+        border-bottom: 3px solid #2ECC71;
+        padding-bottom: 0.4rem;
+        margin: 2rem 0 1rem;
+      }
+      h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #2C3E6B;
+        margin: 1.5rem 0 0.75rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: #1A1A2E;
+      }
+      strong {
+        font-weight: 700;
+        color: #1B2A4A;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 1rem;
+      }
+      ul li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        position: relative;
+        color: #1A1A2E;
+        margin-bottom: 0.75rem;
+      }
+      ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.85rem;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2ECC71;
+      }
+      a {
+        color: #2ECC71;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a:hover {
+        color: #27AE60;
+        text-decoration: underline;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+      }
+      table thead {
+        background: #EDF0F7;
+      }
+      table th {
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 700;
+        color: #1B2A4A;
+        border-bottom: 2px solid #2ECC71;
+      }
+      table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #D5DCE8;
+      }
+      table tbody tr:nth-child(even) {
+        background: #F0F3F8;
+      }
+      table tbody tr:hover {
+        background: #EDF0F7;
+      }
+      .rn-header {
+        background: #1B2A4A;
+        color: #FFFFFF;
+        padding: 1rem 1.5rem;
+        margin: -2rem -1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .rn-header .product-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      .rn-header .header-rule {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.55);
+      }
+      .rn-footer {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid #D5DCE8;
+        font-size: 0.8rem;
+        color: #95A5B8;
+        text-align: center;
+      }
+      .version {
+        font-size: 0.85rem;
+        color: #95A5B8;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .known-issue-card {
+        background: #F0F3F8;
+        border: 1px solid #D5DCE8;
+        border-left: 4px solid #F39C12;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .known-issue-card:hover {
+        background: #EDF0F7;
+        box-shadow: 0 2px 4px rgba(27, 42, 74, 0.1);
+        border-left-color: #E67E22;
+      }
+      .known-issue-card h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #1B2A4A;
+        margin: 0 0 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .known-issue-card .issue-id {
+        font-size: 0.75rem;
+        background: #F39C12;
+        color: #FFFFFF;
+        padding: 0.2rem 0.5rem;
+        border-radius: 2px;
+        font-weight: 700;
+      }
+      .known-issue-card p {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #1A1A2E;
+      }
+      .known-issue-card strong {
+        color: #1B2A4A;
+      }
+      .workaround {
+        background: rgba(46, 204, 113, 0.1);
+        padding: 0.5rem 0.75rem;
+        border-left: 2px solid #2ECC71;
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+      }
+      .workaround strong {
+        color: #27AE60;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #D5DCE8;
+        margin: 1.5rem 0 0.75rem;
+      }
     </style>
 </head>
 <body>
-    <div class="rn-header">
-        GlobalMail Pro | Help Centre
+  <div class="rn-header">
+    <span class="product-name">GlobalMail Pro</span>
+    <span class="header-rule">|</span>
+    <span class="header-rule">Help Centre</span>
+  </div>
+
+  <h1>GlobalMail Pro – Release 1.1</h1>
+  <div class="version">Version: 1.1</div>
+  <p><strong>July 2026</strong></p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>Release 1.1 introduces AI-powered real-time address validation, enhanced export capabilities for compliance and audit records, increased batch processing capacity, and resolves critical issues affecting dashboard reliability and compliance reporting accuracy.</p>
+
+  <hr>
+
+  <h2>New Features</h2>
+  <ul>
+    <li>
+      <strong>AI-powered address validation with real-time correction</strong>
+      The Address Validator now checks each address as you enter it, surfaces ranked correction suggestions with confidence scores, and records every result in Validation History with status, confidence percentage, and timestamp.
+      <br><a href="help-topic-kan-42-ai-powered-address-validation.html">Learn more →</a>
+    </li>
+  </ul>
+
+  <h2>Enhancements</h2>
+  <ul>
+    <li><strong>Export compliance results as CSV or PDF</strong> Adds an Export Results button to the Compliance screen. Users can download compliance check results in CSV or PDF format, including shipment ID, destination country, contents, data type, and compliance status. Helps Ops Managers share compliance reports with auditors and regulators.</li>
+    <li><strong>Validation History table now supports CSV export</strong> Operations teams can share audit records without requiring application login.</li>
+    <li><strong>Batch validation now supports up to 10,000 records per job</strong> Increased batch size limit from 5,000 to 10,000 records per validation job. Reduces turnaround time for large datasets from hours to minutes.</li>
+  </ul>
+
+  <h2>Bug Fixes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Bug ID</th>
+        <th>Summary</th>
+        <th>Severity</th>
+        <th>Affected Area</th>
+        <th>Description</th>
+        <th>Fix Applied</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>KAN-23</strong></td>
+        <td>Dashboard metrics not updating in real time</td>
+        <td>High</td>
+        <td>Dashboard</td>
+        <td>Three KPI metrics showed values up to 24 hours old regardless of the selected date range. Addresses Validated, Compliance Passes, and Delivery Success Rate were all affected.</td>
+        <td>All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations.</td>
+      </tr>
+      <tr>
+        <td><strong>KAN-31</strong></td>
+        <td>Compliance report excluding EU shipments</td>
+        <td>Medium</td>
+        <td>Compliance</td>
+        <td>The Compliance Passes metric excluded all shipments destined for EU countries, causing the reported compliance percentage to be higher than the actual rate.</td>
+        <td>EU shipment records are now included in all compliance calculations and exports.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Known Issues</h2>
+  <p>The following issues are present in this release. Please review the workarounds provided.</p>
+
+  <div class="known-issue-card">
+    <h4>
+      <span class="issue-id">KAN-88</span>
+      Bulk validation timeout on files over 50,000 rows
+    </h4>
+    <p>Jobs containing more than 50,000 address records may time out after 30 minutes without completing.</p>
+    <div class="workaround">
+      <strong>Workaround:</strong> Split large files into multiple jobs of 40,000 records or fewer to avoid timeout errors.
     </div>
+  </div>
 
-    <div class="rn-container">
-        <h1>GlobalMail Pro 1.1 Release Notes</h1>
-        <div class="rn-meta">
-            <strong>Release Date:</strong> July 2026
-        </div>
-
-        <h2>What's new in version 1.1</h2>
-        <p class="section-intro">
-            GlobalMail Pro 1.1 introduces real-time address validation powered by AI, enhanced export capabilities, and critical bug fixes to improve dashboard reliability and compliance reporting accuracy.
-        </p>
-
-        <h2>New Features</h2>
-
-        <h3>AI-powered address validation with real-time correction</h3>
-        <p>
-            Validate each address in real time as you enter it. The system enriches it with postal authority data and surfaces ranked correction suggestions with confidence scores before submission. Supports addresses across 157 countries using USPS, Royal Mail, and UPU postal authority data.
-        </p>
-
-        <div class="feature-box">
-            <strong>Component:</strong> Address Validator
-        </div>
-
-        <p><strong>Key capabilities:</strong></p>
-        <ul>
-            <li>Real-time validation as you type</li>
-            <li>Confidence scoring for address corrections</li>
-            <li>Support for 157 countries</li>
-            <li>Postal authority data enrichment</li>
-            <li>Ranked correction suggestions</li>
-        </ul>
-
-        <h3>API Details</h3>
-        <p>The address validation endpoint processes address data and returns corrected values with confidence metrics.</p>
-
-        <p><strong>Endpoint:</strong> <code>POST /api/v1/address/validate</code></p>
-
-        <p><strong>Parameters:</strong></p>
-        <ul>
-            <li><code>address_line_1</code> (required) — Primary address line</li>
-            <li><code>address_line_2</code> (optional) — Secondary address line</li>
-            <li><code>city</code> (required) — City or municipality</li>
-            <li><code>postal_code</code> (required) — Postal code</li>
-            <li><code>country_code</code> (required) — ISO 3166-1 alpha-2 country code</li>
-        </ul>
-
-        <p><strong>Response fields:</strong></p>
-        <ul>
-            <li><code>corrected_address</code> — The validated and corrected address</li>
-            <li><code>confidence_score</code> — Numeric value between 0 and 1</li>
-            <li><code>status</code> — One of Valid, Corrected, or Manual Review</li>
-            <li><code>validation_id</code> — Unique identifier for this validation request</li>
-            <li><code>timestamp</code> — ISO 8601 timestamp of the validation</li>
-        </ul>
-
-        <p>
-            For detailed implementation guidance, see <a href="help-topic-kan-42-ai-powered-address-validation.html">AI-powered address validation help topic</a>.
-        </p>
-
-        <h2>Enhancements</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Component</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Export compliance results as CSV or PDF</strong></td>
-                    <td>Adds an Export Results button to the Compliance screen. Users can download compliance check results in CSV or PDF format, including shipment ID, destination country, contents, data type, and compliance status.</td>
-                    <td>Compliance</td>
-                </tr>
-                <tr>
-                    <td><strong>Validation History table now supports CSV export</strong></td>
-                    <td>The Validation History table can now be exported to CSV format. Operations teams can share audit records without requiring application login.</td>
-                    <td>Validation History</td>
-                </tr>
-                <tr>
-                    <td><strong>Batch validation now supports up to 10,000 records per job</strong></td>
-                    <td>Increased batch size limit from 5,000 to 10,000 records per validation job. Reduces turnaround time for large datasets.</td>
-                    <td>Batch Processing</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Bug Fixes</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Bug ID</th>
-                    <th>Issue</th>
-                    <th>Resolution</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>KAN-23</strong></td>
-                    <td>Dashboard metrics not updating in real time</td>
-                    <td>All three metrics (Addresses Validated, Compliance Passes, Delivery Success Rate) now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations.</td>
-                </tr>
-                <tr>
-                    <td><strong>KAN-31</strong></td>
-                    <td>Compliance report excluding EU shipments</td>
-                    <td>EU shipment records are now included in all compliance calculations and exports.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Known Issues</h2>
-
-        <p class="section-intro">
-            The following issues are present in this release and are under investigation.
-        </p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Issue</th>
-                    <th>Description</th>
-                    <th>Workaround</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>KAN-88</strong></td>
-                    <td>Bulk validation timeout on files over 50,000 rows</td>
-                    <td>Split large files into multiple jobs of 40,000 records or fewer.</td>
-                    <td>Open</td>
-                </tr>
-                <tr>
-                    <td><strong>KAN-89</strong></td>
-                    <td>Incomplete compliance checks for China shipments</td>
-                    <td>Review China shipment compliance results manually for sensitive product categories.</td>
-                    <td>Open</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Getting help</h2>
-
-        <p>
-            Visit our Help Centre for detailed guidance on all features in GlobalMail Pro. For urgent support, contact our technical support team.
-        </p>
+  <div class="known-issue-card">
+    <h4>
+      <span class="issue-id">KAN-89</span>
+      Incomplete compliance checks for China shipments
+    </h4>
+    <p>Compliance checks for shipments to China sometimes return incomplete results because certain technology-related rules are not fully mapped in the system. Users may see a "Limited" status for China shipments, and manual review is required until full regulatory mapping is implemented.</p>
+    <div class="workaround">
+      <strong>Workaround:</strong> Manually review China shipment compliance results using external customs documentation for sensitive product categories.
     </div>
+  </div>
 
-    <div class="rn-footer">
-        <div class="rn-footer-content">
-            &copy; 2026 GlobalMail Pro. All rights reserved.
-        </div>
-    </div>
+  <hr>
+
+  <p>For help with any feature, visit the <strong>Help Centre</strong> or contact our technical support team.</p>
+
+  <footer class="rn-footer">
+    &copy; 2026 GlobalMail Pro. All rights reserved.
+  </footer>
 </body>
 </html>
