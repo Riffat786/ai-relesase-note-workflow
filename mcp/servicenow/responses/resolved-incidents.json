@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "caseNumber": "CS0212109",
+      "status": "Resolved",
+      "priority": "Medium",
+      "customerIssue": "Administrators requested improved control over update files.",
+      "resolution": "Added configuration option within the INI-file editor.",
+      "customerImpact": "Improves update management flexibility.",
+      "rootCause": "Product enhancement requested by customers."
+    },
+    {
+      "caseNumber": "CS0224888",
+      "status": "Resolved",
+      "priority": "Medium",
+      "customerIssue": "Users requested automatic time conversion.",
+      "resolution": "Time converter added to Machine Profile Editor.",
+      "customerImpact": "Reduces manual calculations.",
+      "rootCause": "Usability improvement."
+    },
+    {
+      "caseNumber": "CS0084864",
+      "status": "Resolved",
+      "priority": "High",
+      "customerIssue": "Administrators required better control of automated picking jobs.",
+      "resolution": "Added Cancel and Force Start actions.",
+      "customerImpact": "Improves operational flexibility during production.",
+      "rootCause": "Customer workflow enhancement."
+    },
+    {
+      "caseNumber": "CS0131012",
+      "status": "Resolved",
+      "priority": "Medium",
+      "customerIssue": "Operators requested easier access to distribution and content information.",
+      "resolution": "Added Auto Show Content List and Distribution Information enhancements.",
+      "customerImpact": "Improves visibility of production and distribution data.",
+      "rootCause": "Customer usability enhancement."
+    }
+  ]
+}

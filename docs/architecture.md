@@ -188,4 +188,52 @@ Logs
              ▼
   collected-release-data.json
 ```
-
+```text
+                Azure DevOps
+          (Release Package)
+                     │
+                     ▼
+             Collector Agent
+       ┌─────────────┴─────────────┐
+       ▼                           ▼
+ Azure DevOps MCP           ServiceNow MCP
+ get_work_items()           get_cases()
+       │                           │
+       └─────────────┬─────────────┘
+                     ▼
+      collected-release-data.json
+                     │
+                     ▼
+             Analyzer Agent
+                     │
+                     ▼
+          analyzed-release.json
+                     │
+                     ▼
+              Writer Agent
+                     │
+                     ▼
+             release-notes.md
+                     │
+                     ▼
+             Reviewer Agent
+                     │
+                     ▼
+            review-report.md
+                     │
+                     ▼
+             Document360 MCP
+              create_draft()
+                     │
+                     ▼
+         document360-draft.md
+                     │
+                     ▼
+        Technical Writer Review
+                     │
+                     ▼
+              SME Approval
+                     │
+                     ▼
+                 Publish
+```

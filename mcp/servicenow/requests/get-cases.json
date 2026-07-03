@@ -1,0 +1,10 @@
+{
+    "tool": "get_cases",
+    "releaseVersion": "2025.8",
+    "caseNumbers": [
+      "CS0212109",
+      "CS0224888",
+      "CS0084864",
+      "CS0131012"
+    ]
+  }

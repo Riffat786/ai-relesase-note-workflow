@@ -47,7 +47,29 @@ Create Draft in Document360
       ▼
 Publish Release Notes
 ```
+# How today's process looks like
+```text
+Release Manager
+        │
+        ▼
+Azure DevOps Release
+        │
+        ▼
+Word attachment
+──────────────────────────────────────
+Release Tag: 18095
+Build: 18.1.1.22726
 
+WI 36513   Case CS0212109
+WI 37356   Case CS0224888
+WI 33288   Case CS0084864
+WI 35187   Case CS0131012
+WI 36894   Case CS0131012
+──────────────────────────────────────
+        │
+        ▼
+Technical Writer
+```
 ---
 
 # AI Workflow

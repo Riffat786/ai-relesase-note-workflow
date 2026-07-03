@@ -1,0 +1,116 @@
+{
+  "releaseVersion": "2025.8",
+  "releaseTag": "18095",
+  "build": "18.1.1.22726",
+  "product": "T-DOC",
+  "releaseDate": "2025-08-15",
+  "generatedBy": "Azure DevOps MCP",
+  "workItemCount": 5,
+  "workItems": [
+    {
+      "workItemId": 36513,
+      "title": "Keep local update files option",
+      "type": "Feature",
+      "area": "General",
+      "state": "Closed",
+      "assignedTo": "Development Team",
+      "priority": 2,
+      "tags": [
+        "Release-2025.8",
+        "Customer Request"
+      ],
+      "description": "Introduces a configuration option in the INI-file Editor allowing administrators to control whether update files remain in the client's update image folder after a server update.",
+      "acceptanceCriteria": [
+        "Configuration option is available in the INI-file Editor.",
+        "Administrators can enable or disable the setting.",
+        "Behaviour is verified during update installation.",
+        "Feature passes functional testing."
+      ],
+      "serviceNowCase": "CS0212109"
+    },
+    {
+      "workItemId": 37356,
+      "title": "Time converter functionality",
+      "type": "Feature",
+      "area": "General",
+      "state": "Closed",
+      "assignedTo": "Development Team",
+      "priority": 2,
+      "tags": [
+        "Release-2025.8",
+        "Usability"
+      ],
+      "description": "Adds time conversion functionality to the T-DOC Machine Profile Editor to simplify configuration tasks.",
+      "acceptanceCriteria": [
+        "Users can convert time values directly in the editor.",
+        "Converted values are displayed correctly.",
+        "Configuration is saved successfully.",
+        "Feature passes verification testing."
+      ],
+      "serviceNowCase": "CS0224888"
+    },
+    {
+      "workItemId": 33288,
+      "title": "Cancel or Force start picking jobs",
+      "type": "Feature",
+      "area": "Admin",
+      "state": "Closed",
+      "assignedTo": "Development Team",
+      "priority": 1,
+      "tags": [
+        "Release-2025.8",
+        "Automation"
+      ],
+      "description": "Allows administrators to cancel or force-start automated picking jobs managed by third-party scheduling systems.",
+      "acceptanceCriteria": [
+        "Cancel action is available.",
+        "Force Start action is available.",
+        "System updates job status correctly.",
+        "Feature passes integration testing."
+      ],
+      "serviceNowCase": "CS0084864"
+    },
+    {
+      "workItemId": 35187,
+      "title": "Auto show content list setting",
+      "type": "Feature",
+      "area": "Production",
+      "state": "Closed",
+      "assignedTo": "Development Team",
+      "priority": 2,
+      "tags": [
+        "Release-2025.8",
+        "Production"
+      ],
+      "description": "Adds an Auto Show Content List option allowing operators to scan a load tag and immediately display unit content information.",
+      "acceptanceCriteria": [
+        "Load tag scanning displays unit contents.",
+        "Customer information is displayed.",
+        "Tag information is displayed.",
+        "Feature passes production validation."
+      ],
+      "serviceNowCase": "CS0131012"
+    },
+    {
+      "workItemId": 36894,
+      "title": "Distribution Information Overview",
+      "type": "Enhancement",
+      "area": "Production",
+      "state": "Closed",
+      "assignedTo": "Development Team",
+      "priority": 3,
+      "tags": [
+        "Release-2025.8",
+        "Enhancement"
+      ],
+      "description": "Enhances the Distribution Information Overview by displaying the selected tag ID for each customer.",
+      "acceptanceCriteria": [
+        "Selected tag ID is displayed.",
+        "Information matches the selected customer.",
+        "Display Settings configuration is supported.",
+        "Feature passes regression testing."
+      ],
+      "serviceNowCase": "CS0131012"
+    }
+  ]
+}
