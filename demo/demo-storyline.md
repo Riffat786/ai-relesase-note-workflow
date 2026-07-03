@@ -1,48 +1,65 @@
-# Demo Storyline
+# Release Notes AI Workflow Demonstration
 
 ## Objective
 
-Demonstrate an AI-assisted workflow for generating customer-facing release notes using Jira and implementation notes.
+Demonstrate an AI-assisted workflow that automates the generation, review, and publication of customer-facing release notes, reducing manual effort while ensuring consistent, high-quality documentation.
 
 ---
 
 ## Demo Flow
 
-### Step 1 – Release Data Extraction
+### Step 1 – Prepare Release Input
 
-- Retrieve release-specific Jira issues using the Atlassian MCP server.
-- Read the corresponding implementation notes.
-- Correlate both sources using the Jira Issue Key.
-- Generate a consolidated release dataset (`release-data.md`).
+- Open the sample release information.
+- Review the feature details used as input for release note generation.
 
----
-
-### Step 2 – Release Note Generation
-
-- Read the consolidated release dataset.
-- Generate customer-facing release notes.
-- Organize the content into business-friendly sections.
-
-Output:
-
-- `release-notes.md`
+**Output:**
+- Release input data
 
 ---
 
-### Step 3 – Release Note Review
+### Step 2 – Generate Release Notes
 
-- Review the generated release notes.
-- Validate business accuracy.
-- Check customer readability.
-- Verify template compliance.
-- Ensure publication readiness.
+- Execute the AI-powered release note generation workflow.
+- Generate a structured release note draft based on the predefined template and prompts.
 
-Output:
+**Output:**
+- Generated release notes
 
-- Release Note Review Report
+---
+
+### Step 3 – Review Generated Content
+
+- Review the generated release notes for accuracy and completeness.
+- Validate terminology, formatting, and customer readability.
+- Make any required refinements before publishing.
+
+**Output:**
+- Publication-ready release notes
+
+---
+
+### Step 4 – Publish Release Notes
+
+- Execute the Release Note Publisher.
+- Generate the final HTML output.
+- Verify the published release notes.
+
+**Output:**
+- Published HTML release notes
+
+---
+
+## Business Value
+
+- Reduces manual effort in release note creation.
+- Accelerates the documentation process.
+- Ensures consistent structure and formatting.
+- Improves content quality through AI-assisted review.
+- Produces publication-ready output with minimal rework.
 
 ---
 
 ## Demo Outcome
 
-Successfully demonstrated an end-to-end AI-assisted workflow for release note generation and review.
+Successfully demonstrated an end-to-end AI-assisted workflow for generating, reviewing, and publishing customer-facing release notes, highlighting how AI streamlines documentation while keeping technical writers in control of the final content.
