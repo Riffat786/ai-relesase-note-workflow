@@ -1,7 +1,7 @@
 # Release Notes Documentation Benchmark Standard
 **Document Type:** Documentation Quality Standard
 **Maintained by:** Documentation Standards Team
-**Applies to:** All Feature Release Notes — Enterprise SaaS Platform
+**Applies to:** All Feature Release Notes — WealthWise
 **Version:** 1.0
 ## Purpose
 This document defines the structure, style, and quality criteria for a high-quality feature Release Note. It serves as the authoritative benchmark for documentation teams producing release notes across all product areas. Every release note published externally should be measured against this standard before approval.
@@ -14,10 +14,6 @@ The title must be:
 - **Concise** — no more than 10 words
 - **Action-oriented** — lead with a verb or a clear noun phrase that signals what changed
 - **Free of internal jargon** — avoid system names, ticket references, or engineering terminology
-### Quality Checklist
-- [ ] Title communicates the feature from the user's perspective
-- [ ] Title is free of internal project names, ticket IDs, or acronyms
-- [ ] Title does not start with a version number or date
 ### Examples
 | Non-compliant | Compliant |
 |---|---|
@@ -41,14 +37,6 @@ Close with a plain-language statement of what the reader can now accomplish and 
 - Use **simple, clear language** — write for a business user, not an engineer
 - Keep the summary to **4–6 lines**
 - Avoid bullet points in this section — it must read as a cohesive paragraph
-### Quality Checklist
-- [ ] Opens with the problem or prior limitation ("Previously...")
-- [ ] Introduces the enhancement clearly ("Now...")
-- [ ] Closes with a business value statement
-- [ ] Written in active voice
-- [ ] Addresses reader as "you"
-- [ ] 4–6 lines in length
-- [ ] No bullet points; written as prose
 ### Illustrative Pattern
 > Previously, [describe the limitation or pain point the user experienced]. Now, [describe the new capability or behavior]. [Business value statement — what the user can accomplish and why it matters].
 ## 3. Key Changes Implemented
@@ -65,12 +53,6 @@ Each component sub-section must:
 - Explain what changed and what the user can now do with it
 - Reference UI location, field name, or access path where helpful
 - Avoid internal architecture details, database terms, or implementation notes
-### Quality Checklist
-- [ ] Each component has its own `###` sub-section
-- [ ] Sub-section headers use plain language, not internal references
-- [ ] Each description is 2–3 lines
-- [ ] Components are ordered from the user's point of view
-- [ ] No implementation detail or engineering language present
 ### Example Sub-Section Format
 ```
 ### [Component Name]
@@ -95,13 +77,6 @@ The workflow must:
 - Begin each step with an **imperative verb** ("Navigate," "Select," "Upload," "Confirm")
 - Include **UI path references** where applicable (e.g., Settings → User Management)
 - End with a clear terminal outcome — what the user has when the workflow is complete
-### Quality Checklist
-- [ ] Steps are numbered and in logical sequence
-- [ ] Each step begins with an imperative verb
-- [ ] System responses are described where meaningful
-- [ ] Final step states a clear, concrete outcome
-- [ ] UI paths are included and accurate
-- [ ] No steps are skipped or assumed
 ## 5. Visuals *(Optional)*
 ### Purpose
 Visuals reduce cognitive load for complex features and support readers who process information more effectively through diagrams than prose.
@@ -111,7 +86,7 @@ Include a visual when:
 - The feature introduces a new data structure, hierarchy, or relationship
 - A before/after comparison would make the change immediately obvious
 - The audience includes non-technical stakeholders who benefit from a summary view
-### Visual Type Reference
+### Visual Reference
 | Type | Best Used For |
 |---|---|
 | Linear workflow diagram | Sequential processes with a clear start and end |
@@ -119,9 +94,6 @@ Include a visual when:
 | Before/after comparison table | Changes to existing behavior or UI |
 | Architecture or relationship diagram | New data structures, hierarchies, or integrations |
 | Annotated screenshot | New UI elements or changes to existing screens |
-### Quality Checklist
-- [ ] Appropriate Visual type is used for appropriate content
-- [ ] Description explains what the visual depicts
 ## Writing Standards — Global Criteria
 These criteria apply to every section of every release note, without exception.
 ### Voice and Tone
@@ -145,21 +117,7 @@ The following must never appear in a published release note:
 - Unresolved TODOs, placeholders, or bracketed notes
 - Comparison to competitor products by name
 - Forward-looking statements about unreleased features
-## Release Note Quality Scorecard
-Use this scorecard during peer review and editorial sign-off.
-| Section | Criteria | Pass / Fail |
-|---|---|---|
-| Feature Title | Customer-focused, concise, no jargon | |
-| Summary | Problem → Enhancement → Value structure present | |
-| Summary | Active voice, addresses "you," 4–6 lines | |
-| Key Changes | Each component has a `###` sub-section | |
-| Key Changes | Descriptions are 2–3 lines, plain language | |
-| Workflow *(if included)* | Numbered, imperative verbs, terminal outcome stated | |
-| Visual Suggestion *(if included)* | Type, content, and rationale all specified | |
-| Global | Active voice throughout | |
-| Global | No internal references or jargon | |
-| Global | Addresses reader as "you" | |
 
 **Sign-off threshold:** All criteria must pass before a release note is approved for publication.
 
-*This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process. Last reviewed: June 2026.*
+*This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process.*
