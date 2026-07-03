@@ -227,7 +227,7 @@ critical bugs, and documents [number] known issues.
 
 ---
 
-## ⚠️ Known Issues
+## Known Issues
 
 [Known Issues from Phase 2e]
 ```
@@ -299,8 +299,8 @@ Ensure your content follows **WealthWise brand guidelines** from `skills/wealthw
 | Element | Standard | Example |
 |---|---|---|
 | Product name | Always "WealthWise" | ✓ "WealthWise Release 1.0" |
-| Colours | Primary blue: #2D5A8C | Use in headers, accents |
-| Font | System sans-serif stack | `-apple-system, Segoe UI, sans-serif` |
+| Colours | Primary green: #1D9E75, Secondary: #0F6E56, Light: #E1F5EE, Purple: #534AB7, Dark Purple: #3C3489, Light Purple: #EEEDFE | Use in headers, accents |
+| Font | System sans-serif stack | `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif` |
 | Category icons | Specific emoji per section | 🚀 ✨ 🐛 ⚠️ |
 | Copyright | Required footer | © 2026 WealthWise. All rights reserved. |
 | AI tag (if applicable) | Light blue background, blue text | `<span class="tag tag-ai">AI</span>` |
@@ -321,10 +321,16 @@ Create an HTML version of your release note with:
      <title>WealthWise Release Notes — Version 1.0</title>
      <style>
        /* Branding styles */
-       body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-       .header { background-color: #2D5A8C; color: white; padding: 20px; }
+       body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+       h1 { font-weight: 800; }
+       h2 { font-weight: 700; }
+       h3 { font-weight: 600; }
+       .header { background-color: #1D9E75; color: white; padding: 20px; }
        .section { margin: 20px 0; }
-       .tag { display: inline-block; background: #E3F2FD; color: #2D5A8C; padding: 2px 8px; border-radius: 3px; }
+       .tag { display: inline-block; background: #E1F5EE; color: #1D9E75; padding: 2px 8px; border-radius: 3px; }
+       .tag-ai { background: #E1F5EE; color: #1D9E75; }
+       .tag-security { background: #FFE0E0; color: #C63447; }
+       .tag-deprecated { background: #F3E5F5; color: #6A1B9A; }
      </style>
    </head>
    <body>
@@ -333,6 +339,9 @@ Create an HTML version of your release note with:
        <p>July 2026</p>
      </div>
      <!-- Content sections -->
+     <footer style="background-color: #f5f5f5; padding: 20px; text-align: center; margin-top: 40px; border-top: 1px solid #ddd;">
+       <p>&copy; 2026 WealthWise. All rights reserved.</p>
+     </footer>
    </body>
    </html>
    ```
@@ -383,8 +392,8 @@ Before publishing, verify your release note against this checklist:
 
 **Brand Compliance:**
 - [ ] WealthWise logo/branding present
-- [ ] Correct color palette (#2D5A8C primary)
-- [ ] System font stack used
+- [ ] Correct color palette (#1D9E75 primary, #0F6E56 secondary, #E1F5EE, #534AB7, #3C3489, #EEEDFE)
+- [ ] System font stack used (includes Roboto)
 - [ ] Copyright footer present
 - [ ] Mobile-friendly layout (if HTML)
 

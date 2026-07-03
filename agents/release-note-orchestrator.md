@@ -52,7 +52,7 @@ Run the entire pipeline without pausing for user input at any step.
 
 If a non-critical step fails, log the failure in the review report and
 
-continue. If a critical step fails (Jira fetch or writer agent), halt
+continue. If a critical step fails (GitHub fetch or writer agent), halt
 
 and report the exact failure with context.
 
@@ -141,19 +141,13 @@ only, never to populate output text.
 
 
 
-If the Atlassian MCP is not connected, halt immediately and output:
-
-
+If the GitHub MCP is not connected, halt immediately and output:
 
 ```
 
-PIPELINE HALTED — Atlassian MCP not connected.
+PIPELINE HALTED — GitHub MCP not connected.
 
-To connect: add the Atlassian MCP server in Claude Code settings.
-
-MCP URL: https://mcp.atlassian.com/sse
-
-Then re-run this command.
+To connect: set your GITHUB_TOKEN environment variable with a token scoped to repo, read:org. Then re-run this command.
 
 ```
 

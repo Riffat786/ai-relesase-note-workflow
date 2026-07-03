@@ -306,7 +306,7 @@ Build a valid HTML5 file. Requirements:
 
 | `.meta-line` | font-size 0.85rem, color #9AA3AF |
 
-| `.overview-box` | background #F4F6F8, left border 4px solid #1D9E75, padding 1rem, border-radius 8px |
+| `.overview-box` | background #E1F5EE, left border 4px solid #1D9E75, padding 1rem, border-radius 8px |
 
 | `ol li` | padding 0.3rem 0 |
 
@@ -314,13 +314,15 @@ Build a valid HTML5 file. Requirements:
 
 | `code` | font-family monospace |
 
+| `body, h1, h2, h3, p` | font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif |
+
 | `table` | width 100%, border-collapse collapse |
 
 | `th` | background #1A1A1A, color white, padding 0.6rem 0.8rem |
 
 | `td` | padding 0.55rem 0.8rem, border-bottom 1px solid rgba(0,0,0,0.09) |
 
-| `tr:nth-child(even) td` | background #F4F6F8 |
+| `tr:nth-child(even) td` | background #E1F5EE |
 
 | `.back-link` | margin-top 2rem, font-size 0.9rem, color #9AA3AF |
 

@@ -122,6 +122,18 @@ purple reserved exclusively for AI-generated content).
 
 
 
+### Tag and callout background colours
+
+| Name | Hex | Usage |
+
+|------|-----|-------|
+
+| Tag Security Background | #FCEBEB | Background for `.tag-security` badge in help topics (red/pink tint with Error Red text) |
+
+| Tag Deprecated Background | #FAEEDA | Background for `.tag-deprecated` badge and `.rn-known-issue` callout blocks (amber/tan tint with Caution Amber text) |
+
+
+
 ### Neutrals
 
 | Name | Hex | Usage |
@@ -390,7 +402,7 @@ hr {
 
 .rn-header {
 
-  background:rgb(79, 248, 189);
+  background: #1D9E75;
 
   color: #FFFFFF;
 

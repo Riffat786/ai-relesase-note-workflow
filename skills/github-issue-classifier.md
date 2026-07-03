@@ -2,11 +2,15 @@
 
 ## Purpose
 
-Maps GitHub labels and issue data to WealthWise release note categories:
-- **What's New** — Features, new capabilities
-- **Enhancements** — Improvements to existing features
-- **Bug Fixes** — Bug resolutions
-- **Known Issues** — Disclosed known limitations
+Maps GitHub labels and issue data to WealthWise release note categories.
+
+**See `skills/wealthwise-branding.md` for all visual, typography, and HTML output standards including tag class styling (`.tag-ai`, `.tag-security`, `.tag-deprecated`).**
+
+Categories:
+- **🚀 What's New** — Features, new capabilities
+- **✨ Enhancements** — Improvements to existing features
+- **🐛 Bug Fixes** — Bug resolutions
+- **— Known Issues** — Disclosed known limitations
 
 ## Data Source
 
@@ -15,7 +19,7 @@ Milestone: `v1.0`
 
 ## Classification Rules
 
-### What's New
+### 🚀 What's New
 **Source GitHub labels:** `type: feature`
 **Conditions:**
 - Issue type (via label): `type: feature`
@@ -30,7 +34,7 @@ Milestone: `v1.0`
 
 ---
 
-### Enhancements
+### ✨ Enhancements
 **Source GitHub labels:** `type: enhancement`
 **Conditions:**
 - Issue type: `type: enhancement`
@@ -43,7 +47,7 @@ Milestone: `v1.0`
 
 ---
 
-### Bug Fixes
+### 🐛 Bug Fixes
 **Source GitHub labels:** `type: bug` (but NOT `status: known-issue`)
 **Conditions:**
 - Label: `type: bug`
@@ -58,7 +62,7 @@ Milestone: `v1.0`
 
 ---
 
-### Known Issues
+### — Known Issues
 **Source GitHub labels:** `type: bug` + `status: known-issue`
 **Conditions:**
 - Both labels present: `type: bug` AND `status: known-issue`
@@ -127,6 +131,35 @@ For each issue in milestone v1.0:
 ### AI Flag / Tag
 - If any label contains `component: ai-advisor` or `ai-*` → Apply `tag-ai` badge in output
 - If description mentions "AI", "machine learning", "auto*" → Flag for review (ask writer to confirm AI tag)
+- If label `type: security` or `security-fix` → Apply `tag-security` badge
+- If label `deprecated` or `end-of-life` → Apply `tag-deprecated` badge
+
+### Tag Classes
+
+Three badge classes are available for inline classification:
+
+#### `.tag-ai`
+**When to apply:**
+- Any What's New feature powered by AI (AI Advisor, machine learning models, automated recommendations)
+- Any Enhancement that improves AI functionality
+- Any Bug Fix that affects AI-driven features
+**Visual:** Branded AI indicator per `skills/wealthwise-branding.md`
+
+#### `.tag-security`
+**When to apply:**
+- Security-related enhancements (e.g., authentication improvements, encryption updates)
+- Security fixes (any bug with label `type: security` or `security-fix`, including CVE patches)
+- Vulnerability disclosures or security-related Known Issues
+**Visual:** Security badge per `skills/wealthwise-branding.md`
+
+#### `.tag-deprecated`
+**When to apply:**
+- Feature deprecation announcements (label `deprecated` or `end-of-life`)
+- Deprecated APIs or endpoints in Known Issues
+- Feature removals or end-of-support notices
+**Visual:** Deprecation badge per `skills/wealthwise-branding.md`
+
+**Multiple tags:** If an item qualifies for multiple tags (e.g., a deprecated AI feature), apply all applicable badges.
 
 ### Bug Fix Table Fields
 Required fields for bug fixes (exactly three columns):

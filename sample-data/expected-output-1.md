@@ -116,6 +116,6 @@ finding out after the fact.
 
 ---
 
+© 2026 WealthWise. All rights reserved.
 
-
-## Need help with a feature? Visit the WealthWise Help Centre or ask the AI Advisor.
+Need help? Visit the WealthWise Help Centre or ask the AI Advisor.

@@ -208,17 +208,23 @@ Given one or more drafted release note or help topic files, you:
 
 | B3 | H2 uses WW Green (#1D9E75) border-bottom accent |
 
-| B4 | No Google Fonts import present — system font stack only |
+| B4 | Typography weights: H1 uses font-weight 800, H2 uses font-weight 700, H3 uses font-weight 600 per the branding guide |
 
-| B5 | Category icons match the fixed set and order in `skills/wealthwise-branding.md` |
+| B5 | No Google Fonts import present — system font stack only (font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) |
 
-| B6 | AI-tagged items use `tag-ai` styling (WW Purple family), never WW Green |
+| B6 | Category icons match the fixed set in order: 🚀 What's New, ✨ Enhancements, 🐛 Bug Fixes, — Known Issues (no emoji) |
 
-| B7 | Known Issues wrapped in `.rn-known-issue`, not a plain bullet |
+| B7 | AI-tagged items use `tag-ai` styling (WW Purple family), never WW Green |
 
-| B8 | HTML is self-contained: no external CSS files, no external JS |
+| B8 | Security-tagged items use `tag-security` styling per the branding guide (lines 375-389) |
 
-| B9 | File naming matches the convention in `skills/wealthwise-branding.md` (`release-note-[version]-[slug].html/.md`, `help-topic-[slug].html/.md`) |
+| B9 | Deprecated-tagged items use `tag-deprecated` styling per the branding guide (lines 375-389) |
+
+| B10 | Known Issues wrapped in `.rn-known-issue`, not a plain bullet |
+
+| B11 | HTML is self-contained: no external CSS files, no external JS |
+
+| B12 | File naming matches the convention in `skills/wealthwise-branding.md` (`release-note-[version]-[slug].html/.md`, `help-topic-[slug].html/.md`) |
 
 
 
@@ -310,7 +316,7 @@ Write the report using this structure:
 
 
 
-### Branding compliance (B1-B9)
+### Branding compliance (B1-B12)
 
 [Same table format]
 
@@ -354,11 +360,11 @@ Corrected:  [replacement text]
 
 | Writing standards (W)     | X / 10    |
 
-| Branding (B)              | X / 9     |
+| Branding (B)              | X / 12    |
 
 | Hyperlinks (H)            | X / 3     |
 
-| **Total**                 | **X / 39**|
+| **Total**                 | **X / 42**|
 
 
 

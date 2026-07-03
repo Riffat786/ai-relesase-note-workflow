@@ -139,12 +139,13 @@ This document records validation findings, quality checkpoints, and test results
 |---|---|---|
 | Product name | ⏳ Pending | Every page title contains "WealthWise" |
 | Logo placement | ⏳ Pending | Logo in header; version in release notes title |
-| Colour palette | ⏳ Pending | Primary: #2D5A8C (WealthWise blue); Secondary: #F79646 (accent) |
-| Category icons | ⏳ Pending | What's New: 🚀; Enhancements: ✨; Bug Fixes: 🐛; Known Issues: ⚠️ |
-| Font stack | ⏳ Pending | System fonts: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif |
+| Colour palette | ⏳ Pending | Primary: #1D9E75 (WW Green), #0F6E56 (WW Dark Green); AI Accents: #534AB7 (WW Purple), #3C3489 (WW Dark Purple); Supporting: #E1F5EE (Green Tint), #EEEDFE (Purple Tint) |
+| Category icons | ⏳ Pending | What's New: 🚀; Enhancements: ✨; Bug Fixes: 🐛; Known Issues: — |
+| Font stack | ⏳ Pending | System fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif |
 | HTML structure | ⏳ Pending | Valid semantic HTML; proper heading hierarchy (h1 → h2 → h3) |
 | Footer | ⏳ Pending | Required: "© 2026 WealthWise. All rights reserved." |
-| Tag styling | ⏳ Pending | AI tag: `.tag.tag-ai` with light background, blue text |
+| Tag styling | ⏳ Pending | Tag classes: .tag-ai (background #EEEDFE, text #3C3489); .tag-security (background #FCEBEB, text #A32D2D); .tag-deprecated (background #FAEEDA, text #BA7517) |
+| Typography weights | ⏳ Pending | H1: 800 weight; H2: 700 weight; H3: 600 weight (per branding guide lines 161-165) |
 | Responsive layout | ⏳ Pending | Mobile-friendly; readable on phone, tablet, desktop |
 | CSS embedded | ⏳ Pending | All styles in `<style>` block; no external stylesheets |
 

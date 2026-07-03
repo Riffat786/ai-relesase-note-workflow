@@ -121,7 +121,7 @@ Skills are reusable AI instructions that define expertise and writing standards.
 **Role:** Brand authority defining visual and verbal identity.
 
 **Contents:**
-- Colour palette (#2D5A8C primary blue)
+- Colour palette (#1D9E75 WW Green primary, #0F6E56 WW Dark Green for text)
 - Typography and font stack
 - HTML template and CSS
 - Category icons and tag styling
@@ -260,7 +260,7 @@ Agents are AI workflows that execute multi-step tasks without user intervention.
 5. **Assemble full release note**
    - Title: "WealthWise — Release 1.0 (July 2026)"
    - Intro paragraph with category counts
-   - Four sections in order: 🚀 What's New, ✨ Enhancements, 🐛 Bug Fixes, ⚠️ Known Issues
+   - Four sections in order: 🚀 What's New, ✨ Enhancements, 🐛 Bug Fixes, — Known Issues
 
 6. **Generate HTML version**
    - Apply WealthWise branding (colors, fonts, layout)
@@ -351,7 +351,7 @@ output/help-topic-#3-[next-feature-slug].html
 
 4. **Check branding compliance**
    - WealthWise logo/name present
-   - Colour palette correct (#2D5A8C)
+   - Colour palette correct (#1D9E75 WW Green, #0F6E56 WW Dark Green, #E1F5EE WW Green Tint, #534AB7 WW Purple for AI-exclusive content)
    - System font stack used
    - Category icons present (🚀 ✨ 🐛 ⚠️)
    - Copyright footer present

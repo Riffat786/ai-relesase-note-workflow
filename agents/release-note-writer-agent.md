@@ -300,7 +300,9 @@ Build a valid HTML5 file. Requirements:
 
   `<span class="tag tag-ai">AI</span>` immediately after the feature name
 
-  for any AI-driven feature
+  for any AI-driven feature. **Note:** Only `.tag-ai` is used in release notes;
+  security and deprecated tags (`.tag-security`, `.tag-deprecated`) are
+  defined in skills/wealthwise-branding.md for help topics only
 
 - Enhancements as `h2` (with the ✨ icon) followed by a `ul`
 
