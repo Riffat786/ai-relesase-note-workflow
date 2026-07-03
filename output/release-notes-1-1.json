@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "product": "GlobalMail Pro",
+    "version": "1.1",
+    "release_date": "2026-07-03",
+    "release_cycle": "July 2026",
+    "generated_at": "2026-07-03T00:00:00Z"
+  },
+  "release_notes": {
+    "new_features": [
+      {
+        "issue_key": "KAN-42",
+        "title": "AI-powered address validation with real-time correction",
+        "description": "Validate each address in real time as you enter it. The system enriches it with postal authority data and surfaces ranked correction suggestions with confidence scores before submission. Supports addresses across 157 countries using USPS, Royal Mail, and UPU postal authority data.",
+        "help_topic_url": "help-topic-kan-42-ai-powered-address-validation.html",
+        "priority": "High",
+        "component": "Address Validator",
+        "api_details": {
+          "endpoint": "POST /api/v1/address/validate",
+          "parameters": {
+            "address_line_1": "required",
+            "address_line_2": "optional",
+            "city": "required",
+            "postal_code": "required",
+            "country_code": "required, ISO 3166-1 alpha-2"
+          },
+          "response_fields": [
+            "corrected_address",
+            "confidence_score (0-1)",
+            "status (Valid/Corrected/Manual Review)",
+            "validation_id",
+            "timestamp"
+          ]
+        }
+      }
+    ],
+    "enhancements": [
+      {
+        "issue_key": "KAN-51",
+        "title": "Export compliance results as CSV or PDF",
+        "description": "Adds an Export Results button to the Compliance screen. Users can download compliance check results in CSV or PDF format, including shipment ID, destination country, contents, data type, and compliance status.",
+        "priority": "Medium",
+        "component": "Compliance"
+      },
+      {
+        "issue_key": "KAN-52",
+        "title": "Validation History table now supports CSV export",
+        "description": "The Validation History table can now be exported to CSV format. Operations teams can share audit records without requiring application login.",
+        "priority": "Medium",
+        "component": "Validation History"
+      },
+      {
+        "issue_key": "KAN-53",
+        "title": "Batch validation now supports up to 10,000 records per job",
+        "description": "Increased batch size limit from 5,000 to 10,000 records per validation job. Reduces turnaround time for large datasets.",
+        "priority": "Low",
+        "component": "Batch Processing"
+      }
+    ],
+    "bug_fixes": [
+      {
+        "issue_key": "KAN-23",
+        "title": "Dashboard metrics not updating in real time",
+        "summary": "Three KPI metrics showed values up to 24 hours old regardless of selected date range.",
+        "resolution": "All three metrics now refresh on every page load and update in the background every 15 minutes. EU shipment data is included in Compliance Pass calculations.",
+        "affected_metrics": [
+          "Addresses Validated",
+          "Compliance Passes",
+          "Delivery Success Rate"
+        ],
+        "priority": "Highest",
+        "component": "Dashboard"
+      },
+      {
+        "issue_key": "KAN-31",
+        "title": "Compliance report excluding EU shipments",
+        "summary": "The Compliance Passes metric excluded all shipments destined for EU countries, causing reported compliance percentage to be higher than actual rate.",
+        "resolution": "EU shipment records are now included in all compliance calculations and exports.",
+        "priority": "High",
+        "component": "Compliance"
+      }
+    ],
+    "known_issues": [
+      {
+        "issue_key": "KAN-88",
+        "title": "Bulk validation timeout on files over 50,000 rows",
+        "description": "Jobs containing more than 50,000 address records may time out after 30 minutes without completing.",
+        "workaround": "Split large files into multiple jobs of 40,000 records or fewer.",
+        "priority": "Medium",
+        "component": "Batch Processing",
+        "status": "Open"
+      },
+      {
+        "issue_key": "KAN-89",
+        "title": "Incomplete compliance checks for China shipments",
+        "description": "Compliance checks for shipments to China sometimes return incomplete results because certain technology-related rules are not fully mapped in the system. Users may see a Limited status for China shipments.",
+        "workaround": "Review China shipment compliance results manually for sensitive product categories.",
+        "priority": "Medium",
+        "component": "Compliance",
+        "status": "Open"
+      }
+    ]
+  }
+}

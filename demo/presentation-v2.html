@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalMail Pro - Automated Release Notes Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gmp-navy: #1B2A4A;
+            --gmp-green: #2ECC71;
+            --gmp-light-navy: #2C3E6B;
+            --gmp-navy-tint: #EDF0F7;
+            --gmp-green-tint: #E8F8F0;
+            --text-dark: #1A1A2E;
+            --gray-1: #6C7A8D;
+            --gray-2: #95A5B8;
+            --gray-3: #D5DCE8;
+            --before-color: #E74C3C;
+            --after-color: #27AE60;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .presentation-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            height: 90vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header with Navigation */
+        .presentation-header {
+            background: linear-gradient(135deg, var(--gmp-navy) 0%, var(--gmp-light-navy) 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: var(--gmp-green);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: #27AE60;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .nav-button:disabled {
+            background: var(--gray-2);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .slide-counter {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .slide-container {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Slide Content */
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .slide-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gmp-navy);
+            margin-bottom: 20px;
+        }
+
+        .slide-subtitle {
+            font-size: 28px;
+            color: var(--gmp-green);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Slide 1: Landing Page */
+        .slide-1 {
+            background: linear-gradient(135deg, var(--gmp-navy) 0%, var(--gmp-light-navy) 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px;
+        }
+
+        .landing-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .landing-content h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .landing-content p {
+            font-size: 32px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: var(--gmp-green);
+            margin-top: 30px;
+            font-weight: 500;
+        }
+
+        /* Slide 2: Before/After */
+        .slide-2 {
+            flex-direction: column;
+            background: white;
+        }
+
+        .before-after-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .ba-button {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border: 3px solid;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .ba-button.before {
+            border-color: var(--before-color);
+            color: var(--before-color);
+            background: transparent;
+        }
+
+        .ba-button.before.active {
+            background: var(--before-color);
+            color: white;
+        }
+
+        .ba-button.after {
+            border-color: var(--after-color);
+            color: var(--after-color);
+            background: transparent;
+        }
+
+        .ba-button.after.active {
+            background: var(--after-color);
+            color: white;
+        }
+
+        .workflow-container {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            padding: 40px;
+            border-radius: 15px;
+            background: var(--gmp-navy-tint);
+            overflow-y: auto;
+        }
+
+        .workflow-container.active {
+            display: flex;
+        }
+
+        .workflow-container.before {
+            background: rgba(231, 76, 60, 0.08);
+            border: 3px solid var(--before-color);
+        }
+
+        .workflow-container.after {
+            background: rgba(39, 174, 96, 0.08);
+            border: 3px solid var(--after-color);
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            animation: slideInStep 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .workflow-step:nth-child(1) { animation-delay: 0.1s; }
+        .workflow-step:nth-child(2) { animation-delay: 0.3s; }
+        .workflow-step:nth-child(3) { animation-delay: 0.5s; }
+        .workflow-step:nth-child(4) { animation-delay: 0.7s; }
+        .workflow-step:nth-child(5) { animation-delay: 0.9s; }
+        .workflow-step:nth-child(6) { animation-delay: 1.1s; }
+        .workflow-step:nth-child(7) { animation-delay: 1.3s; }
+        .workflow-step:nth-child(8) { animation-delay: 1.5s; }
+        .workflow-step:nth-child(9) { animation-delay: 1.7s; }
+
+        @keyframes slideInStep {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .workflow-container.before .step-icon {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--before-color);
+        }
+
+        .workflow-container.after .step-icon {
+            background: rgba(39, 174, 96, 0.2);
+            color: var(--after-color);
+        }
+
+        .step-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 18px;
+        }
+
+        .arrow-connector {
+            text-align: center;
+            font-size: 24px;
+            color: var(--gray-2);
+            margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .time-box {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 28px;
+            margin-top: 20px;
+            animation: scaleIn 0.6s ease-out 2s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .time-box.before {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--before-color);
+            border: 3px solid var(--before-color);
+        }
+
+        .time-box.after {
+            background: rgba(39, 174, 96, 0.2);
+            color: var(--after-color);
+            border: 3px solid var(--after-color);
+        }
+
+        .time-saved {
+            padding: 25px;
+            background: var(--gmp-green-tint);
+            border: 3px solid var(--after-color);
+            border-radius: 15px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--after-color);
+            text-align: center;
+            margin-top: 20px;
+            animation: scaleIn 0.6s ease-out 2.5s both;
+        }
+
+        /* Slide 3: Detailed Workflow */
+        .detailed-workflow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .workflow-phase {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            animation: slideInStep 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .workflow-phase:nth-child(1) { animation-delay: 0.2s; }
+        .workflow-phase:nth-child(2) { animation-delay: 0.4s; }
+        .workflow-phase:nth-child(3) { animation-delay: 0.6s; }
+        .workflow-phase:nth-child(4) { animation-delay: 0.8s; }
+        .workflow-phase:nth-child(5) { animation-delay: 1s; }
+        .workflow-phase:nth-child(6) { animation-delay: 1.2s; }
+
+        .phase-number {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gmp-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .phase-content {
+            flex: 1;
+            background: var(--gmp-navy-tint);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--gmp-green);
+        }
+
+        .phase-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gmp-navy);
+            margin-bottom: 10px;
+        }
+
+        .phase-description {
+            color: var(--gray-1);
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .phase-time {
+            display: inline-block;
+            background: var(--gmp-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Slide 4: Demo */
+        .slide-4 {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .demo-container {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--gmp-navy-tint) 0%, var(--gmp-green-tint) 100%);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            border: 4px dashed var(--gmp-green);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .demo-icon {
+            font-size: 100px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .demo-text {
+            font-size: 32px;
+            color: var(--gmp-navy);
+            font-weight: 600;
+        }
+
+        .demo-subtitle {
+            font-size: 20px;
+            color: var(--gmp-green);
+        }
+
+        /* Slide 5: Thank You */
+        .slide-5 {
+            background: linear-gradient(135deg, var(--gmp-navy) 0%, var(--gmp-light-navy) 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .thank-you-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .thank-you-content h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-content p {
+            font-size: 32px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin-top: 50px;
+            font-size: 22px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(46, 204, 113, 0.3);
+        }
+
+        /* Footer */
+        .presentation-footer {
+            background: var(--gmp-navy);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .keyboard-hint {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+            }
+
+            .slide-title {
+                font-size: 36px;
+            }
+
+            .slide-subtitle {
+                font-size: 20px;
+            }
+
+            .landing-content h1 {
+                font-size: 48px;
+            }
+
+            .landing-content p {
+                font-size: 20px;
+            }
+
+            .landing-icon {
+                font-size: 80px;
+            }
+
+            .before-after-buttons {
+                flex-direction: column;
+            }
+
+            .ba-button {
+                min-width: 100%;
+            }
+
+            .presentation-header {
+                flex-direction: column;
+            }
+        }
+
+        /* Scrollbar styling */
+        .detailed-workflow::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .detailed-workflow::-webkit-scrollbar-track {
+            background: var(--gmp-navy-tint);
+        }
+
+        .detailed-workflow::-webkit-scrollbar-thumb {
+            background: var(--gmp-green);
+            border-radius: 5px;
+        }
+
+        .detailed-workflow::-webkit-scrollbar-thumb:hover {
+            background: #27AE60;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-wrapper">
+        <!-- Header -->
+        <div class="presentation-header">
+            <div class="header-title">GlobalMail Pro | Automated Release Notes Workflow</div>
+            <div class="header-nav">
+                <button class="nav-button" id="prevBtn" onclick="previousSlide()">← Previous</button>
+                <span class="slide-counter"><span id="currentSlide">1</span> / 5</span>
+                <button class="nav-button" id="nextBtn" onclick="nextSlide()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Slides -->
+        <div class="slide-container">
+            <!-- Slide 1: Landing -->
+            <div class="slide slide-1 active">
+                <div class="landing-content">
+                    <div class="landing-icon">📋</div>
+                    <h1>GlobalMail Pro</h1>
+                    <h1 style="font-size: 56px; margin-top: -20px;">Automated Release Notes Workflow</h1>
+                    <p>Transforming Documentation from Hours to Minutes</p>
+                    <div class="tagline">AI-Powered Release Notes & Help Topic Generation</div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Before/After -->
+            <div class="slide slide-2">
+                <h2 class="slide-title">The Transformation</h2>
+                <p class="slide-subtitle">Manual vs. Automated Workflow</p>
+
+                <div class="before-after-buttons">
+                    <button class="ba-button before active" onclick="toggleView('before')">❌ Before Automation</button>
+                    <button class="ba-button after" onclick="toggleView('after')">✅ After Automation</button>
+                </div>
+
+                <!-- Before View -->
+                <div class="workflow-container before active">
+                    <div class="workflow-step"><div class="step-icon">1️⃣</div><div class="step-text">Gather Jira Issues</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">2️⃣</div><div class="step-text">Manual Classification</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">3️⃣</div><div class="step-text">Write Release Notes</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">4️⃣</div><div class="step-text">Create Help Topics</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">5️⃣</div><div class="step-text">Manual QA Review</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">6️⃣</div><div class="step-text">Format & Publish</div></div>
+                    <div class="time-box before">⏱️ 40-60 Hours</div>
+                </div>
+
+                <!-- After View -->
+                <div class="workflow-container after">
+                    <div class="workflow-step"><div class="step-icon">🚀</div><div class="step-text">Automated Orchestration</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">⚡</div><div class="step-text">AI-Powered Generation</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">✅</div><div class="step-text">Release Notes (HTML, MD, JSON) + Help Topics (HTML, MD)</div></div>
+                    <div class="arrow-connector">↓</div>
+                    <div class="workflow-step"><div class="step-icon">📊</div><div class="step-text">Automatic QA Review & Quality Report</div></div>
+                    <div class="time-box after">⏱️ 2-4 Hours</div>
+                    <div class="time-saved">🎯 90% Time Saved!</div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Detailed -->
+            <div class="slide slide-3">
+                <h2 class="slide-title">End-to-End Automation Workflow</h2>
+                <p class="slide-subtitle">Complete Pipeline Architecture with Timings</p>
+
+                <div class="detailed-workflow">
+                    <div class="workflow-phase">
+                        <div class="phase-number">1️⃣</div>
+                        <div class="phase-content">
+                            <div class="phase-title">📥 Jira Issue Extraction</div>
+                            <div class="phase-description">Fetch all issues from KAN project via Atlassian MCP</div>
+                            <span class="phase-time">⏱️ 2-3 minutes</span>
+                        </div>
+                    </div>
+                    <div class="workflow-phase">
+                        <div class="phase-number">2️⃣</div>
+                        <div class="phase-content">
+                            <div class="phase-title">🏷️ Issue Classification</div>
+                            <div class="phase-description">Classify: New Features, Enhancements, Bugs, Known Issues</div>
+                            <span class="phase-time">⏱️ 1 minute</span>
+                        </div>
+                    </div>
+                    <div class="workflow-phase">
+                        <div class="phase-number">3️⃣</div>
+                        <div class="phase-content">
+                            <div class="phase-title">📝 Release Notes Generation</div>
+                            <div class="phase-description">Generate HTML (branded), Markdown, JSON formats with cross-links</div>
+                            <span class="phase-time">⏱️ 5-10 minutes</span>
+                        </div>
+                    </div>
+                    <div class="workflow-phase">
+                        <div class="phase-number">4️⃣</div>
+                        <div class="phase-content">
+                            <div class="phase-title">📚 Help Topic Generation</div>
+                            <div class="phase-description">Create help topic per new feature with API documentation</div>
+                            <span class="phase-time">⏱️ 5-8 minutes</span>
+                        </div>
+                    </div>
+                    <div class="workflow-phase">
+                        <div class="phase-number">5️⃣</div>
+                        <div class="phase-content">
+                            <div class="phase-title">✅ Quality Review & Auto-fix</div>
+                            <div class="phase-description">22-point checklist, 7-criterion audit, automatic high/medium fixes</div>
+                            <span class="phase-time">⏱️ 3-5 minutes</span>
+                        </div>
+                    </div>
+                    <div class="workflow-phase">
+                        <div class="phase-number">📤</div>
+                        <div class="phase-content" style="border-left-color: var(--gmp-green); background: var(--gmp-green-tint);">
+                            <div class="phase-title" style="color: var(--gmp-green);">🎁 Output Package Ready</div>
+                            <div class="phase-description"><strong>Total: 20-35 minutes to first draft</strong> → Human analysis → Validation → Updates</div>
+                            <span class="phase-time" style="background: var(--gmp-green);">Ready!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Demo -->
+            <div class="slide slide-4">
+                <h2 class="slide-title">Live Demonstration</h2>
+                <p class="slide-subtitle">End-to-End Workflow in Action</p>
+
+                <div class="demo-container">
+                    <div class="demo-icon">🎬</div>
+                    <div class="demo-text">Video Demo Placeholder</div>
+                    <div class="demo-subtitle">Video will be embedded here</div>
+                    <div class="demo-subtitle" style="font-size: 16px; margin-top: 20px;">
+                        (End-to-end automation workflow video - to be added)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Thank You -->
+            <div class="slide slide-5">
+                <div class="thank-you-icon">🙏</div>
+                <div class="thank-you-content">
+                    <h1>Thank You</h1>
+                    <p>Questions & Discussion</p>
+                    <div class="contact-info">
+                        <p><strong>GlobalMail Pro</strong></p>
+                        <p style="margin-top: 15px;">Transforming Documentation Automation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="presentation-footer">
+            <span class="keyboard-hint">Use ← → arrow keys or click buttons to navigate | Slide 2: Click before/after buttons for workflow view</span>
+            <span>GlobalMail Pro © 2026</span>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+
+            document.getElementById('currentSlide').textContent = currentSlide;
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        function toggleView(view) {
+            const beforeBtn = document.querySelector('.ba-button.before');
+            const afterBtn = document.querySelector('.ba-button.after');
+            const beforeContainer = document.querySelector('.workflow-container.before');
+            const afterContainer = document.querySelector('.workflow-container.after');
+
+            if (view === 'before') {
+                beforeBtn.classList.add('active');
+                afterBtn.classList.remove('active');
+                beforeContainer.classList.add('active');
+                afterContainer.classList.remove('active');
+            } else {
+                afterBtn.classList.add('active');
+                beforeBtn.classList.remove('active');
+                afterContainer.classList.add('active');
+                beforeContainer.classList.remove('active');
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') nextSlide();
+            else if (event.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

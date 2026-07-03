@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-powered address validation with real-time correction — GlobalMail Pro Help</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #1B2A4A;
+            background-color: #f9fafb;
+        }
+
+        .rn-header {
+            background-color: #1B2A4A;
+            color: white;
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .rn-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+            min-height: calc(100vh - 180px);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B2A4A;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1B2A4A;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2ECC71;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C3E6B;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        strong {
+            color: #1B2A4A;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            background-color: #f9fafb;
+        }
+
+        th {
+            background-color: #2C3E6B;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+
+        code {
+            background-color: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #d946ef;
+        }
+
+        .code-block {
+            background-color: #1B2A4A;
+            color: #e5e7eb;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid #2C3E6B;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            color: #2C3E6B;
+        }
+
+        .benefits-list {
+            background-color: #f0fdf4;
+            border-left: 4px solid #2ECC71;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .benefits-list strong {
+            color: #2ECC71;
+        }
+
+        a {
+            color: #2ECC71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section-intro {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .rn-footer {
+            background-color: #f9fafb;
+            color: #666;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 13px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 40px;
+        }
+
+        .rn-footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step-number {
+            background-color: #2ECC71;
+            color: white;
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 50%;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        ol > li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .rn-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            td, th {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rn-header">
+        GlobalMail Pro | Help Centre
+    </div>
+
+    <div class="rn-container">
+        <h1>AI-powered address validation with real-time correction</h1>
+        <p class="section-intro">
+            Learn how to use GlobalMail Pro's real-time address validation to improve data quality and reduce delivery errors.
+        </p>
+
+        <h2>Overview</h2>
+
+        <p>
+            GlobalMail Pro 1.1 introduces AI-powered address validation that validates each address in real time as you enter it. The system enriches addresses with postal authority data and surfaces ranked correction suggestions with confidence scores before submission.
+        </p>
+
+        <p>
+            This feature supports addresses across 157 countries using data from USPS, Royal Mail, and UPU postal authority sources.
+        </p>
+
+        <div class="benefits-list">
+            <strong>Benefits:</strong>
+            <ul style="margin-top: 10px; margin-bottom: 0;">
+                <li>Reduce undeliverable shipments by validating addresses before submission</li>
+                <li>See correction suggestions ranked by confidence score</li>
+                <li>Ensure data consistency across your entire address database</li>
+                <li>Support international shipping to 157 countries</li>
+            </ul>
+        </div>
+
+        <h2>How to use address validation</h2>
+
+        <h3>Validate a single address</h3>
+
+        <ol>
+            <li>Open a form or entry screen that includes address fields</li>
+            <li>Enter the primary address line in the Address Line 1 field</li>
+            <li>Add optional secondary address information in Address Line 2 (if applicable)</li>
+            <li>Enter the city or municipality</li>
+            <li>Enter the postal code</li>
+            <li>Select the country code (ISO 3166-1 alpha-2 format)</li>
+            <li>The system automatically validates each field as you enter data</li>
+            <li>If the system detects a potential correction, a suggestion appears below the field showing the corrected address and a confidence score</li>
+            <li>Review the suggested correction and accept or edit as needed</li>
+            <li>Submit the form to save the validated address</li>
+        </ol>
+
+        <h3>Interpret confidence scores</h3>
+
+        <p>The system returns a confidence score between 0 and 1 for each validation:</p>
+
+        <ul>
+            <li><strong>0.95 to 1.0</strong> — Highly confident correction. Accept this suggestion unless you have specific knowledge that contradicts it</li>
+            <li><strong>0.85 to 0.94</strong> — Confident correction. Review and accept most suggestions at this level</li>
+            <li><strong>0.75 to 0.84</strong> — Moderately confident. Compare the suggestion to your records before accepting</li>
+            <li><strong>Below 0.75</strong> — Lower confidence. Manually verify the address or consult postal authority records</li>
+        </ul>
+
+        <h3>Address validation status</h3>
+
+        <p>After validation, each address receives one of three status values:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Valid</strong></td>
+                    <td>The address matches postal authority records with high confidence</td>
+                    <td>Proceed to next step</td>
+                </tr>
+                <tr>
+                    <td><strong>Corrected</strong></td>
+                    <td>The system modified the address to match postal records</td>
+                    <td>Accept or edit before submitting</td>
+                </tr>
+                <tr>
+                    <td><strong>Manual Review</strong></td>
+                    <td>The system needs more information or cannot validate with certainty</td>
+                    <td>Research the address manually or contact the recipient</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Batch validation</h2>
+
+        <p>You can validate large address datasets using the batch validation feature. Batch validation supports up to 10,000 records per job.</p>
+
+        <h3>To validate a batch:</h3>
+
+        <ol>
+            <li>Navigate to the Batch Validation screen</li>
+            <li>Upload your CSV or Excel file containing address records</li>
+            <li>Map each column in your file to the required address fields:
+                <ul style="margin-top: 8px;">
+                    <li>Address Line 1 (required)</li>
+                    <li>Address Line 2 (optional)</li>
+                    <li>City (required)</li>
+                    <li>Postal Code (required)</li>
+                    <li>Country Code (required)</li>
+                </ul>
+            </li>
+            <li>Click Validate to begin processing</li>
+            <li>The system processes all records and returns a results file with validation status and corrected addresses</li>
+            <li>Download the results file to review corrections</li>
+        </ol>
+
+        <div class="info-box">
+            <strong>File size limits:</strong> Batch jobs accept up to 10,000 records. To process larger datasets, split them into multiple jobs.
+        </div>
+
+        <h3>Batch validation best practices</h3>
+
+        <ul>
+            <li><strong>Test with a small sample first</strong> — Upload 50–100 records first to verify column mapping</li>
+            <li><strong>Keep records current</strong> — Use the most recent address database available</li>
+            <li><strong>Review international addresses carefully</strong> — Some countries use different address formats</li>
+            <li><strong>Export results for archiving</strong> — Keep a copy of validation results for audit purposes</li>
+        </ul>
+
+        <h2>API Details</h2>
+
+        <p>The address validation service provides an API endpoint for developers who want to integrate real-time validation into custom applications.</p>
+
+        <h3>Endpoint</h3>
+
+        <div class="code-block">POST /api/v1/address/validate</div>
+
+        <h3>Parameters</h3>
+
+        <p>All parameters should be sent as JSON in the request body.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>address_line_1</code></td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Primary address line (street number and name)</td>
+                </tr>
+                <tr>
+                    <td><code>address_line_2</code></td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>Secondary address line (apartment, suite, building)</td>
+                </tr>
+                <tr>
+                    <td><code>city</code></td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>City or municipality name</td>
+                </tr>
+                <tr>
+                    <td><code>postal_code</code></td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Postal code or ZIP code</td>
+                </tr>
+                <tr>
+                    <td><code>country_code</code></td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>ISO 3166-1 alpha-2 country code (e.g., GB, US, DE, FR)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Example request</h3>
+
+        <div class="code-block">{
+  "address_line_1": "123 Main Street",
+  "address_line_2": "Suite 400",
+  "city": "London",
+  "postal_code": "SW1A 1AA",
+  "country_code": "GB"
+}</div>
+
+        <h3>Response</h3>
+
+        <p>The API returns a JSON object containing the validation results.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>corrected_address</code></td>
+                    <td>Object</td>
+                    <td>Contains corrected address fields (address_line_1, address_line_2, city, postal_code, country_code)</td>
+                </tr>
+                <tr>
+                    <td><code>confidence_score</code></td>
+                    <td>Number</td>
+                    <td>Numeric value between 0 and 1 indicating validation confidence</td>
+                </tr>
+                <tr>
+                    <td><code>status</code></td>
+                    <td>String</td>
+                    <td>One of: Valid, Corrected, or Manual Review</td>
+                </tr>
+                <tr>
+                    <td><code>validation_id</code></td>
+                    <td>String</td>
+                    <td>Unique identifier for this validation request (use for troubleshooting)</td>
+                </tr>
+                <tr>
+                    <td><code>timestamp</code></td>
+                    <td>String</td>
+                    <td>ISO 8601 timestamp indicating when the validation was performed</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Example response</h3>
+
+        <div class="code-block">{
+  "corrected_address": {
+    "address_line_1": "123 Main Street",
+    "address_line_2": "Suite 400",
+    "city": "London",
+    "postal_code": "SW1A 1AA",
+    "country_code": "GB"
+  },
+  "confidence_score": 0.98,
+  "status": "Valid",
+  "validation_id": "val_2026_07_001234",
+  "timestamp": "2026-07-03T14:25:30Z"
+}</div>
+
+        <h3>Error responses</h3>
+
+        <p>If validation fails, the API returns an error response with a status code and error message.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Status Code</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>400</td>
+                    <td>Bad Request — Missing required parameter or invalid format</td>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>Unauthorized — Invalid API credentials</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>Not Found — Address not found in postal authority database</td>
+                </tr>
+                <tr>
+                    <td>429</td>
+                    <td>Too Many Requests — Rate limit exceeded</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>Internal Server Error — Contact support if this persists</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Rate limits</h3>
+
+        <p>The address validation API enforces the following rate limits:</p>
+
+        <ul>
+            <li><strong>Free tier:</strong> 100 validations per day per API key</li>
+            <li><strong>Pro tier:</strong> 10,000 validations per day per API key</li>
+            <li><strong>Enterprise tier:</strong> Custom limits — contact sales</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Common issues</h3>
+
+        <p><strong>Issue:</strong> The system shows "Manual Review" for a valid address</p>
+
+        <p><strong>Solution:</strong> Some countries use address formats that differ from international standards. Try reformatting the address to match the country's postal convention, or use an alternative format (e.g., province instead of region).</p>
+
+        <p><strong>Issue:</strong> Batch validation job times out</p>
+
+        <p><strong>Solution:</strong> Jobs containing more than 50,000 records may time out. Split your file into multiple batches of 40,000 records or fewer.</p>
+
+        <p><strong>Issue:</strong> Confidence score is lower than expected</p>
+
+        <p><strong>Solution:</strong> Confidence scores reflect how closely the address matches postal authority records. Lower scores may indicate incomplete or non-standard address data. Verify the address directly with the recipient if the confidence score is below 0.85.</p>
+
+        <h2>Related topics</h2>
+
+        <ul>
+            <li><a href="release-notes-1-1.html">Back to GlobalMail Pro 1.1 Release Notes</a></li>
+            <li>Validation History</li>
+            <li>Export validation results</li>
+            <li>Batch validation guide</li>
+        </ul>
+    </div>
+
+    <div class="rn-footer">
+        <div class="rn-footer-content">
+            &copy; 2026 GlobalMail Pro. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
