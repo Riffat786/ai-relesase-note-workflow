@@ -151,18 +151,25 @@ stop at the first match:
 
 | Priority | Condition                                          | Release note category |
 |----------|-----------------------------------------------------|------------------------|
-| 1        | `labels` contains `known-issue`                      | Known Issues           |
-| 2        | `labels` contains `enhancement`                      | Enhancements            |
-| 3        | `issuetype.name` == `Epic`                           | Skip (not in output)   |
-| 4        | `issuetype.name` in (`Story`, `Feature`, `New Feature`) | New Features         |
-| 5        | `issuetype.name` in (`Task`, `Subtask`, `Enhancement`, `Improvement`) | Enhancements |
-| 6        | `issuetype.name` == `Bug`                            | Bug Fixes               |
-| 7        | No match above                                       | Enhancements (fallback) |
+| 1        | `labels` contains `internal`                         | Skip (not in output)   |
+| 2        | `labels` contains `known-issue`                      | Known Issues           |
+| 3        | `labels` contains `enhancement`                      | Enhancements            |
+| 4        | `issuetype.name` == `Epic`                           | Skip (not in output)   |
+| 5        | `issuetype.name` in (`Story`, `Feature`, `New Feature`) | New Features         |
+| 6        | `issuetype.name` in (`Task`, `Subtask`, `Enhancement`, `Improvement`) | Enhancements |
+| 7        | `issuetype.name` == `Bug`                            | Bug Fixes               |
+| 8        | No match above                                       | Enhancements (fallback) |
 
 Label checks are case-insensitive and match on exact label text
-(`known-issue`, `enhancement`) — do not match on substrings of other
-labels (e.g. a label like `enhancement-request` should NOT match rule 2
-unless it is an exact match).
+(`internal`, `known-issue`, `enhancement`) — do not match on substrings
+of other labels (e.g. a label like `enhancement-request` should NOT
+match rule 3 unless it is an exact match).
+
+`internal` is used for sub-tasks that only track implementation status
+under a parent Epic or Story (e.g. design, QA, or documentation tasks)
+and are not themselves customer-facing changes. The Epic or Story they
+roll up under is what represents the actual feature in release notes —
+these child Tasks should never appear as separate Enhancement bullets.
 
 A single issue must land in exactly one category — once a rule matches,
 stop evaluating further rules for that issue.
