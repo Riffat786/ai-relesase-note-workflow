@@ -19,19 +19,25 @@ No variables or placeholders appear in the actual generated output.
 
 ## GlobalMail Pro – Release 1.1 (July 2026)
 
+**Version:** 1.1
+
 ---
 
 ### Overview
-Release 1.1 delivers one new feature for real-time address validation, two enhancements to batch processing and audit reporting, resolves two bug fixes in the dashboard and compliance modules, and documents one known issue in bulk validation.
+Release 1.1 delivers one new feature for real-time address validation, three enhancements to batch processing, audit reporting, and compliance exports, resolves two bug fixes in the dashboard and compliance modules, and documents two known issues in bulk validation and China shipment compliance.
 
 ---
 
 ### New Features
+
+**NOTE:** Each new feature MUST link to its corresponding help topic. Link format: `[Learn more →](help-topic-[slug].html)`. The help topic link MUST be created from this release notes page and should open the help topic in the Help Centre.
+
 - **AI-powered address validation with real-time correction:** The Address Validator now checks each address as you enter it, surfaces ranked correction suggestions with confidence scores, and records every result in Validation History with status, confidence percentage, and timestamp. [Learn more →](help-topic-link)
 
 ---
 
 ### Enhancements
+- **Add export option for compliance results:** Introduces an "Export Results" button that lets users download compliance check results in CSV or PDF format. This helps Ops Managers share compliance reports with auditors and regulators, and reduces manual copy-paste effort. Exported files include shipment ID, destination country, contents, data type, and compliance status.
 - The Validation History table now supports CSV export, allowing operations teams to share audit records without requiring a login to the application.  
 - Batch address validation now supports up to 10,000 records per job, reducing turnaround time for large datasets from hours to minutes.
 
@@ -48,6 +54,7 @@ Release 1.1 delivers one new feature for real-time address validation, two enhan
 
 ### Known Issues
 - **Bulk validation timeout on files over 50,000 rows:** Jobs containing more than 50,000 address records may time out after 30 minutes without completing. Split input files into batches of 25,000 rows as a temporary workaround.
+- **Incomplete compliance checks for China shipments:** Compliance checks for shipments to China sometimes return incomplete results because certain technology-related rules are not fully mapped in the system. Users may see a "Limited" status for China shipments, and manual review is required until full regulatory mapping is implemented. Workaround: Ops Managers should consult external customs documentation for China technology shipments to ensure compliance.
 
 ---
 
@@ -56,5 +63,5 @@ No API or schema changes in this release.
 
 ---
 
-For help with any feature, contact support or visit the **Help Center**.
+For help with any feature, contact support or visit the **Help Centre**.
 

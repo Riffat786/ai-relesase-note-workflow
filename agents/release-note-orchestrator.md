@@ -221,10 +221,25 @@ Invoke `agents/release-note-writer-agent.md` passing:
 - Loaded skills: writer-skill, branding-style-guide
 - Benchmarks: expected-output-1 (release notes structure)
 
+**IMPORTANT INSTRUCTIONS FOR WRITER AGENT:**
+1. Place version number at the top of release notes immediately after the title:
+   `# GlobalMail Pro – Release [version]`
+   `**Version:** [version]`
+   
+2. For each new feature, create a clickable help topic link using the help_topic_map:
+   `[Learn more →](help-topic-[slug].html)`
+   The link MUST:
+   - Point to the correct help topic filename
+   - Be placed after the feature description
+   - Use the exact text "[Learn more →]"
+   - Be a working relative link (no absolute URLs)
+
+3. Use "Help Centre" (British English) in footer: "visit the **Help Centre**"
+
 The writer agent produces exactly three output files:
-- `output/release-notes-[version].html`
-- `output/release-notes-[version].md`
-- `output/release-notes-[version].json`
+- `output/release-notes-[version].html` (with version number at top, help topic links)
+- `output/release-notes-[version].md` (with version number at top, help topic links)
+- `output/release-notes-[version].json` (with helpTopic field for each feature)
 
 ---
 

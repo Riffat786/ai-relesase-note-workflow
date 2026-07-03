@@ -47,21 +47,20 @@ Read all of the following before running any checks:
 
 #### A — Structure checks (against expected-output-1)
 
-| ID   | Check                                                        |
-|------|--------------------------------------------------------------|
-| RN-S1  | Title is product name + version (NOT "Release Notes Template") |
-| RN-S2  | Overview section present and non-empty                       |
-| RN-S3  | New Features section present (if new_features non-empty)     |
-| RN-S4  | Every New Feature entry has a help topic hyperlink           |
-| RN-S5  | Enhancements section present (if enhancements non-empty)     |
-| RN-S6  | Bug Fixes section present as a table (if bug_fixes non-empty)|
-| RN-S7  | Bug Fixes table has all required columns: Bug ID, Summary, Severity, Affected Area, Description, Steps to Reproduce, Fix Applied, User Impact, Workaround, Confluence Reference |
-| RN-S7a | Severity values are High / Medium / Low only — no other values  |
-| RN-S7b | Confluence Reference column: linked page title as hyperlink, or "N/A" |
-| RN-S7c | Steps to Reproduce: user-visible steps only, no engineering details |
-| RN-S8  | Known Issues section present                                 |
-| RN-S9  | Technical Notes section present                              |
-| RN-S10 | Closing footer line present                                  |
+| ID    | Check                                                        |
+|-------|--------------------------------------------------------------|
+| RN-S1 | Version number present at top: `**Version:** [version]` |
+| RN-S2 | Title is product name + version (e.g. "GlobalMail Pro – Release 1.1") |
+| RN-S3 | Overview section present and non-empty                       |
+| RN-S4 | New Features section present (if new_features non-empty)     |
+| RN-S5 | Every New Feature entry has a clickable help topic hyperlink in format: `[Learn more →](help-topic-[slug].html)` |
+| RN-S6 | Help topic links point to correct file names and exist       |
+| RN-S7 | Enhancements section present (if enhancements non-empty)     |
+| RN-S8 | Bug Fixes section present as a table (if bug_fixes non-empty)|
+| RN-S9 | Bug Fixes table has EXACTLY 4 columns ONLY: Bug ID, Area of Impact, Issue, Fix |
+| RN-S10| Known Issues section present with workarounds               |
+| RN-S11| Technical Notes section NOT present (should be removed)      |
+| RN-S12| Closing footer line present with "Help Centre" (British English) |
 
 #### B — Content accuracy checks (against Jira issues)
 

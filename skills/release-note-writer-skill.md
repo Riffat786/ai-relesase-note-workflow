@@ -87,18 +87,40 @@ Reference: https://learn.microsoft.com/en-us/style-guide/welcome/
 
 ---
 
+## Output Format — Release Notes Header
+
+IMPORTANT: Every release notes document MUST include version number at the top, immediately after the main title.
+
+```
+# GlobalMail Pro – Release [Version]
+
+**Version:** [Version number, e.g. 1.1]
+
+[Release date, e.g. July 2026]
+
+---
+
+## Overview
+
+[Summary paragraph...]
+```
+
 ## Output Format — New Feature
 
 Use this structure exactly. Do not add, rename, or reorder sections.
 
-```
-## What's New
+IMPORTANT: Every new feature MUST include a hyperlink to its corresponding help topic. 
+Link format: `[Learn more →](help-topic-[slug].html)`
+The help topic link must be clickable and open the help topic from the release notes page.
 
+```
 ### [Feature name in sentence case]
 
 [Opening paragraph: one to three sentences. Describe the previous approach
 and its impact on the user without starting with "Previously." Then state
 what is new.]
+
+[Learn more →](help-topic-[slug].html)
 
 **What you need to do**
 
@@ -110,10 +132,6 @@ what is new.]
 - [Benefit starting with a verb — user value only]
 - [Benefit]
 - [Two to four bullets maximum. Do not pad.]
-
----
-
-[Version number, e.g. 3.2.0]
 ```
 
 ---
