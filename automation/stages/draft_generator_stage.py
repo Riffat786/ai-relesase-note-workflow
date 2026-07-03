@@ -1,26 +1,39 @@
+from automation.services.logger_service import (
+    stage_header,
+    section,
+    bullet,
+    success,
+    blank,
+)
+
+
 def run():
-    print("====================================")
-    print("Stage 5 - Draft Generator")
-    print("====================================")
 
-    print("Input:")
-    print("  • release-notes.md")
-    print("  • review-report.md")
+    stage_header("Stage 5 - Draft Generator")
 
-    print()
+    section("Input:")
 
-    print("Action:")
-    print("  • Applying Document360 release note template")
-    print("  • Populating metadata")
-    print("  • Setting article status to Draft")
-    print("  • Preparing for Technical Writer review")
+    bullet("release-notes.md")
+    bullet("review-report.md")
 
-    print()
+    blank()
 
-    print("Output:")
-    print("  • document360-draft.md")
+    section("Action:")
 
-    print()
+    bullet("Applying Document360 template")
+    bullet("Populating release metadata")
+    bullet("Setting article status to Draft")
+    bullet("Preparing Technical Writer review package")
 
-    print("✓ Draft Generator Stage Complete")
-    print()
+    blank()
+
+    section("Output:")
+
+    bullet("document360-draft.md")
+    bullet("publication-checklist.md")
+
+    blank()
+
+    success("Draft Generator Stage Complete")
+
+    blank()

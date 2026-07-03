@@ -1,25 +1,37 @@
+from automation.services.logger_service import (
+    stage_header,
+    section,
+    bullet,
+    success,
+    blank,
+)
+
+
 def run():
-    print("====================================")
-    print("Stage 3 - Writer")
-    print("====================================")
 
-    print("Input:")
-    print("  • analyzed-release.json")
+    stage_header("Stage 3 - Writer")
 
-    print()
+    section("Input:")
 
-    print("Action:")
-    print("  • Applying release note template")
-    print("  • Generating customer-friendly content")
-    print("  • Preserving work item traceability")
-    print("  • Formatting Markdown output")
+    bullet("analyzed-release.json")
 
-    print()
+    blank()
 
-    print("Output:")
-    print("  • release-notes.md")
+    section("Action:")
 
-    print()
+    bullet("Applying release note template")
+    bullet("Generating customer-friendly language")
+    bullet("Preserving work item traceability")
+    bullet("Formatting Markdown output")
 
-    print("✓ Writer Stage Complete")
-    print()
+    blank()
+
+    section("Output:")
+
+    bullet("release-notes.md")
+
+    blank()
+
+    success("Writer Stage Complete")
+
+    blank()

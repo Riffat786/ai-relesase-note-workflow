@@ -1,26 +1,39 @@
+from automation.services.logger_service import (
+    stage_header,
+    section,
+    bullet,
+    success,
+    blank,
+)
+
+
 def run():
-    print("====================================")
-    print("Stage 4 - Reviewer")
-    print("====================================")
 
-    print("Input:")
-    print("  • release-notes.md")
+    stage_header("Stage 4 - Reviewer")
 
-    print()
+    section("Input:")
 
-    print("Action:")
-    print("  • Performing AI quality review")
-    print("  • Checking customer-friendly language")
-    print("  • Validating formatting")
-    print("  • Assessing consistency and completeness")
-    print("  • Calculating quality score")
+    bullet("release-notes.md")
 
-    print()
+    blank()
 
-    print("Output:")
-    print("  • review-report.md")
+    section("Action:")
 
-    print()
+    bullet("Performing AI quality review")
+    bullet("Checking customer-friendly language")
+    bullet("Checking grammar and spelling")
+    bullet("Validating Markdown formatting")
+    bullet("Assessing consistency")
+    bullet("Calculating quality score")
 
-    print("✓ Reviewer Stage Complete")
-    print()
+    blank()
+
+    section("Output:")
+
+    bullet("review-report.md")
+
+    blank()
+
+    success("Reviewer Stage Complete")
+
+    blank()

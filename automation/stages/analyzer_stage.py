@@ -1,25 +1,37 @@
+from automation.services.logger_service import (
+    stage_header,
+    section,
+    bullet,
+    success,
+    blank,
+)
+
+
 def run():
-    print("====================================")
-    print("Stage 2 - Analyzer")
-    print("====================================")
 
-    print("Input:")
-    print("  • collected-release-data-2025.8.json")
+    stage_header("Stage 2 - Analyzer")
 
-    print()
+    section("Input:")
 
-    print("Action:")
-    print("  • Classifying release items")
-    print("  • Identifying customer-facing changes")
-    print("  • Filtering internal work items")
-    print("  • Preparing structured release data")
+    bullet("collected-release-data-2025.8.json")
 
-    print()
+    blank()
 
-    print("Output:")
-    print("  • analyzed-release.json")
+    section("Action:")
 
-    print()
+    bullet("Classifying release items")
+    bullet("Identifying customer-facing changes")
+    bullet("Filtering internal work items")
+    bullet("Preparing structured release data")
 
-    print("✓ Analyzer Stage Complete")
-    print()
+    blank()
+
+    section("Output:")
+
+    bullet("analyzed-release.json")
+
+    blank()
+
+    success("Analyzer Stage Complete")
+
+    blank()
