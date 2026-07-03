@@ -237,3 +237,58 @@ Logs
                      ▼
                  Publish
 ```
+---
+
+# Milestone: MCP-Based Data Collection
+
+## Overview
+
+The Collector Agent has been enhanced to simulate enterprise integrations using Model Context Protocol (MCP).
+
+Instead of relying solely on local mock data, the Collector now orchestrates data retrieval from multiple enterprise systems through dedicated MCP interfaces.
+
+Current mock integrations include:
+
+- Azure DevOps MCP
+- ServiceNow MCP
+
+The Collector retrieves release metadata, work item information, and customer case details before merging them into a single consolidated release dataset.
+
+This dataset becomes the single source of truth for downstream AI agents.
+
+## Current Workflow
+
+```text
+                Collector Agent
+                       │
+        ┌──────────────┴──────────────┐
+        ▼                             ▼
+ Azure DevOps MCP              ServiceNow MCP
+  get_release()                  get_cases()
+  get_work_items()
+        │                             │
+        └──────────────┬──────────────┘
+                       ▼
+      collected-release-data.json
+                       │
+                       ▼
+              Analyzer Agent
+```
+
+## Current POC Implementation
+
+The MCP integrations are currently simulated using local mock responses.
+
+Azure DevOps
+
+```text
+mcp/azure-devops/responses/work-items.json
+```
+
+ServiceNow
+
+```text
+mcp/servicenow/responses/resolved-incidents.json
+```
+
+The architecture has been designed so these mock responses can later be replaced with live MCP servers without changing downstream AI agents.
