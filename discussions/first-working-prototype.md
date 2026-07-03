@@ -1,22 +1,39 @@
-# First Working Prototype (Due: Fri, 27 Jun)
+# First Working Prototype
 
 ## Objective
-Build a rough end-to-end proof of concept using realistic sample data.
 
-## Required Actions
-- Create release note generation command
-- Create release note review command
-- Design Skills
-- Define Agent workflow
-- Document MCP / integration opportunities
+Build an AI-assisted end-to-end workflow that automates the creation of customer-facing release notes by consolidating business information from Jira with technical implementation details.
 
-## Exit Criteria
-- PoC runs at least once
-- End-to-end workflow demonstrated
-- Sample data successfully processed
+---
+
+## What Was Built
+
+The first working prototype includes:
+
+- Release Data Extractor to retrieve and consolidate release information from Jira and implementation notes.
+- Release Note Generator to generate customer-facing release notes from the consolidated release dataset.
+- Release Note Reviewer to validate the generated release notes for business accuracy, documentation quality, template compliance, and publication readiness.
+- End-to-end workflow demonstrated using Release Version 14.1.
+
+---
 
 ## Deliverables
-- commands/
-- skills/
-- agents/
-- mcp-integrations/
+
+- Release Data Extractor
+- Release Note Generator
+- Release Note Reviewer
+- jira-data.md
+- implementation-data.md
+- release-data.md
+- release-notes.md
+- release-note-review-report.md
+
+---
+
+## Exit Criteria
+
+- Release information successfully extracted from Jira.
+- Technical implementation details consolidated.
+- Customer-facing release notes generated.
+- Release notes reviewed for publication readiness.
+- End-to-end workflow successfully demonstrated.
