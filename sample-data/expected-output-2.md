@@ -2,7 +2,7 @@
 
 **Document Type:** Documentation Quality Standard
 **Maintained by:** Documentation Standards Team
-**Applies to:** All Bug Fix Release Notes — Enterprise SaaS Platform
+**Applies to:** All Bug Fix Release Notes — WealthWise
 **Version:** 1.0
 
 ---
@@ -44,12 +44,6 @@ The section title must be:
 - **Formatted as a level-two heading** (`##`) so it sits at the same hierarchy as the Features section
 - **Unadorned** — no version numbers, dates, or counts in the heading itself
 
-### Quality Checklist
-
-- [ ] Heading reads exactly "Bug Fixes"
-- [ ] Formatted as `##`
-- [ ] No version numbers, counts, or dates embedded in the heading
-
 ---
 
 ## 2. Bug Fix Table
@@ -83,13 +77,6 @@ Provides a unique, traceable reference that links the release note entry to the 
 - Must **never be blank** — every row requires a Bug ID
 - Must **not include** the tracker URL, hyperlink text, or descriptive label — the ID only
 
-#### Quality Checklist
-
-- [ ] Every row has a Bug ID
-- [ ] IDs follow a consistent format throughout the table
-- [ ] No row uses a placeholder such as "TBD," "N/A," or a blank cell
-- [ ] IDs are not duplicated across rows
-
 #### Examples
 
 | Non-compliant | Compliant |
@@ -116,16 +103,6 @@ Explains what the bug was — what the user experienced, where it occurred, and 
 - Must **not** include the fix or solution — that belongs in Column 3
 - Must **not** begin with "Bug where..." or "Issue with..." — open with the specific behavior
 
-#### Quality Checklist
-
-- [ ] Written from the user's perspective
-- [ ] States where the bug occurred (feature area, screen, or action)
-- [ ] Written in past tense
-- [ ] 1–2 sentences only
-- [ ] Contains no fix or solution language
-- [ ] Does not open with "Bug where..." or "Issue with..."
-- [ ] Free of internal error codes, stack references, or undefined acronyms
-
 #### Examples
 
 | Non-compliant | Compliant |
@@ -151,15 +128,6 @@ Confirms that the issue is resolved and tells the reader what was corrected or h
 - Must use **active voice**
 - Must **not** reference internal code changes, pull request numbers, database migrations, or config updates
 - Must **not** repeat the bug description — it should complement Column 2, not restate it
-
-#### Quality Checklist
-
-- [ ] Confirms the issue is resolved
-- [ ] Describes the corrected user-facing behavior in present tense
-- [ ] 1–2 sentences only
-- [ ] Written in active voice
-- [ ] Contains no internal technical references (PRs, commits, migrations)
-- [ ] Does not repeat the bug description from Column 2
 
 #### Examples
 
@@ -208,7 +176,7 @@ A Bug Fixes section must contain at least one row. If no bugs were resolved in a
 
 ---
 
-## Writing Standards — Global Criteria
+## Writing Standards — MSTP
 
 These criteria apply to every cell of every bug fix table, without exception.
 
@@ -260,24 +228,8 @@ The following illustrates a compliant Bug Fix section, ready for publication.
 
 ---
 
-## Bug Fix Quality Scorecard
-
-Use this scorecard during peer review and editorial sign-off.
-
-| Element | Criteria | Pass / Fail |
-|---|---|---|
-| Section placement | Bug Fixes appears after New Features and Enhancements | |
-| Section title | Reads exactly "Bug Fixes," formatted as `##` | |
-| Table structure | Exactly three columns in the correct order | |
-| Bug ID column | Every row has a valid, consistently formatted ID | |
-| Description column | Past tense, user-facing, 1–2 sentences, no fix language | |
-| Fix / Solution column | Present tense, active voice, corrected behavior described, 1–2 sentences | |
-| Global | No internal references, error codes, or technical implementation details | |
-| Global | No vague resolution language ("fixed," "resolved" as standalone entries) | |
-| Global | No empty table published if no bugs were resolved | |
-
 **Sign-off threshold:** All criteria must pass before a bug fix section is approved for publication.
 
 ---
 
-*This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process. Last reviewed: June 2026.*
+*This standard is maintained by the Documentation Standards Team. Submit proposed revisions via the documentation governance process.*
