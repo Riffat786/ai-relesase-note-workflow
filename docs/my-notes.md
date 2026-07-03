@@ -275,6 +275,9 @@ This step will teach:
 - Future MCP orchestration
 
 This aligns perfectly with Docs-as-Code learning roadmap.
+---
+
+# Reset your local commits (delete large files in GitHub desktop)
 
 The simplest solution: reset your local commits
 
