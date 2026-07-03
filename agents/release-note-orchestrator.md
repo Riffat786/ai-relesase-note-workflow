@@ -2,7 +2,7 @@
 
 name: release-note-orchestrator
 
-description: Entry point for the full release note automation pipeline. Invoke this agent to generate release notes and help topics from Jira. Fetches all issues from the WW project via Atlassian MCP, delegates to sub-agents, assembles branded HTML + MD output files, and runs quality review with auto-fix. No user input is required after invocation.
+description: Entry point for the full release note automation pipeline. Invoke this agent to generate release notes and help topics from Jira. Fetches all issues from the KAN project via Atlassian MCP, delegates to sub-agents, assembles branded HTML + MD output files, and runs quality review with auto-fix. No user input is required after invocation.
 
 version: 1.0
 
@@ -10,11 +10,11 @@ author: WealthWise Technical Writing
 
 mcp_servers: atlassian (https://mcp.atlassian.com/sse) — Jira + Confluence access
 
-data_source: Atlassian Jira — project WealthWiseReleaseDemo (key - WW)
+data_source: Atlassian Jira — project KAN (https://twtaishubh.atlassian.net)
 
-jira_board_url: "https://wealthwise-release-demo.atlassian.net/jira/software/projects/WW/list?jql=project+%3D+WW+ORDER+BY+cf%5B10019%5D+ASC"
+jira_board_url: "https://twtaishubh.atlassian.net/jira/software/projects/KAN/list?jql=project%20%3D%20KAN%20ORDER%20BY%20cf%5B10019%5D%20ASC"
 
-jql: "project = WW ORDER BY cf[10019] ASC"
+jql: "project = KAN ORDER BY cf[10019] ASC"
 
 sub_agents: agents/release-note-writer-agent.md, agents/help-topic-writer-agent.md, agents/release-note-reviewer-agent.md
 
@@ -36,13 +36,15 @@ outputs: output/release-note-[version]-whats-new.html      (branded HTML — all
 
 You are the orchestrator for the WealthWise release note automation
 
-pipeline. You connect to Atlassian Jira via MCP, classify all issues in
+pipeline. You connect to Atlassian Jira via MCP at https://twtaishubh.atlassian.net,
 
-the WW project, coordinate three sub-agents, and assemble the final
+classify all issues in the KAN project, coordinate three sub-agents, and
 
-output package. You do not write release notes or help topics yourself,
+assemble the final output package. You do not write release notes or help
 
-you delegate to sub-agents, collect their outputs, and manage quality.
+topics yourself, you delegate to sub-agents, collect their outputs, and
+
+manage quality.
 
 
 
@@ -53,16 +55,6 @@ If a non-critical step fails, log the failure in the review report and
 continue. If a critical step fails (Jira fetch or writer agent), halt
 
 and report the exact failure with context.
-
-
-
-Note: replace the placeholder `jira_board_url` and `jql` above with your
-
-team's real Jira instance and project key before running against
-
-production data. The `WW` project key and `WealthWiseReleaseDemo` project
-
-name in this file are demo placeholders.
 
 
 
@@ -114,11 +106,11 @@ execute the following query:
 
 ```
 
-JQL: project = WW ORDER BY cf[10019] ASC
+JQL: project = KAN ORDER BY cf[10019] ASC
 
-Project display name: WealthWiseReleaseDemo
+Project key: KAN
 
-Project key: WW
+Site URL: https://twtaishubh.atlassian.net
 
 Fields to retrieve per issue:
 
@@ -216,7 +208,7 @@ map provides.
 
 | `[slug]` | `lowercase(issue.key) + "-" + lowercase_hyphenated(issue.summary, max 40 chars)` | None — always derivable from key + summary | `ww-101-ai-advisor-chat-interface` |
 
-| `[Bug ID]` | `issue.key` verbatim — the only place a Jira ID appears in output | None — always present | `WW-142` |
+| `[Bug ID]` | `issue.key` verbatim — the only place a Jira ID appears in output | None — always present | `KAN-142` |
 
 | `[Bug Summary]` | `issue.summary` in sentence case | Flag: `[INSERT: bug title — Jira issue [key] has no summary]` | `Budget totals round incorrectly above ₹1,00,000` |
 
@@ -516,7 +508,7 @@ PIPELINE COMPLETE
 
 =================
 
-Jira project:    WealthWiseReleaseDemo (WW)
+Jira project:    KAN (https://twtaishubh.atlassian.net)
 
 Release version: [version]
 
@@ -528,13 +520,13 @@ Issues fetched:  [total count]
 
 Issues classified:
 
-  What's New:    [n] issues → [list of WW-IDs]
+  What's New:    [n] issues → [list of KAN-IDs]
 
-  Enhancements:  [n] issues → [list of WW-IDs]
+  Enhancements:  [n] issues → [list of KAN-IDs]
 
-  Bug Fixes:     [n] issues → [list of WW-IDs]
+  Bug Fixes:     [n] issues → [list of KAN-IDs]
 
-  Known Issues:  [n] issues → [list of WW-IDs]
+  Known Issues:  [n] issues → [list of KAN-IDs]
 
 
 

@@ -16,17 +16,17 @@ with code in this repository.
 
 
 
-This is a proof-of-concept demonstrating AI-automated release note and
+This is an AI-automated release note and help topic generation system
 
-help topic generation for **WealthWise**, an AI-powered personal finance
+for **WealthWise**, an AI-powered personal finance platform. The pipeline
 
-platform. The pipeline connects to Atlassian Jira via MCP, fetches all
+connects to Atlassian Jira (https://twtaishubh.atlassian.net) via MCP,
 
-issues from the WW project, and produces publication-ready release notes
+fetches all issues from the KAN project, and produces publication-ready
 
-(HTML, Markdown) and help topics (HTML, Markdown) with full quality
+release notes (HTML, Markdown) and help topics (HTML, Markdown) with full
 
-review and auto-fix, all triggered by a single command.
+quality review and auto-fix, all triggered by a single command.
 
 
 
@@ -76,15 +76,11 @@ claude mcp add atlassian --transport sse https://mcp.atlassian.com/sse
 
 
 
-Sign in with the Atlassian account that has access to the
+Sign in with your Atlassian account that has access to the
 
-**WealthWiseReleaseDemo** project (key: `WW`). Replace the placeholder
+**KAN** project at **https://twtaishubh.atlassian.net**.
 
-site URL in `agents/release-note-orchestrator.md` with your team's real
-
-Jira instance before running the pipeline against production data.
-
-Do not store credentials in any project file.
+Do not store credentials in any project file. OAuth is handled automatically.
 
 
 
@@ -120,13 +116,13 @@ trigger prompt and setup instructions.
 
 ```
 
-Atlassian Jira — WealthWiseReleaseDemo (WW)
+Atlassian Jira — KAN (https://twtaishubh.atlassian.net)
 
          │
 
          │  Atlassian MCP
 
-         │  JQL: project = WW ORDER BY cf[10019] ASC
+         │  JQL: project = KAN ORDER BY cf[10019] ASC
 
          ▼
 
@@ -226,6 +222,8 @@ normal category instead.
 
 | `output/`                 | All generated files (HTML, MD, review report)         |
 
+| `mcp-plugin-concept/`     | Integration documentation and architecture            |
+
 | `charter/`                | Project scope and success criteria                    |
 
 | `roster/`                 | Team members and role assignments                     |
@@ -244,9 +242,9 @@ normal category instead.
 
 ### Entry Point
 
-- **`commands/release-note-generation-command.md`** — Run this to start
+- **`commands/release-note-generation-command.md`** — Single-command trigger for the full pipeline
 
-  the pipeline. Contains the trigger prompt and setup instructions.
+- **`mcp-plugin-concept/integration-concept.md`** — Architecture and integration details with Jira
 
 
 
@@ -346,9 +344,7 @@ Do not store API keys or tokens in any project file.
 
 **Access required:**
 
-- Jira: read access to **WealthWiseReleaseDemo** (key: `WW`) — replace the
-
-  placeholder site URL in the orchestrator with your team's real instance
+- Jira: read access to **KAN** project at **https://twtaishubh.atlassian.net**
 
 - Confluence: read access (optional — used if features link to Confluence pages)
 
@@ -530,9 +526,9 @@ docs(commands): add troubleshooting section to trigger command
 
 |---------------------------------|-------------------------------------------------------|
 
-| Atlassian MCP not connecting    | Run `claude mcp add atlassian --transport sse https://mcp.atlassian.com/sse` |
+| Atlassian MCP not connecting    | Run `claude mcp add atlassian --transport sse https://mcp.atlassian.com/sse` and authenticate |
 
-| No issues fetched from Jira     | Verify WealthWiseReleaseDemo project has issues + Atlassian OAuth is active |
+| No issues fetched from Jira     | Verify KAN project at https://twtaishubh.atlassian.net has issues + Atlassian OAuth is active |
 
 | Output files not created        | Run `mkdir -p output` in project root                |
 

@@ -3,7 +3,7 @@
     "atlassian": {
       "type": "sse",
       "url": "https://mcp.atlassian.com/sse",
-      "description": "Atlassian Remote MCP — provides read/write access to Jira (WW project) and Confluence. Authentication is handled via Atlassian OAuth. Run 'claude mcp add' or connect through Claude Code settings before first use. Replace the Jira project key and site URL in agents/release-note-orchestrator.md if your team's Jira instance differs from the WealthWiseReleaseDemo placeholder used in this plugin."
+      "description": "Atlassian Remote MCP — provides read/write access to Jira (KAN project at https://twtaishubh.atlassian.net) and Confluence. Authentication is handled via Atlassian OAuth. Sign in with your Atlassian account that has access to the KAN project. Do not store API tokens or credentials in this file."
     }
   }
 }

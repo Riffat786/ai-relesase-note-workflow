@@ -4,9 +4,9 @@
 
 description: Single-command trigger for the full WealthWise release note automation pipeline. Paste or run this command in Claude Code to generate release notes and help topics from Jira without any further user input.
 
-data_source: Atlassian Jira — project WealthWiseReleaseDemo (key - WW)
+data_source: Atlassian Jira — project KAN (https://twtaishubh.atlassian.net)
 
-jira_board_url: "https://wealthwise-release-demo.atlassian.net/jira/software/projects/WW/list?jql=project+%3D+WW+ORDER+BY+cf%5B10019%5D+ASC"
+jira_board_url: "https://twtaishubh.atlassian.net/jira/software/projects/KAN/list?jql=project%20%3D%20KAN%20ORDER%20BY%20cf%5B10019%5D%20ASC"
 
 mcp_required: atlassian (configured in .mcp.json)
 
@@ -104,13 +104,9 @@ When complete, display the pipeline summary block from the orchestrator
 
 1. **Connects to Atlassian Jira** via MCP and fetches all issues in the
 
-   **WealthWiseReleaseDemo** project (key: `WW`) using JQL:
+   **KAN** project (https://twtaishubh.atlassian.net) using JQL:
 
-   `project = WW ORDER BY cf[10019] ASC`
-
-   Replace the placeholder board URL in `agents/release-note-orchestrator.md`
-
-   with your team's real Jira instance before running against production data.
+   `project = KAN ORDER BY cf[10019] ASC`
 
 
 
@@ -210,21 +206,19 @@ into any configuration file.
 
 
 
-After connecting, confirm access to the WealthWiseReleaseDemo project
-
-(or your team's real project, once the placeholder URL is replaced):
+After connecting, confirm access to the KAN project:
 
 
 
 ```
 
-Check that the Atlassian MCP can search issues in the WealthWiseReleaseDemo
+Check that the Atlassian MCP can search issues in the KAN
 
-project (WW).
+project at https://twtaishubh.atlassian.net.
 
 
 
-Test JQL: project = WW ORDER BY cf[10019] ASC
+Test JQL: project = KAN ORDER BY cf[10019] ASC
 
 ```
 
@@ -286,7 +280,7 @@ WealthWise release notes do not include a JSON output file — see
 
 | "Atlassian MCP not connected"      | MCP not added or authenticated | Run `claude mcp add atlassian ...` above  |
 
-| Empty issue lists                  | JQL returns no results         | Check WealthWiseReleaseDemo project has issues in Jira |
+| Empty issue lists                  | JQL returns no results         | Check KAN project has issues in https://twtaishubh.atlassian.net |
 
 | Help topic link broken             | Slug mismatch                  | Re-run pipeline (auto-fixed after review) |
 
