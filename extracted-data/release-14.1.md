@@ -1,123 +1,151 @@
-# Release Data Extraction Report
+  # Release Data Extraction Report
 
-## Release Information
+  ## Release Information
 
-- **Release Version:** 14.1
-- **Project:** KAN – Release Notes Automation
-- **Product:** Business Loan
-- **Module:** Customer Details, Loan Processing, Reports
-- **Total Jira Issues:** 3 (KAN-1, KAN-2, KAN-7)
-- **Total Implementation Notes:** 3
-- **Extraction Date:** 2026-07-03
+  - **Release Version:** 14.1
+  - **Project:** KAN (twtaibhargavi.atlassian.net)
+  - **Product:** Business Loan, Personal Loan
+  - **Module:** Customer Details, Loan Processing, Dashboard
+  - **Total Jira Issues:** 4 (KAN-1, KAN-2, KAN-3, KAN-4)
+  - **Total Implementation Notes:** 4
+  - **Extraction Date:** 2026-07-04
 
----
+  ---
 
-## Consolidated Release Dataset
+  ## Consolidated Release Dataset
 
-### KAN-1
+  ### KAN-1
 
-#### Business Information
-- **Summary:** Bulk Customer Import
-- **Description:** Added CSV-based bulk customer import to simplify customer onboarding and reduce manual effort.
-- **Status:** Done
-- **Assignee:** bhargavi chary
-- **Product:** Business Loan
-- **Module:** Customer Details
-- **Release Version:** 14.1
+  #### Business Information
+  - **Summary:** Bulk Customer Import
+  - **Description:** Added CSV-based bulk customer import to simplify customer onboarding and reduce manual effort.
+  - **Status:** Done
+  - **Assignee:** bhargavi chary
+  - **Product:** Business Loan
+  - **Module:** Customer Details
+  - **Release Version:** 14.1
 
-#### Technical Information
-- **Technical Implementation Summary:** Enable operations users to upload multiple customer records using a CSV file, reducing manual data entry and onboarding time.
-- **Files Modified:** Not specified in implementation note
+  #### Technical Information
+  - **Technical Implementation Summary:** Enable operations users to upload multiple customer records using a CSV file, reducing manual data entry and onboarding time.
+  - **Files Modified:** Not specified in implementation note
+  - **Technical Changes:**
+    - Developed CSV parsing service.
+    - Added customer validation framework.
+    - Implemented duplicate customer detection.
+    - Integrated Customer Service API.
+    - Added upload progress tracking and audit logging.
+  - **Configuration Changes:** No manual configuration required.
+  - **API Changes:** POST /customers/import
+  - **Database Changes:** Added BulkUploadId and UploadStatus columns to CustomerUpload table.
+  - **Testing Notes:**
+    - Unit Testing completed
+    - Integration Testing completed
+    - Regression Testing passed
+    - Validation: Mandatory fields validation, Duplicate customer validation, Invalid CSV format validation
+  - **Known Limitations:** None documented
+  - **Developer Notes:** Work Type — Feature. No manual configuration required for deployment.
+
+  ---
+
+  ### KAN-2
+
+  #### Business Information
+  - **Summary:** Duplicate Transaction Validation
+  - **Description:** Fixed duplicate transaction processing by validating transaction references before payment submission.
+  - **Status:** Done
+  - **Assignee:** bhargavi chary
+  - **Product:** Business Loan
+  - **Module:** Loan Processing
+  - **Release Version:** 14.1
+
+  #### Technical Information
+  - **Technical Implementation Summary:** Prevent duplicate loan transactions from being processed.
+  - **Files Modified:** Not specified in implementation note
+  - **Technical Changes:**
+    - Added duplicate transaction validation.
+    - Compared Transaction ID before processing.
+    - Implemented duplicate transaction logging.
+    - Displayed user-friendly validation message.
+  - **Configuration Changes:** Database index required.
+  - **API Changes:** None
+  - **Database Changes:** Added TransactionHash index.
+  - **Testing Notes:**
+    - Unit, Integration and Regression completed.
+    - Validation: Duplicate Transaction ID, Duplicate Request Payload, Duplicate Reference Number
+  - **Known Limitations:** None documented
+  - **Developer Notes:** Work Type — Bug. Database index required for deployment.
+
+  ---
+
+  ### KAN-3
+
+  #### Business Information
+  - **Summary:** Loan Eligibility Rule Engine
+  - **Description:** Introduced a configurable loan eligibility rule engine to support business-driven rule management.
+  - **Status:** Done
+  - **Assignee:** bhargavi chary
+  - **Product:** Business Loan
+  - **Module:** Loan Processing
+  - **Release Version:** 14.1
+
+  #### Technical Information
+  - **Technical Implementation Summary:** Improve loan eligibility calculation using configurable business rules.
+  - **Files Modified:** Not specified in implementation note
+  - **Technical Changes:**
+    - Introduced rule engine.
+    - Externalized eligibility rules.
+    - Added rule priority support.
+    - Improved processing performance.
+  - **Configuration Changes:** Rule configuration required.
+  - **API Changes:** GET /loan/eligibility
+  - **Database Changes:** Created EligibilityRules table.
+  - **Testing Notes:**
+    - Completed successfully.
+    - Validation: Income, Age, Credit Score and Existing Loan checks.
+  - **Known Limitations:** None documented
+  - **Developer Notes:** Work Type — Enhancement. Rule configuration required for deployment.
+
+  ---
+
+  ### KAN-4
+
+  #### Business Information
+  - **Summary:** Session Timeout Issue
+  - **Description:** Fixed unexpected user session timeouts by improving session management logic.
+  - **Status:** Done
+  - **Assignee:** bhargavi chary
+  - **Product:** Personal Loan
+  - **Module:** Dashboard
+  - **Release Version:** 14.1
+
+  #### Technical Information
+  - **Technical Implementation Summary:** Prevent unexpected user logout during active sessions.
+  - **Files Modified:** Not specified in implementation note
 - **Technical Changes:**
-  - Developed CSV parsing service.
-  - Added customer validation framework.
-  - Implemented duplicate customer detection.
-  - Integrated Customer Service API.
-  - Added upload progress tracking and audit logging.
-- **Configuration Changes:** No manual configuration required.
-- **API Changes:** POST /customers/import
-- **Database Changes:** Added BulkUploadId and UploadStatus columns to CustomerUpload table.
-- **Testing Notes:**
-  - Unit Testing completed
-  - Integration Testing completed
-  - Regression Testing passed
-  - Validation: Mandatory fields validation, Duplicate customer validation, Invalid CSV format validation
-- **Known Limitations:** None documented
-- **Developer Notes:** Work Type — Feature. No manual configuration required for deployment.
-
----
-
-### KAN-2
-
-#### Business Information
-- **Summary:** Duplicate Transaction Validation
-- **Description:** Fixed duplicate transaction processing by validating transaction references before payment submission.
-- **Status:** Done
-- **Assignee:** bhargavi chary
-- **Product:** Business Loan
-- **Module:** Loan Processing
-- **Release Version:** 14.1
-
-#### Technical Information
-- **Technical Implementation Summary:** Prevent duplicate loan transactions from being processed.
-- **Files Modified:** Not specified in implementation note
-- **Technical Changes:**
-  - Added duplicate transaction validation.
-  - Compared Transaction ID before processing.
-  - Implemented duplicate transaction logging.
-  - Displayed user-friendly validation message.
-- **Configuration Changes:** None
+  - Fixed session timeout logic.
+  - Implemented activity heartbeat.
+  - Improved token refresh mechanism.
+- **Configuration Changes:** Clear browser cache after deployment.
 - **API Changes:** None
-- **Database Changes:** Added TransactionHash index.
-- **Testing Notes:**
-  - Unit, Integration and Regression completed.
-  - Validation: Duplicate Transaction ID, Duplicate Request Payload, Duplicate Reference Number
-- **Known Limitations:** None documented
-- **Developer Notes:** Work Type — Bug. Database index required for deployment.
-
----
-
-### KAN-7
-
-#### Business Information
-- **Summary:** Update Regulatory Report Template
-- **Description:** Updated regulatory report templates to comply with the latest reporting standards.
-- **Status:** Done
-- **Assignee:** bhargavi chary
-- **Product:** *(Missing in Jira — see Validation Report)*
-- **Module:** Reports
-- **Release Version:** 14.1 *(per Jira; implementation note states 14.2 — see Validation Report)*
-
-#### Technical Information
-- **Technical Implementation Summary:** Update regulatory reports to meet revised compliance requirements.
-- **Files Modified:** Not specified in implementation note
-- **Technical Changes:**
-  - Updated report layout.
-  - Added new compliance fields.
-  - Improved export performance.
-- **Configuration Changes:** Report template deployment required.
-- **API Changes:** GET /reports/regulatory
-- **Database Changes:** Added ComplianceCategory column.
+- **Database Changes:** None
 - **Testing Notes:**
   - Completed.
-  - Validation: Mandatory compliance fields.
+  - Validation: Active session validation.
 - **Known Limitations:** None documented
-- **Developer Notes:** Work Type — Enhancement. Report template deployment required.
+- **Developer Notes:** Work Type — Bug. Clear browser cache after deployment.
 
 ---
 
 ## Validation Report
 
-- **Missing Implementation Notes:** None. All 3 Jira issues (KAN-1, KAN-2, KAN-7) have a matching Markdown implementation note.
-- **Missing Jira Issues:** None. All implementation notes for release 14.1 have a corresponding Jira issue.
+- **Missing Implementation Notes:** None. All 4 Jira issues (KAN-1, KAN-2, KAN-3, KAN-4) have a matching Markdown implementation note.
+- **Missing Jira Issues:** None. All Release 14.1 implementation notes have a corresponding Jira issue.
 - **Duplicate Records:** None detected.
 - **Missing Metadata:**
-  - **KAN-7 — Missing Product:** The Jira "Product" custom field is empty. The implementation note lists Product as "Mortgage Loan". Not merged into the business record because Jira is the source of truth for business metadata and must not be modified.
-- **Data Discrepancies:**
-  - **KAN-7 — Release Version mismatch:** Jira Release Version = **14.1**; implementation note Release Version = **14.2**. Included in this dataset based on the Jira value (source query = release 14.1). Recommend reconciliation before publishing release notes.
-  - **KAN-7 — Product mismatch:** Jira Product = empty; implementation note Product = "Mortgage Loan". Jira Module = "Reports" matches the implementation note.
-- **Unmatched Markdown Files:** None for release 14.1. The implementation-notes folder also contains KAN-3, KAN-4, KAN-5, KAN-6, and KAN-8, but these belong to other release versions and each maps to an existing Jira issue; they are out of scope for release 14.1.
+  - **Product / Module / Release Version not populated in Jira:** For every KAN issue, the Jira `fixVersions`, `components`, and `labels` fields are empty and there are no Product/Module/Release custom fields. These three attributes were sourced from the GitHub implementation notes. Jira was not modified.
+- **Data Discrepancies:** None. For KAN-1 through KAN-4 the Jira Summary/Description align with the implementation-note content.
+- **Unmatched Markdown Files:** None for Release 14.1. The implementation-notes folder also contains KAN-5, KAN-6, KAN-7, and KAN-8, but their implementation notes state Release Version 14.2, so they are out of scope for Release 14.1 (each still maps to an existing Jira issue).
 
 ---
 
-*Source systems: Jira (Atlassian MCP – project KAN, cloud twtaibhargavi) for business information; repository implementation notes (`sample-data/implementation-notes/`) for technical information. No Jira data or implementation notes were modified.*
+*Source systems: Jira (Atlassian MCP — project KAN, site twtaibhargavi.atlassian.net) for business information; repository implementation notes (`sample-data/implementation-notes/`) for technical information and release/product/module metadata. No Jira data or implementation notes were modified. Release membership determined by the "Release Version" field inside each implementation note, as Jira carries no version data.*
