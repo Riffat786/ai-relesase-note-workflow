@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Release Notes 14.1 — Internal</title>
+<style>
+    body { font-family: Cambria, Georgia, serif; color:#000; font-size:11pt; line-height:1.5; margin:40px; }
+    h1 { font-family: Cambria, Georgia, serif; font-size:20pt; font-weight:bold; color:#000; text-align:left; }
+    h2 { font-family: Cambria, Georgia, serif; font-size:16pt; font-weight:bold; color:#000; text-align:left; margin-top:28px; }
+    h3 { font-family: Cambria, Georgia, serif; font-size:12pt; font-weight:bold; color:#000; margin-bottom:4px; }
+    table.meta { border-collapse:collapse; margin:16px 0 8px 0; }
+    table.meta td { border:1px solid #333; padding:6px 14px; font-size:11pt; }
+    table.meta td.k { font-weight:bold; background:#f2f2f2; }
+    ul { list-style:none; padding-left:18px; }
+    ul li { position:relative; padding-left:20px; margin:4px 0; }
+    ul li:before { content:"\25A0"; position:absolute; left:0; color:#000; }
+    .meta-line { margin:2px 0; }
+    </style></head><body>
+<h1>Release Notes 14.1 — Internal</h1>
+<table class="meta">
+<tr><td class="k">Release Version</td><td>14.1</td></tr>
+<tr><td class="k">Release Date</td><td>2026-07-05</td></tr>
+<tr><td class="k">Audience</td><td>Internal (Engineering, QA, Release Management, Support)</td></tr>
+<tr><td class="k">Project</td><td>KAN — Release Notes Automation</td></tr>
+<tr><td class="k">Issues in Release</td><td>KAN-1, KAN-2, KAN-7</td></tr>
+</table>
+<h2>Overview</h2>
+<p>Release 14.1 delivers one new feature (bulk customer import), one defect fix (duplicate transaction prevention), and one regulatory enhancement (updated report templates). All three issues are in Done status. This edition is for internal distribution and includes implementation, API, database, testing, and deployment details, plus open data-quality actions.</p>
+<h2>New Features</h2>
+<h3>KAN-1 — Bulk Customer Import</h3>
+<p class="meta-line"><strong>Product / Module:</strong> Business Loan / Customer Details</p>
+<p class="meta-line"><strong>Work Type:</strong> Feature</p>
+<p class="meta-line"><strong>Summary:</strong> CSV-based bulk customer import to reduce manual onboarding effort.</p>
+<p class="meta-line"><strong>Technical Changes:</strong></p>
+<ul>
+<li>CSV parsing service.</li>
+<li>Customer validation framework.</li>
+<li>Duplicate customer detection.</li>
+<li>Customer Service API integration.</li>
+<li>Upload progress tracking and audit logging.</li>
+</ul>
+<ul>
+<li><strong>API Changes:</strong> POST /customers/import</li>
+<li><strong>Database Changes:</strong> Added BulkUploadId and UploadStatus columns to the CustomerUpload table.</li>
+<li><strong>Validation:</strong> Mandatory fields, duplicate customers, invalid CSV format.</li>
+<li><strong>Testing:</strong> Unit, Integration, and Regression completed/passed.</li>
+<li><strong>Deployment Notes:</strong> No manual configuration required.</li>
+</ul>
+<h2>Bug Fixes</h2>
+<h3>KAN-2 — Duplicate Transaction Validation</h3>
+<p class="meta-line"><strong>Product / Module:</strong> Business Loan / Loan Processing</p>
+<p class="meta-line"><strong>Work Type:</strong> Bug</p>
+<p class="meta-line"><strong>Summary:</strong> Prevents the same loan transaction from being processed more than once by validating transaction references before submission.</p>
+<p class="meta-line"><strong>Technical Changes:</strong></p>
+<ul>
+<li>Duplicate transaction validation.</li>
+<li>Transaction ID comparison before processing.</li>
+<li>Duplicate transaction logging.</li>
+<li>User-friendly validation message on detection.</li>
+</ul>
+<ul>
+<li><strong>API Changes:</strong> None</li>
+<li><strong>Database Changes:</strong> Added TransactionHash index.</li>
+<li><strong>Validation:</strong> Duplicate Transaction ID, duplicate request payload, duplicate reference number.</li>
+<li><strong>Testing:</strong> Unit, Integration, and Regression completed.</li>
+<li><strong>Deployment Notes:</strong> ⚠ Database index required — must be applied as part of deployment.</li>
+</ul>
+<h2>Regulatory Updates</h2>
+<h3>KAN-7 — Update Regulatory Report Template</h3>
+<p class="meta-line"><strong>Product / Module:</strong> Not set in Jira / Reports</p>
+<p class="meta-line"><strong>Work Type:</strong> Enhancement</p>
+<p class="meta-line"><strong>Summary:</strong> Regulatory report templates updated to meet revised compliance requirements.</p>
+<p class="meta-line"><strong>Technical Changes:</strong></p>
+<ul>
+<li>Updated report layout.</li>
+<li>Added new compliance fields.</li>
+<li>Improved export performance.</li>
+</ul>
+<ul>
+<li><strong>API Changes:</strong> GET /reports/regulatory</li>
+<li><strong>Database Changes:</strong> Added ComplianceCategory column.</li>
+<li><strong>Validation:</strong> Mandatory compliance fields.</li>
+<li><strong>Testing:</strong> Completed.</li>
+<li><strong>Deployment Notes:</strong> ⚠ Report template deployment required.</li>
+</ul>
+<h2>Known Issues</h2>
+<p>None reported for this release.</p>
+<h2>Open Actions / Data-Quality Notes</h2>
+<ul>
+<li><strong>KAN-7 — Missing Product in Jira:</strong> The Product field (customfield_10074) is not set. Populate before the next extraction.</li>
+<li><strong>KAN-7 — Release/Product discrepancy:</strong> Jira records Release 14.1 / Product unset, but the implementation note records Release 14.2 / Product Mortgage Loan. Reconcile before publishing customer-facing notes — if KAN-7 belongs to 14.2, remove it from this release.</li>
+<li><strong>Deployment ordering:</strong> KAN-2 (DB index) and KAN-7 (report template deployment) both require manual deployment steps — confirm these are in the release runbook.</li>
+</ul>
+</body></html>
