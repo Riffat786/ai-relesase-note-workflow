@@ -19,11 +19,7 @@ The pipeline runs automatically from start to finish without user input.
 Local files in `sample-data/` are structure and quality **benchmarks**
 only — they are never treated as live release content.
 
-This system is branded per `skills/wealthwise-branding.md`. It follows
-the same orchestrator → sub-agents → quality-review architecture used by
-the reference GlobalMail Pro release note workflow, adapted to
-WealthWise's own voice, category set, and dual-output (HTML + Markdown,
-no JSON) convention.
+This system is branded as per `skills/wealthwise-branding.md`. It follows WealthWise's own voice, category set, and dual-output (HTML + Markdown) convention.
 
 ---
 
