@@ -185,7 +185,6 @@ Then re-run the pipeline. Changes are picked up automatically.
 Check these files in order:
 
 1. **CLAUDE.md** — Full project documentation
-2. **GITHUB-MIGRATION-SUMMARY.md** — How GitHub replaced Jira
-3. **agents/release-note-orchestrator.md** — Detailed pipeline steps
-4. **skills/github-issue-classifier.md** — Issue classification rules
-5. GitHub Issues in ShubhKN/WealthWise — For issue-specific questions
+2. **agents/release-note-orchestrator.md** — Detailed pipeline steps
+3. **skills/github-issue-classifier.md** — Issue classification rules
+4. GitHub Issues in ShubhKN/WealthWise — For issue-specific questions
