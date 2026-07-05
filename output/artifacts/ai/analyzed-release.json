@@ -1,6 +1,7 @@
 {
   "release": "2025.8",
   "releaseDate": "2025-08-15",
+  "analysisDate": "2026-07-05",
   "features": [
     {
       "id": "US-1001",
@@ -31,5 +32,21 @@
       "title": "Duplicate Notifications",
       "description": "Fixed an issue causing duplicate notifications to be displayed."
     }
-  ]
+  ],
+  "knownIssues": [
+    {
+      "id": "KI-1001",
+      "title": "Large PDF exports may take longer than expected",
+      "severity": "Low",
+      "workaround": "Wait until export completes."
+    }
+  ],
+  "summary": {
+    "customerFacingItems": 6,
+    "features": 2,
+    "enhancements": 1,
+    "bugFixes": 2,
+    "knownIssues": 1,
+    "excludedItems": 3
+  }
 }

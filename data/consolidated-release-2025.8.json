@@ -1,7 +1,7 @@
 {
   "release": "2025.8",
   "releaseDate": "2025-08-15",
-  "collectionDate": "2026-07-05",
+  "collectionDate": "2026-07-03",
   "collectionMethod": "POC Mock Data (Azure DevOps + ServiceNow)",
   "workItems": [
     {
