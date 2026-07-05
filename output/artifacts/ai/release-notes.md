@@ -1,24 +1,28 @@
 # Release 2025.8
 
 ## Overview
-Release 2025.8 delivers essential security enhancements, improved performance, and expanded reporting capabilities to help you work more efficiently and securely.
+Release 2025.8 brings enhanced security capabilities and improved reporting functionality to our platform. This release focuses on protecting user accounts with multi-factor authentication, enabling customers to export their critical business data, and improving overall system performance. We've also addressed important issues to ensure a more reliable experience across the portal.
 
 ## New Features
 
 | ID | Title | Description |
 |---|---|---|
-| US-1001 | Multi-Factor Authentication | Protect your account with an additional layer of security. Users can now enable multi-factor authentication using email verification to safeguard their account access. |
-| US-1002 | Export Dashboard Reports | Easily share and archive your dashboard data. Users can now export dashboard reports to PDF format for offline review and distribution. |
+| US-1001 | Multi-Factor Authentication | Users can now secure their accounts with multi-factor authentication using email verification. This additional security layer helps protect against unauthorized access. |
+| US-1002 | Export Dashboard Reports | Users can now export their dashboard reports directly to PDF format. This makes it easy to share reports, archive data, and integrate insights into presentations and documentation. |
 
 ## Enhancements
 
 | ID | Title | Description |
 |---|---|---|
-| US-1003 | Improved Search Performance | Search across the portal is now faster and more responsive, delivering results in less time and improving your workflow efficiency. |
+| US-1003 | Improved Search Performance | Search response times have been significantly reduced across the portal. Users will experience faster query results and improved productivity when searching for information. |
 
 ## Bug Fixes
 
 | ID | Title | Description |
 |---|---|---|
-| BUG-2001 | Password Reset Email Delivery | Resolved an issue where password reset emails were not being delivered to some users. All password reset requests now reach users reliably. |
-| BUG-2002 | Duplicate Notification Resolution | Fixed an issue that was causing duplicate notifications to appear. Users will now receive each notification once as intended. |
+| BUG-2001 | Password Reset Email Failure | Resolved an issue where password reset emails were not being delivered to some users. Account recovery now works reliably for all users. |
+| BUG-2002 | Duplicate Notifications | Fixed an issue causing duplicate notifications to appear in user accounts. Users will now receive notifications exactly once as intended. |
+
+## Known Limitations
+
+- **Large PDF exports may take longer than expected** (Low severity): When exporting large datasets to PDF format, the export process may require additional time to complete. We recommend waiting until the export finishes before navigating away from the page.
