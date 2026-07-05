@@ -1,11 +1,3 @@
-<!--
-Skill: Release Note Generator
-Purpose: Generate customer-facing release notes from a consolidated release dataset.
-Author: Bhargavi Chary
-Version: 1.0
-Last Updated: 03-Jul-2026
--->
-
 # Release Note Generator
 
 ## Role
@@ -82,11 +74,23 @@ Only include sections that contain relevant information.
 
 ## Output
 
-Generate the release notes in Markdown using the following structure.
+Populate the metadata before generating the release notes.
+
+- Release Version: Use the selected release version.
+- Release Date: Use the Jira release date if available; otherwise use the current system date.
+- Audience: Customer or Internal. Default to Customer if not specified.
 
 # Release Notes
 
-## Release Version
+## | Item | Value |
+
+|------|------|
+
+| Release Version |  |
+
+| Release Date |  |
+
+| Audience | <Customer / Internal> |
 
 ## Overview
 

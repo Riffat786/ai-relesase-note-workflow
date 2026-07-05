@@ -32,6 +32,8 @@ Its responsibility is limited to preparing the final publication-ready document.
 
 ---
 
+
+
 ## Dependencies
 
 This skill shall be executed only after the successful completion of:
@@ -41,6 +43,8 @@ This skill shall be executed only after the successful completion of:
 3. Release Note Reviewer
 
 ---
+
+
 
 ## Input
 
@@ -65,6 +69,8 @@ The following information from the review report must **never** appear in the pu
 - Internal Notes
 
 ---
+
+
 
 ## Responsibilities
 
@@ -91,23 +97,31 @@ The skill shall:
 
 ---
 
+
+
 ## Document Structure
 
 The final release notes shall contain the following sections in the specified order.
 
-1. Release Title
-2. Release Version
-3. Release Date
-4. Overview
-5. New Features
-6. Enhancements
-7. Bug Fixes
-8. Regulatory Updates
-9. Known Issues
-10. Additional Notes
+1. Release Notes
+2. Release Metadata
+  - Release Version
+  - Release Date
+  - Audience (User Selected)
+3. Overview
+4. New Features
+5. Enhancements
+6. Bug Fixes
+7. Regulatory Updates
+8. Known Issues
+9. Additional Notes
+
+
 
 ### Metadata Rules
 
+- Display the Audience selected by the user (Customer or Internal).
+- Do not generate or infer a release title. Use the fixed heading "Release Notes".
 - Display **Product** in the document header only when every release item belongs to the same product.
 - If multiple products are present, omit Product from the document header.
 - Display **Product** beneath the corresponding feature whenever available.
@@ -116,6 +130,8 @@ The final release notes shall contain the following sections in the specified or
 - Omit unavailable metadata instead of generating placeholder values.
 
 ---
+
+
 
 ## Content Structure Standards
 
@@ -141,7 +157,11 @@ The publisher shall preserve the semantic relationship between content elements 
 
 ---
 
+
+
 ## Formatting Standards
+
+
 
 ### Document Title (Heading 1)
 
@@ -151,6 +171,8 @@ The publisher shall preserve the semantic relationship between content elements 
 - Font Color: Black
 - Alignment: Left
 
+
+
 ### Section Headings (Heading 2)
 
 - Font: Cambria
@@ -158,6 +180,8 @@ The publisher shall preserve the semantic relationship between content elements 
 - Font Style: Bold
 - Font Color: Black
 - Alignment: Left
+
+
 
 ### Body Text
 
@@ -167,10 +191,14 @@ The publisher shall preserve the semantic relationship between content elements 
 - Font Color: Black
 - Alignment: Left
 
+
+
 ### Bullet Lists
 
 - Use a solid black square (■) for all bullet lists.
 - Maintain consistent indentation and spacing.
+
+
 
 ### General Formatting
 
@@ -183,6 +211,8 @@ The publisher shall preserve the semantic relationship between content elements 
 - Produce a clean, professional, customer-facing document.
 
 ---
+
+
 
 ## Constraints
 
@@ -202,6 +232,8 @@ The publisher shall preserve the semantic relationship between content elements 
 - Preserve the accuracy and intent of the approved release notes.
 
 ---
+
+
 
 ## Output
 
@@ -241,6 +273,8 @@ The generated outputs shall:
 
 ---
 
+
+
 ## Success Criteria
 
 The skill is considered successful when:
@@ -254,3 +288,4 @@ The skill is considered successful when:
 - Product and Module metadata are correctly displayed whenever available.
 - The document is visually professional and publication-ready.
 - The output is suitable for publication in Microsoft Word (.docx) and HTML (.html) formats with minimal manual effort.
+

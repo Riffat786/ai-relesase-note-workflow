@@ -1,132 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Release Notes — Release 14.1</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>Release 14.1 — Customer Onboarding & Compliance Update</title>
 <style>
-  body {
-    font-family: Cambria, Georgia, serif;
-    font-size: 11pt;
-    color: #000000;
-    text-align: left;
-    line-height: 1.5;
-    max-width: 820px;
-    margin: 40px auto;
-    padding: 0 24px;
-  }
-  h1 {
-    font-family: Cambria, Georgia, serif;
-    font-size: 20pt;
-    font-weight: bold;
-    color: #000000;
-    text-align: left;
-    margin-bottom: 0.2em;
-  }
-  h2 {
-    font-family: Cambria, Georgia, serif;
-    font-size: 16pt;
-    font-weight: bold;
-    color: #000000;
-    text-align: left;
-    margin-top: 1.4em;
-    margin-bottom: 0.4em;
-  }
-  h3 {
-    font-family: Cambria, Georgia, serif;
-    font-size: 12pt;
-    font-weight: bold;
-    color: #000000;
-    text-align: left;
-    margin-top: 1em;
-    margin-bottom: 0.2em;
-  }
-  p, li {
-    font-size: 11pt;
-    color: #000000;
-    text-align: left;
-  }
-  ul {
-    list-style-type: none;
-    padding-left: 1.4em;
-  }
-  ul li {
-    position: relative;
-    margin-bottom: 0.5em;
-  }
-  ul li::before {
-    content: "\25A0";      /* solid black square */
-    position: absolute;
-    left: -1.4em;
-    color: #000000;
-  }
-  .meta p { margin: 0.15em 0; }
-  .item { margin-bottom: 0.6em; }
-</style>
-</head>
-<body>
-
-<h1>Release Notes</h1>
-
-<div class="meta">
-  <p><strong>Release Version:</strong> 14.1</p>
-</div>
-
+    body { font-family: Cambria, Georgia, serif; color:#000; font-size:11pt; line-height:1.5; margin:40px; }
+    h1 { font-family: Cambria, Georgia, serif; font-size:20pt; font-weight:bold; color:#000; text-align:left; }
+    h2 { font-family: Cambria, Georgia, serif; font-size:16pt; font-weight:bold; color:#000; text-align:left; margin-top:28px; }
+    h3 { font-family: Cambria, Georgia, serif; font-size:12pt; font-weight:bold; color:#000; margin-bottom:4px; }
+    table.meta { border-collapse:collapse; margin:16px 0 8px 0; }
+    table.meta td { border:1px solid #333; padding:6px 14px; font-size:11pt; }
+    table.meta td.k { font-weight:bold; background:#f2f2f2; }
+    ul { list-style:none; padding-left:18px; }
+    ul li { position:relative; padding-left:20px; margin:4px 0; }
+    ul li:before { content:"\25A0"; position:absolute; left:0; color:#000; }
+    .meta-line { margin:2px 0; }
+    </style></head><body>
+<h1>Release 14.1 — Customer Onboarding & Compliance Update</h1>
+<table class="meta">
+<tr><td class="k">Release Version</td><td>14.1</td></tr>
+<tr><td class="k">Release Date</td><td>2026-07-05</td></tr>
+<tr><td class="k">Audience</td><td>Customer</td></tr>
+</table>
 <h2>Overview</h2>
-<p>Release 14.1 focuses on faster customer onboarding, smarter loan decisioning, and a more reliable, uninterrupted user experience. This update introduces bulk customer onboarding and a configurable loan eligibility engine, while resolving issues around duplicate transactions and unexpected session timeouts. Together, these changes help teams work more efficiently and with greater confidence in day-to-day operations.</p>
-
+<p>Release 14.1 streamlines customer onboarding, strengthens the reliability of transaction processing, and keeps regulatory reporting aligned with the latest compliance requirements. Together, these changes help teams onboard customers faster, process payments with greater confidence, and stay compliant with evolving reporting standards.</p>
 <h2>New Features</h2>
-<div class="item">
-  <h3>Bulk Customer Import</h3>
-  <div class="meta">
-    <p><strong>Product:</strong> Business Loan</p>
-    <p><strong>Module:</strong> Customer Details</p>
-  </div>
-  <ul>
-    <li>Onboard multiple customers at once by uploading a single file, instead of entering records one at a time. Data is validated as it is processed, potential duplicates are flagged, and upload progress is tracked throughout.</li>
-    <li><strong>Customer Benefit:</strong> Significantly reduces manual data entry and shortens onboarding time while helping ensure clean, accurate customer records.</li>
-  </ul>
-</div>
-
-<h2>Enhancements</h2>
-<div class="item">
-  <h3>Configurable Loan Eligibility Engine</h3>
-  <div class="meta">
-    <p><strong>Product:</strong> Business Loan</p>
-    <p><strong>Module:</strong> Loan Processing</p>
-  </div>
-  <ul>
-    <li>Loan eligibility is now determined by configurable business rules that consider factors such as income, age, credit score, and existing loans. Rules can be prioritized and adjusted to match evolving business needs.</li>
-    <li><strong>Customer Benefit:</strong> Enables faster, more consistent loan decisions and lets the business adapt eligibility criteria without waiting on technical changes.</li>
-  </ul>
-</div>
-
+<h3>Bulk Customer Import</h3>
+<p class="meta-line"><strong>Product:</strong> Business Loan</p>
+<p class="meta-line"><strong>Module:</strong> Customer Details</p>
+<ul>
+<li>Onboard multiple customers at once by uploading a single file, instead of entering records one at a time. Records are validated as they are processed, potential duplicates are flagged, and upload progress is tracked throughout.</li>
+<li><strong>Customer Benefit:</strong> Significantly reduces manual data entry and shortens onboarding time while helping ensure clean, accurate customer records.</li>
+</ul>
 <h2>Bug Fixes</h2>
-<div class="item">
-  <h3>Duplicate Transaction Prevention</h3>
-  <div class="meta">
-    <p><strong>Product:</strong> Business Loan</p>
-    <p><strong>Module:</strong> Loan Processing</p>
-  </div>
-  <ul>
-    <li>Resolved an issue that could allow the same transaction to be processed more than once. Each transaction is now verified before submission, and a clear message is shown when a potential duplicate is detected.</li>
-    <li><strong>Customer Benefit:</strong> Prevents unintended duplicate payments and improves the accuracy and reliability of transaction processing.</li>
-  </ul>
-</div>
-<div class="item">
-  <h3>Reliable Session Handling</h3>
-  <div class="meta">
-    <p><strong>Product:</strong> Personal Loan</p>
-    <p><strong>Module:</strong> Dashboard</p>
-  </div>
-  <ul>
-    <li>Resolved an issue that caused users to be logged out unexpectedly during active sessions. Sessions now stay active during ongoing work and are maintained more reliably in the background.</li>
-    <li><strong>Customer Benefit:</strong> Reduces interruptions and prevents lost work, delivering a smoother and more dependable experience.</li>
-  </ul>
-</div>
-
+<h3>Duplicate Transaction Prevention</h3>
+<p class="meta-line"><strong>Product:</strong> Business Loan</p>
+<p class="meta-line"><strong>Module:</strong> Loan Processing</p>
+<ul>
+<li>Resolved an issue that could allow the same transaction to be processed more than once. Each transaction is now verified before submission, and a clear message is shown when a potential duplicate is detected.</li>
+<li><strong>Customer Benefit:</strong> Prevents unintended duplicate payments and improves the accuracy and reliability of transaction processing.</li>
+</ul>
+<h2>Regulatory Updates</h2>
+<h3>Updated Regulatory Report Templates</h3>
+<p class="meta-line"><strong>Module:</strong> Reports</p>
+<ul>
+<li>Regulatory report templates have been updated to comply with the latest reporting standards, including new compliance information and a refreshed report layout. Report generation has also been made faster.</li>
+<li><strong>Business Impact:</strong> Helps the organization meet current regulatory requirements and produce compliant reports more efficiently.</li>
+</ul>
 <h2>Known Issues</h2>
 <p>None reported for this release.</p>
-
-</body>
-</html>
+</body></html>

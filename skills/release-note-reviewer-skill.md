@@ -1,5 +1,3 @@
-
-
 # Release Note Reviewer
 
 ## Role
@@ -18,13 +16,20 @@ Your objective is to ensure that the release notes are:
 
 ---
 
-
-
 ## Context
 
 The Release Note Generator has generated customer-facing release notes from the consolidated release dataset.
 
 Your responsibility is to review the generated release notes before publication and ensure they meet business, documentation, and organizational quality standards.
+
+If the audience is not specified, ask:
+
+"Who is the target audience for the release notes?
+
+1. Customer
+2. Internal"
+
+Default to Customer if no response is provided.
 
 Review the release notes document specified in:
 
@@ -33,9 +38,7 @@ $ARGUMENTS
 The input document may be provided in one of the following formats:
 
 - Markdown (.md)
-
 - Microsoft Word (.docx)
-
 - HTML (.html)
 
 Extract the document content before performing the review.
@@ -51,6 +54,11 @@ Review only the document specified in `$ARGUMENTS`. Do not review any other file
 ## Task
 
 Perform a comprehensive review of the release notes.
+
+Use the selected audience (Customer or Internal) to apply the appropriate review rules.
+
+- Customer: Validate customer-facing quality and ensure confidential implementation details are not exposed.
+- Internal: Validate technical accuracy while retaining implementation details, removing only secrets such as passwords, tokens, and API keys.
 
 ---
 
@@ -227,6 +235,22 @@ Provide justification.
 - Preserve customer-facing language.
 - Recommend improvements only where necessary.
 - Maintain the original intent of the release notes.
+- If Audience = Customer:
+  - Remove implementation details.
+  - Remove API endpoints.
+  - Remove database tables and columns.
+  - Remove SQL queries.
+  - Remove configuration values.
+  - Remove source code.
+  - Remove deployment details.
+  - Focus on customer-friendly language.
+  If Audience = Internal:
+  - Retain implementation details.
+  - Retain API information.
+  - Retain database changes.
+  - Retain deployment notes.
+  - Retain testing details.
+  - Only remove sensitive information such as secrets, passwords, tokens, or credentials.
 
 ---
 
@@ -255,6 +279,8 @@ Generate the review in the following format.
 | Review Date | |
 
 | Reviewer | AI Release Note Reviewer |
+
+| Audiance | Customer/ Internal |
 
 ---
 
@@ -313,6 +339,22 @@ OR
 | Medium | |
 
 | Low | |
+
+---
+
+
+
+## Audience Validation
+
+**Target Audience:** Customer / Internal
+
+**Review Rules Applied:**
+
+- Customer Review Rules
+
+OR
+
+- Internal Review Rules
 
 ---
 

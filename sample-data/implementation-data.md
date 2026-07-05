@@ -54,4 +54,4 @@ Source: `sample-data/implementation-notes/` in the current repository.
 
 ---
 
-> ⚠️ **Discrepancy — KAN-7:** The Jira issue lists this under **Release Version 14.1 / Product Business Loan**, but the implementation note records **Release Version 14.2 / Product Mortgage Loan**. Worth reconciling before generating release notes.
+> ⚠️ **Discrepancy — KAN-7:** The Jira issue lists this under **Release Version 14.1 / Product unset**, but the implementation note records **Release Version 14.2 / Product Mortgage Loan**. Worth reconciling before generating release notes.
