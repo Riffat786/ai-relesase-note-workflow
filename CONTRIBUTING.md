@@ -25,16 +25,17 @@ Please place content in the appropriate folder.
 |----------|----------|
 | charter | Project charter |
 | roster | Team roster |
-| workflow | Workflow documentation |
-| sample-data | Sample inputs and outputs |
-| commands | Commands and prompts |
-| skills | Skills documentation |
-| agents | Agent workflow designs |
-| mcp-integrations | MCP and integration concepts |
+| workflow | Workflow documentation and analysis |
+| sample-data | Sample inputs and expected outputs |
+| commands | Command specifications (documentation) |
+| skills | Skill specifications (documentation) |
+| agent | Agent specifications (documentation) |
+| .claude | Real Claude Code implementations (commands, skills, agents) |
+| mcp-plugin-concept | MCP and integration concepts |
 | validation | Validation and testing results |
-| demo | Demo materials |
+| demo | Demo materials and artifacts |
 | meetings | Meeting notes |
-| decisions | Project decisions |
+| decisions | Project decisions and rationale |
 | assumptions | Assumptions and constraints |
 
 ---

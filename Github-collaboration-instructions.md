@@ -87,7 +87,10 @@ main
 ├── README.md
 ├── charter/
 ├── skills/
-├── prompts-and-commands/
+├── commands/
+├── agent/
+├── .claude/                    (Real implementations)
+└── validation/
 ```
 
 Create a branch:

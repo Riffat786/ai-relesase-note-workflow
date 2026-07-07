@@ -14,7 +14,9 @@ Release 5.5 enhances configuration flexibility and security controls. This relea
 
 ### Configuration Profiles
 
-Users can now create and manage configuration profiles to customize system behavior for different environments and use cases. Profiles support configuration of authentication methods, data handling preferences, and integration endpoints, enabling seamless operation across multiple deployment scenarios.
+Users can now create and manage configuration profiles to customize system behavior for different environments and use cases.
+
+**Note:** Additional information is required to provide complete customer-facing description of this feature. See Missing Information below.
 
 ---
 
@@ -37,10 +39,18 @@ Resolved a critical issue that caused scheduled reports to occasionally fail dur
 ## Known Limitations
 
 - Password complexity policies apply at the organization level. Per-user or per-role policies are not currently supported.
-- Configuration profiles are currently available for core system settings. Additional integration endpoints may be supported in future releases.
 
 ---
 
-## Administrative Considerations
+## Missing Information
+
+### Configuration Profiles
+
+- Customer impact not provided.
+- Intended audience not identified.
+- User benefit not specified.
+- Detailed capabilities not described.
+
+### Administrative Considerations
 
 Organizations implementing password policy controls should plan change management and communicate new requirements to users. Existing accounts may require password updates to comply with new policies.

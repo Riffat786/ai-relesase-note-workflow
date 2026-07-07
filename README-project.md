@@ -63,35 +63,45 @@ ai-release-note-workflow/
 ├── roster/
 ├── workflow/
 ├── sample-data/
-├── prompts-and-commands/
+├── commands/
 ├── skills/
-├── agents/
+├── agent/
+├── .claude/                    (Real Claude Code implementations)
+│   ├── commands/
+│   ├── skills/
+│   └── agents/
 ├── mcp-plugin-concept/
 ├── validation/
 ├── demo/
 ├── meetings/
 ├── decisions/
-└── assumptions/
+├── assumptions/
+└── generated-release-notes/
+    ├── scenario-1-feature-release/
+    ├── scenario-2-mixed-release/
+    ├── sample-product-5.4/
+    └── sample-product-5.5/
 ```
 
 ## Folder Purpose
 
-
-| Folder           | Purpose                               |
-| ---------------- | ------------------------------------- |
-| charter          | Project charter and scope             |
-| roster           | Team roster and role assignments      |
-| workflow         | Workflow documentation                |
-| sample-data      | Sample inputs and outputs             |
-| commands         | Reusable commands and prompts         |
-| skills           | Skills documentation                  |
-| agents           | Agent workflow designs                |
-| mcp-integrations | MCP, plugin, and marketplace concepts |
-| validation       | Testing results and findings          |
-| demo             | Demo materials                        |
-| meetings         | Meeting notes and action items        |
-| decisions        | Project decisions and rationale       |
-| assumptions      | Assumptions and constraints           |
+| Folder           | Purpose                                                 |
+| ---------------- | ------------------------------------------------------- |
+| charter          | Project charter and scope                               |
+| roster           | Team roster and role assignments                        |
+| workflow         | Workflow documentation and analysis                     |
+| sample-data      | Sample inputs and expected outputs for validation       |
+| commands         | Command specifications and prompts (documentation)      |
+| skills           | Skill specifications (documentation)                    |
+| agent            | Agent specifications (documentation)                    |
+| .claude          | Real Claude Code implementations (commands, skills, agents) |
+| mcp-plugin-concept | MCP and plugin integration concepts                   |
+| validation       | Testing results and findings                            |
+| demo             | Demo materials and artifacts                            |
+| meetings         | Meeting notes and action items                          |
+| decisions        | Project decisions and rationale                         |
+| assumptions      | Assumptions and constraints                             |
+| generated-release-notes | Generated outputs from sample scenarios            |
 
 ## Project Delievrables
 
@@ -114,41 +124,40 @@ Refer to `roster/team-roster.md` for team members and role assignments.
 
 ## How to Contribute
 
-1. Review the Project Charter.
-2. Review the Team Roster.
+1. Review the Project Charter in `charter/`.
+2. Review the Team Roster in `roster/`.
 3. Pick up or request an assigned task.
 4. Update documentation in the appropriate folder.
 5. Track work using GitHub Issues.
-6. Document decisions in the repository.
+6. Document decisions in `decisions/`.
 7. Avoid keeping important information only in chats or personal files.
 
-See:
-CONTRIBUTING.md for detailed collaboration instructions.
+For detailed collaboration instructions, see: `CONTRIBUTING.md`
 
 ## Assumptions
-Current assumptions are maintained in:
-assumptions/
+
+Current assumptions are maintained in: `assumptions/`
 
 Examples:
-•	Workshop timelines will remain unchanged.
-•	Sample data will be non-confidential.
-•	MCP integrations may be demonstrated conceptually rather than fully implemented.
-
+- Workshop timelines will remain unchanged.
+- Sample data will be non-confidential.
+- MCP integrations may be demonstrated conceptually rather than fully implemented.
 
 ## Meeting Notes
-All meeting notes should be stored in:
-meetings/
+
+All meeting notes should be stored in: `meetings/`
 
 Meeting outcomes should include:
-•	Decisions
-•	Action items
-•	Risks
-•	Next steps
+- Decisions
+- Action items
+- Risks
+- Next steps
 
 ## Decision Log
-Important project decisions should be stored in:
-decisions/
-and not only in chat conversations.
+
+Important project decisions should be stored in: `decisions/`
+
+Do not keep important decisions only in chat conversations. Use the decision log to record rationale, impact, and status.
 
 ## Validation
 Validation results, risks, gaps, and lessons learned should be documented in:

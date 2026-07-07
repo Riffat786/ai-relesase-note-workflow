@@ -12,16 +12,19 @@ Change information → AI extraction → Release note draft → AI review → Im
 
 ## Project Folders
 
-- charter: Project scope, goals, success criteria
-- roster: Team members and roles
-- samples: Sample input and output files
-- prompts-and-commands: Reusable prompts and commands
-- skills: Reusable skill definitions or instructions
-- agent-workflow: Multi-step AI workflow design
-- mcp-plugin-concept: Integration ideas using MCP, plugins, or marketplace tools
-- validation: Test results, risks, limitations
-- demo: Final demo material
-- meetings: Meeting notes and action items
+- **charter**: Project scope, goals, success criteria
+- **roster**: Team members and roles
+- **sample-data**: Sample input and output files
+- **commands**: Reusable commands and prompts
+- **skills**: Reusable skill definitions
+- **agent**: AI agent specifications
+- **workflow**: Workflow documentation and analysis
+- **.claude**: Real Claude Code implementations (commands, skills, agents)
+- **mcp-plugin-concept**: Integration ideas using MCP and plugins
+- **validation**: Test results, risks, limitations
+- **demo**: Final demo material and artifacts
+- **meetings**: Meeting notes and action items
+- **decisions**: Project decisions and rationale
 
 ## Getting Started
 
