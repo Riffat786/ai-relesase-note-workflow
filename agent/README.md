@@ -14,6 +14,8 @@ The objective is not to replace documentation professionals or automate release 
 
 The solution consists of five specialized agents.
 
+These agents are now implemented as real Claude Code agents in `.claude/agents/`.
+
 | Agent                            | Purpose                                                                                                 |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Release Intelligence Facilitator | Provides project guidance, governance, workflow analysis, validation support, and readiness assessments |
