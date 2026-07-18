@@ -45,11 +45,11 @@ Assumptions should be reviewed regularly and updated if circumstances change.
 
 ## Open Questions
 
-| ID | Question | Owner | Status |
-|----|----------|--------|--------|
-| AQ-001 | Which Claude capabilities will be demonstrated live? | TBD | Open |
-| AQ-002 | Which integrations will be conceptual vs implemented? | TBD | Open |
-| AQ-003 | What sample scenarios will be used for the final demo? | TBD | Open |
+| ID | Question | Description | Owner |  Status|
+|----|----------|--------|--------|-------------|
+| AQ-001 | Which Claude capabilities will be demonstrated live? | Converting the word file in accordance with the MCHP edit standards and then creating a DITA XML from the word | Srividya Kannan | Completed |
+| AQ-002 | Which integrations will be conceptual vs implemented? | MCP integrations to connect with Sharepoint, Tridion Docs, Adobe Acrobat, AEM | Srividya Kannan | Open |
+| AQ-003 | What sample scenarios will be used for the final demo? | A sample word file | Srividya Kannan | Open |
 
 ---
 
@@ -57,4 +57,4 @@ Assumptions should be reviewed regularly and updated if circumstances change.
 
 | Date | Change | Author |
 |------|---------|--------|
-| 2026-06-23 | Initial assumptions document created | Riffat |
+| 2026-07-18 | Initial assumptions document updated| Srividya Kannan |
